@@ -1,25 +1,38 @@
-async function loadGarageLog() {
+async function startApp() {
 
-    const response = await fetch("data/GarageLog.json");
-    const garage = await response.json();
+    try {
+        const db = await openDatabase();
 
-    const container = document.getElementById("app");
+        console.log("Garage Log database opened:", db.name);
 
-    container.innerHTML = "";
+        const response = await fetch("data/GarageLog.json");
+        const garage = await response.json();
 
-    garage.vehicles.forEach(vehicle => {
+        const container = document.getElementById("app");
 
-        const card = document.createElement("div");
-        card.className = "vehicle";
+        container.innerHTML = "";
 
-        card.innerHTML = `
-            <h2>${vehicle.nickname}</h2>
-            <p>${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
-            <small>${vehicle.type}</small>
-        `;
+        garage.vehicles.forEach(vehicle => {
 
-        container.appendChild(card);
-    });
+            const card = document.createElement("div");
+            card.className = "vehicle";
+
+            card.innerHTML = `
+                <h2>${vehicle.nickname}</h2>
+                <p>${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
+                <small>${vehicle.type}</small>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+
+        console.error("Garage Log failed to start:", error);
+
+        document.getElementById("app").textContent =
+            "Garage Log could not start.";
+    }
 }
 
 
@@ -28,4 +41,4 @@ if ("serviceWorker" in navigator) {
 }
 
 
-loadGarageLog();
+startApp();
