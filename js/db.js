@@ -83,3 +83,37 @@ function openDatabase() {
         };
     });
 }
+
+async function saveVehicles(vehicles) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("vehicles", "readwrite");
+        const store = transaction.objectStore("vehicles");
+
+        vehicles.forEach(vehicle => {
+            store.put(vehicle);
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function getVehicles() {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("vehicles", "readonly");
+        const store = transaction.objectStore("vehicles");
+
+        const request = store.getAll();
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = event => reject(event.target.error);
+    });
+}
