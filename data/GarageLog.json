@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "lastModified": "2026-08-07T12:00:00Z",
+
+  "vehicles": [
+    {
+      "id": "phoenix",
+      "year": 1976,
+      "make": "Honda",
+      "model": "CB750F Supersport",
+      "nickname": "The Phoenix",
+      "type": "motorcycle"
+    },
+    {
+      "id": "white",
+      "year": 2019,
+      "make": "Royal Enfield",
+      "model": "Continental GT 650",
+      "nickname": "The White",
+      "type": "motorcycle"
+    },
+    {
+      "id": "red",
+      "year": 2014,
+      "make": "Royal Enfield",
+      "model": "Continental GT",
+      "nickname": "The Red",
+      "type": "motorcycle"
+    },
+    {
+      "id": "rd250",
+      "year": 1973,
+      "make": "Yamaha",
+      "model": "RD250B",
+      "nickname": "The RD",
+      "type": "motorcycle"
+    },
+    {
+      "id": "pickup",
+      "year": 1991,
+      "make": "Toyota",
+      "model": "Pickup",
+      "nickname": "Toyota Pickup",
+      "type": "truck"
+    },
+    {
+      "id": "sportsman",
+      "year": 2007,
+      "make": "Polaris",
+      "model": "Sportsman 500",
+      "nickname": "Sportsman",
+      "type": "atv"
+    },
+    {
+      "id": "ty175",
+      "year": 0,
+      "make": "Yamaha",
+      "model": "TY175",
+      "nickname": "TY175",
+      "type": "motorcycle"
+    }
+  ],
+
+  "serviceRecords": [],
+  "fuelLogs": [],
+  "parts": [],
+  "modifications": [],
+  "projects": [],
+  "photos": [],
+  "reminders": []
+}
