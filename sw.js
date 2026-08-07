@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
     "./manifest.json",
     "./css/style.css",
     "./js/app.js",
+    "./js/db.js",
     "./data/GarageLog.json"
 ];
 
