@@ -134,6 +134,32 @@ async function updateVehicle(vehicle) {
     });
 }
 
+async function saveVehicle(vehicle) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["vehicles", "metadata"],
+            "readwrite"
+        );
+
+        const vehicleStore = transaction.objectStore("vehicles");
+        const metadataStore = transaction.objectStore("metadata");
+
+        vehicleStore.put(vehicle);
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
 async function updateVehicleSchema() {
 
     const vehicles = await getVehicles();

@@ -64,6 +64,7 @@ function displayVehicle(vehicle) {
 
     container.innerHTML = `
         <button id="backButton">← Vehicles</button>
+        <button id="editButton">Edit</button>
 
         <div class="vehicle-detail">
 
@@ -79,7 +80,9 @@ function displayVehicle(vehicle) {
 
             <h2>Vehicle Information</h2>
 
-            <p><strong>VIN:</strong> ${vehicle.vin || "Not recorded"}</p>
+            <p><strong>VIN:</strong>
+                ${vehicle.vin || "Not recorded"}
+            </p>
 
             <p><strong>License Plate:</strong>
                 ${vehicle.licensePlate || "Not recorded"}
@@ -113,10 +116,115 @@ function displayVehicle(vehicle) {
     document
         .getElementById("backButton")
         .addEventListener("click", async () => {
-
             const vehicles = await getVehicles();
-
             displayVehicles(vehicles);
+        });
+
+    document
+        .getElementById("editButton")
+        .addEventListener("click", () => {
+            displayVehicleEditor(vehicle);
+        });
+}
+
+function displayVehicleEditor(vehicle) {
+
+    const container = document.getElementById("app");
+
+    container.innerHTML = `
+        <button id="cancelButton">← Cancel</button>
+
+        <div class="vehicle-detail">
+
+            <h1>Edit ${vehicle.nickname}</h1>
+
+            <label>
+                VIN<br>
+                <input
+                    type="text"
+                    id="vin"
+                    value="${vehicle.vin || ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
+                License Plate<br>
+                <input
+                    type="text"
+                    id="licensePlate"
+                    value="${vehicle.licensePlate || ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
+                Purchase Date<br>
+                <input
+                    type="date"
+                    id="purchaseDate"
+                    value="${vehicle.purchaseDate || ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
+                Current Mileage<br>
+                <input
+                    type="number"
+                    id="currentMileage"
+                    value="${vehicle.currentMileage ?? ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
+                Notes<br>
+                <textarea id="notes" rows="6">${vehicle.notes || ""}</textarea>
+            </label>
+
+            <br>
+
+            <button id="saveButton">Save</button>
+
+        </div>
+    `;
+
+    document
+        .getElementById("cancelButton")
+        .addEventListener("click", () => {
+            displayVehicle(vehicle);
+        });
+
+    document
+        .getElementById("saveButton")
+        .addEventListener("click", async () => {
+
+            vehicle.vin =
+                document.getElementById("vin").value.trim();
+
+            vehicle.licensePlate =
+                document.getElementById("licensePlate").value.trim();
+
+            vehicle.purchaseDate =
+                document.getElementById("purchaseDate").value;
+
+            const mileage =
+                document.getElementById("currentMileage").value;
+
+            vehicle.currentMileage =
+                mileage === "" ? null : Number(mileage);
+
+            vehicle.notes =
+                document.getElementById("notes").value.trim();
+
+            await saveVehicle(vehicle);
+
+            displayVehicle(vehicle);
         });
 }
 

@@ -53,3 +53,28 @@ h1 {
     border: 0;
     border-top: 1px solid #555;
 }
+
+.vehicle-detail label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.vehicle-detail input,
+.vehicle-detail textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    margin-top: 5px;
+    font: inherit;
+}
+
+.vehicle-detail textarea {
+    resize: vertical;
+}
+
+.vehicle-detail button {
+    margin-right: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
