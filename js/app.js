@@ -4,7 +4,9 @@ async function startApp() {
 
         await openDatabase();
 
-        let vehicles = await getVehicles();
+		await initializeMetadata();
+
+		let vehicles = await getVehicles();
 
         // First run: import vehicles from JSON
         if (vehicles.length === 0) {

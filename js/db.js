@@ -117,3 +117,27 @@ async function getVehicles() {
         request.onerror = event => reject(event.target.error);
     });
 }
+
+async function initializeMetadata() {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("metadata", "readwrite");
+        const store = transaction.objectStore("metadata");
+
+        store.put({
+            key: "schemaVersion",
+            value: 1
+        });
+
+        store.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
