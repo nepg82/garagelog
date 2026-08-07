@@ -4,12 +4,43 @@
 
   "vehicles": [
     {
+      "id": "juke",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "Juke SV",
+      "nickname": "The Juke",
+      "type": "car",
+      "vin": "",
+	  "licensePlate": "CLY7659",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
+    },
+    {
+      "id": "frontier",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Frontier SV",
+      "nickname": "Frontier",
+      "type": "truck",
+      "vin": "",
+	  "licensePlate": "CLL3753",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
+    },
+    {
       "id": "phoenix",
       "year": 1976,
       "make": "Honda",
       "model": "CB750F Supersport",
       "nickname": "The Phoenix",
-      "type": "motorcycle"
+      "type": "motorcycle",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "white",
@@ -17,7 +48,12 @@
       "make": "Royal Enfield",
       "model": "Continental GT 650",
       "nickname": "The White",
-      "type": "motorcycle"
+      "type": "motorcycle",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "red",
@@ -25,7 +61,12 @@
       "make": "Royal Enfield",
       "model": "Continental GT",
       "nickname": "The Red",
-      "type": "motorcycle"
+      "type": "motorcycle",
+      "vin": "",
+	  "licensePlate": "55FG91",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "rd250",
@@ -33,7 +74,12 @@
       "make": "Yamaha",
       "model": "RD250B",
       "nickname": "The RD",
-      "type": "motorcycle"
+      "type": "motorcycle",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "pickup",
@@ -41,7 +87,12 @@
       "make": "Toyota",
       "model": "Pickup",
       "nickname": "Toyota Pickup",
-      "type": "truck"
+      "type": "truck",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "sportsman",
@@ -49,7 +100,12 @@
       "make": "Polaris",
       "model": "Sportsman 500",
       "nickname": "Sportsman",
-      "type": "atv"
+      "type": "atv",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     },
     {
       "id": "ty175",
@@ -57,7 +113,12 @@
       "make": "Yamaha",
       "model": "TY175",
       "nickname": "TY175",
-      "type": "motorcycle"
+      "type": "motorcycle",
+      "vin": "",
+	  "licensePlate": "",
+	  "purchaseDate": "",
+	  "currentMileage": null,
+	  "notes": ""
     }
   ],
 

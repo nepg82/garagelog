@@ -2,10 +2,12 @@ async function startApp() {
 
     try {
 
-        await openDatabase();
-        await initializeMetadata();
+		await openDatabase();
+		await updateVehicleSchema();
+		await importNewVehicles();
+		await initializeMetadata();
 
-        let vehicles = await getVehicles();
+		let vehicles = await getVehicles();
 
         if (vehicles.length === 0) {
 
@@ -27,7 +29,6 @@ async function startApp() {
             "Garage Log could not start.";
     }
 }
-
 
 function displayVehicles(vehicles) {
 
@@ -57,7 +58,6 @@ function displayVehicles(vehicles) {
     });
 }
 
-
 function displayVehicle(vehicle) {
 
     const container = document.getElementById("app");
@@ -77,14 +77,35 @@ function displayVehicle(vehicle) {
 
             <hr>
 
+            <h2>Vehicle Information</h2>
+
+            <p><strong>VIN:</strong> ${vehicle.vin || "Not recorded"}</p>
+
+            <p><strong>License Plate:</strong>
+                ${vehicle.licensePlate || "Not recorded"}
+            </p>
+
+            <p><strong>Purchase Date:</strong>
+                ${vehicle.purchaseDate || "Not recorded"}
+            </p>
+
+            <p><strong>Current Mileage:</strong>
+                ${vehicle.currentMileage !== null
+                    ? vehicle.currentMileage.toLocaleString()
+                    : "Not recorded"}
+            </p>
+
+            <h2>Notes</h2>
+
+            <p>${vehicle.notes || "No notes yet."}</p>
+
+            <hr>
+
             <h2>Service History</h2>
             <p>No service records yet.</p>
 
             <h2>Projects</h2>
             <p>No projects yet.</p>
-
-            <h2>Notes</h2>
-            <p>No notes yet.</p>
 
         </div>
     `;
@@ -98,7 +119,6 @@ function displayVehicle(vehicle) {
             displayVehicles(vehicles);
         });
 }
-
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js");

@@ -118,6 +118,80 @@ async function getVehicles() {
     });
 }
 
+async function updateVehicle(vehicle) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("vehicles", "readwrite");
+        const store = transaction.objectStore("vehicles");
+
+        store.put(vehicle);
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function updateVehicleSchema() {
+
+    const vehicles = await getVehicles();
+
+    for (const vehicle of vehicles) {
+
+        let changed = false;
+
+        if (!("vin" in vehicle)) {
+            vehicle.vin = "";
+            changed = true;
+        }
+
+        if (!("licensePlate" in vehicle)) {
+            vehicle.licensePlate = "";
+            changed = true;
+        }
+
+        if (!("purchaseDate" in vehicle)) {
+            vehicle.purchaseDate = "";
+            changed = true;
+        }
+
+        if (!("currentMileage" in vehicle)) {
+            vehicle.currentMileage = null;
+            changed = true;
+        }
+
+        if (!("notes" in vehicle)) {
+            vehicle.notes = "";
+            changed = true;
+        }
+
+        if (changed) {
+            await updateVehicle(vehicle);
+        }
+    }
+}
+
+async function importNewVehicles() {
+
+    const response = await fetch("data/GarageLog.json");
+    const garage = await response.json();
+
+    const existingVehicles = await getVehicles();
+    const existingIds = new Set(
+        existingVehicles.map(vehicle => vehicle.id)
+    );
+
+    const newVehicles = garage.vehicles.filter(
+        vehicle => !existingIds.has(vehicle.id)
+    );
+
+    if (newVehicles.length > 0) {
+        await saveVehicles(newVehicles);
+    }
+}
+
 async function initializeMetadata() {
 
     const db = await openDatabase();
