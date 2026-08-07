@@ -3,12 +3,10 @@ async function startApp() {
     try {
 
         await openDatabase();
+        await initializeMetadata();
 
-		await initializeMetadata();
+        let vehicles = await getVehicles();
 
-		let vehicles = await getVehicles();
-
-        // First run: import vehicles from JSON
         if (vehicles.length === 0) {
 
             const response = await fetch("data/GarageLog.json");
@@ -35,7 +33,9 @@ function displayVehicles(vehicles) {
 
     const container = document.getElementById("app");
 
-    container.innerHTML = "";
+    container.innerHTML = `
+        <h2>Vehicles</h2>
+    `;
 
     vehicles.forEach(vehicle => {
 
@@ -49,8 +49,54 @@ function displayVehicles(vehicles) {
             <small>${vehicle.type}</small>
         `;
 
+        card.addEventListener("click", () => {
+            displayVehicle(vehicle);
+        });
+
         container.appendChild(card);
     });
+}
+
+
+function displayVehicle(vehicle) {
+
+    const container = document.getElementById("app");
+
+    container.innerHTML = `
+        <button id="backButton">← Vehicles</button>
+
+        <div class="vehicle-detail">
+
+            <h1>${vehicle.nickname}</h1>
+
+            <p class="vehicle-year">
+                ${vehicle.year} ${vehicle.make} ${vehicle.model}
+            </p>
+
+            <p><strong>Type:</strong> ${vehicle.type}</p>
+
+            <hr>
+
+            <h2>Service History</h2>
+            <p>No service records yet.</p>
+
+            <h2>Projects</h2>
+            <p>No projects yet.</p>
+
+            <h2>Notes</h2>
+            <p>No notes yet.</p>
+
+        </div>
+    `;
+
+    document
+        .getElementById("backButton")
+        .addEventListener("click", async () => {
+
+            const vehicles = await getVehicles();
+
+            displayVehicles(vehicles);
+        });
 }
 
 
