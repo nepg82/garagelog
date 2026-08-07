@@ -54,7 +54,7 @@ function openDatabase() {
             // Photos
             if (!db.objectStoreNames.contains("photos")) {
                 db.createObjectStore("photos", {
-                    keyPath: "id"
+                  keyPath: "id"
                 });
             }
 
@@ -67,10 +67,10 @@ function openDatabase() {
             
             // Metadata
             if (!db.objectStoreNames.contains("metadata")) {
-			    db.createObjectStore("metadata", {
-			        keyPath: "key"
-			    });
-			}
+                db.createObjectStore("metadata", {
+                    keyPath: "key"
+                });
+            }
 
         };
 
