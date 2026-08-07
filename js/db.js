@@ -1,5 +1,5 @@
 const DB_NAME = "GarageLog";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
@@ -64,6 +64,14 @@ function openDatabase() {
                     keyPath: "id"
                 });
             }
+            
+            // Metadata
+            if (!db.objectStoreNames.contains("metadata")) {
+			    db.createObjectStore("metadata", {
+			        keyPath: "key"
+			    });
+			}
+
         };
 
         request.onsuccess = event => {
