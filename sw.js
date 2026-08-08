@@ -7,7 +7,9 @@ const FILES_TO_CACHE = [
     "./css/style.css",
     "./js/app.js",
     "./js/db.js",
-    "./data/GarageLog.json"
+    "./data/GarageLog.json",
+    "./app-icons/app-icon-192.png",
+    "./app-icons/app-icon-512.png"
 ];
 
 self.addEventListener("install", event => {
