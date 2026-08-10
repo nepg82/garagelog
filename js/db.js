@@ -1,5 +1,5 @@
 const DB_NAME = "GarageLog";
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
@@ -71,7 +71,12 @@ function openDatabase() {
                     keyPath: "key"
                 });
             }
-
+            // Garage log entries
+            if (!db.objectStoreNames.contains("logEntries")) {
+                db.createObjectStore("logEntries", {
+                   keyPath: "id"
+               });
+}
         };
 
         request.onsuccess = event => {
@@ -233,6 +238,115 @@ async function initializeMetadata() {
         });
 
         store.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function saveLogEntry(entry) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["logEntries", "metadata"],
+            "readwrite"
+        );
+
+        const logStore = transaction.objectStore("logEntries");
+        const metadataStore = transaction.objectStore("metadata");
+
+        logStore.put(entry);
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function updateLogEntry(entry) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["logEntries", "metadata"],
+            "readwrite"
+        );
+
+        const logStore = transaction.objectStore("logEntries");
+        const metadataStore = transaction.objectStore("metadata");
+
+        logStore.put(entry);
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function getLogEntriesForVehicle(vehicleId) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            "logEntries",
+            "readonly"
+        );
+
+        const store = transaction.objectStore("logEntries");
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+
+            const entries = request.result.filter(
+                entry => entry.vehicleId === vehicleId
+            );
+
+            entries.sort((a, b) =>
+                new Date(b.date) - new Date(a.date)
+            );
+
+            resolve(entries);
+        };
+
+        request.onerror = event => reject(event.target.error);
+    });
+}
+
+async function deleteLogEntry(id) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["logEntries", "metadata"],
+            "readwrite"
+        );
+
+        const logStore = transaction.objectStore("logEntries");
+        const metadataStore = transaction.objectStore("metadata");
+
+        logStore.delete(id);
+
+        metadataStore.put({
             key: "lastModified",
             value: new Date().toISOString()
         });

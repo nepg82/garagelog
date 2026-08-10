@@ -58,13 +58,15 @@ function displayVehicles(vehicles) {
     });
 }
 
-function displayVehicle(vehicle) {
+async function displayVehicle(vehicle) {
 
     const container = document.getElementById("app");
 
+    const entries = await getLogEntriesForVehicle(vehicle.id);
+
     container.innerHTML = `
         <button id="backButton">← Vehicles</button>
-        <button id="editButton">Edit</button>
+        <button id="editButton">Edit Vehicle</button>
 
         <div class="vehicle-detail">
 
@@ -104,11 +106,55 @@ function displayVehicle(vehicle) {
 
             <hr>
 
-            <h2>Service History</h2>
-            <p>No service records yet.</p>
+            <div class="garage-log-header">
+                <h2>Garage Log</h2>
+                <button id="addLogButton">+ Add Entry</button>
+            </div>
 
-            <h2>Projects</h2>
-            <p>No projects yet.</p>
+            <div id="logEntries">
+
+                ${
+                    entries.length === 0
+                    ? "<p>No log entries yet.</p>"
+                    : entries.map(entry => `
+    <article class="log-entry">
+
+        <h3>${entry.title}</h3>
+
+        <p class="log-date">
+            ${entry.date}
+            ${entry.mileage !== null
+                ? ` · ${entry.mileage.toLocaleString()} miles`
+                : ""}
+        </p>
+
+        <p>${entry.description || ""}</p>
+
+        ${
+            entry.cost
+                ? `<p><strong>Cost:</strong> $${Number(entry.cost).toFixed(2)}</p>`
+                : ""
+        }
+
+        ${
+            entry.notes
+                ? `<p><strong>Notes:</strong> ${entry.notes}</p>`
+                : ""
+        }
+
+        <button class="edit-log-button" data-id="${entry.id}">
+            Edit
+        </button>
+
+        <button class="delete-log-button" data-id="${entry.id}">
+            Delete
+        </button>
+
+    </article>
+`).join("")
+                }
+
+            </div>
 
         </div>
     `;
@@ -125,6 +171,180 @@ function displayVehicle(vehicle) {
         .addEventListener("click", () => {
             displayVehicleEditor(vehicle);
         });
+
+    document
+        .getElementById("addLogButton")
+        .addEventListener("click", () => {
+            displayLogEntryEditor(vehicle);
+        });
+    document
+    .querySelectorAll(".edit-log-button")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const entry = entries.find(
+                entry => entry.id === button.dataset.id
+            );
+
+            displayLogEntryEditor(vehicle, entry);
+        });
+    });
+
+
+document
+    .querySelectorAll(".delete-log-button")
+    .forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            const entry = entries.find(
+                entry => entry.id === button.dataset.id
+            );
+
+            if (!confirm(
+                `Delete "${entry.title}"? This cannot be undone.`
+            )) {
+                return;
+            }
+
+            await deleteLogEntry(entry.id);
+
+            displayVehicle(vehicle);
+        });
+    });
+}
+
+function displayLogEntryEditor(vehicle, entry = null) {
+
+    const container = document.getElementById("app");
+
+    container.innerHTML = `
+    <button id="cancelButton">← Cancel</button>
+
+    <div class="vehicle-detail">
+
+        <h1>${entry ? "Edit Garage Log Entry" : "New Garage Log Entry"}</h1>
+
+        <p>
+            <strong>${vehicle.nickname}</strong>
+        </p>
+
+        <label>
+            Date<br>
+            <input
+                type="date"
+                id="logDate"
+                value="${entry?.date || new Date().toISOString().slice(0, 10)}"
+            >
+        </label>
+
+        <label>
+            Mileage<br>
+            <input
+                type="number"
+                id="logMileage"
+                value="${entry?.mileage ?? vehicle.currentMileage ?? ""}"
+            >
+        </label>
+
+        <label>
+            Title<br>
+            <input
+                type="text"
+                id="logTitle"
+                value="${entry?.title || ""}"
+                placeholder="What did you do?"
+            >
+        </label>
+
+        <label>
+            Description<br>
+            <textarea
+                id="logDescription"
+                rows="6"
+                placeholder="Describe the work..."
+            >${entry?.description || ""}</textarea>
+        </label>
+
+        <label>
+            Cost<br>
+            <input
+                type="number"
+                id="logCost"
+                step="0.01"
+                min="0"
+                value="${entry?.cost ?? ""}"
+                placeholder="0.00"
+            >
+        </label>
+
+        <label>
+            Notes<br>
+            <textarea
+                id="logNotes"
+                rows="4"
+            >${entry?.notes || ""}</textarea>
+        </label>
+
+        <button id="saveLogButton">
+            ${entry ? "Save Changes" : "Save Entry"}
+        </button>
+
+    </div>
+`;
+
+    document
+        .getElementById("cancelButton")
+        .addEventListener("click", () => {
+            displayVehicle(vehicle);
+        });
+
+    document
+    .getElementById("saveLogButton")
+    .addEventListener("click", async () => {
+
+        const mileage =
+            document.getElementById("logMileage").value;
+
+        const cost =
+            document.getElementById("logCost").value;
+
+        const updatedEntry = {
+            id: entry ? entry.id : crypto.randomUUID(),
+            vehicleId: vehicle.id,
+            date: document.getElementById("logDate").value,
+            mileage: mileage === "" ? null : Number(mileage),
+            title: document.getElementById("logTitle").value.trim(),
+            description: document
+                .getElementById("logDescription")
+                .value
+                .trim(),
+            cost: cost === "" ? 0 : Number(cost),
+            notes: document.getElementById("logNotes").value.trim(),
+            photos: entry?.photos || []
+        };
+
+        if (!updatedEntry.title) {
+            alert("Please enter a title.");
+            return;
+        }
+
+        await updateLogEntry(updatedEntry);
+
+        if (
+            updatedEntry.mileage !== null &&
+            (
+                vehicle.currentMileage === null ||
+                updatedEntry.mileage > vehicle.currentMileage
+            )
+        ) {
+            vehicle.currentMileage = updatedEntry.mileage;
+            await saveVehicle(vehicle);
+        }
+
+        displayVehicle(vehicle);
+    });
 }
 
 function displayVehicleEditor(vehicle) {
