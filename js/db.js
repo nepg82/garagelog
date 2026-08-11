@@ -98,7 +98,18 @@ async function getVehicles() {
 
         const request = store.getAll();
 
-        request.onsuccess = () => resolve(request.result);
+        request.onsuccess = () => {
+
+            const vehicles = request.result;
+
+            vehicles.sort((a, b) =>
+                (a.sortOrder ?? 999999) -
+                (b.sortOrder ?? 999999)
+            );
+
+            resolve(vehicles);
+        };
+
         request.onerror = event => reject(event.target.error);
     });
 }
@@ -145,6 +156,45 @@ async function saveVehicle(vehicle) {
     });
 }
 
+async function deleteVehicle(id) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["vehicles", "logEntries", "metadata"],
+            "readwrite"
+        );
+
+        const vehicleStore = transaction.objectStore("vehicles");
+        const logStore = transaction.objectStore("logEntries");
+        const metadataStore = transaction.objectStore("metadata");
+
+        vehicleStore.delete(id);
+
+        // Delete all log entries belonging to this vehicle.
+        const request = logStore.getAll();
+
+        request.onsuccess = () => {
+
+            request.result
+                .filter(entry => entry.vehicleId === id)
+                .forEach(entry => {
+                    logStore.delete(entry.id);
+                });
+        };
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
 async function updateVehicleSchema() {
 
     const vehicles = await getVehicles();
@@ -175,6 +225,11 @@ async function updateVehicleSchema() {
 
         if (!("notes" in vehicle)) {
             vehicle.notes = "";
+            changed = true;
+        }
+
+        if (!("sortOrder" in vehicle)) {
+            vehicle.sortOrder = vehicles.indexOf(vehicle);
             changed = true;
         }
 
