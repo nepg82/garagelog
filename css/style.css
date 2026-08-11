@@ -79,6 +79,10 @@ h1 {
     cursor: pointer;
 }
 
+.vehicle-notes {
+    white-space: pre-wrap;
+}
+
 .garage-log-header {
     display: flex;
     align-items: center;

@@ -220,7 +220,7 @@ async function displayVehicle(vehicle) {
 
             <h2>Notes</h2>
 
-            <p>${vehicle.notes || "No notes yet."}</p>
+            <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
 
             <hr>
 
