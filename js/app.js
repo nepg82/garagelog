@@ -423,7 +423,7 @@ async function displayVehicle(vehicle) {
                 : ""}
         </p>
 
-        <p>${entry.description || ""}</p>
+        <p class="log-description">${entry.description || ""}</p>
 
         ${
             entry.cost
@@ -433,8 +433,8 @@ async function displayVehicle(vehicle) {
 
         ${
             entry.notes
-                ? `<p><strong>Notes:</strong> ${entry.notes}</p>`
-                : ""
+			    ? `<p class="log-notes"><strong>Notes:</strong><br>${entry.notes}</p>`
+			    : ""
         }
 
         <button class="edit-log-button" data-id="${entry.id}">
