@@ -156,7 +156,7 @@ document
         input.click();
     });
 
-    vehicles.forEach(vehicle => {
+        vehicles.forEach(vehicle => {
 
         const card = document.createElement("div");
 
@@ -165,7 +165,6 @@ document
         card.innerHTML = `
             <h2>${vehicle.nickname}</h2>
             <p>${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
-            <small>${vehicle.type}</small>
         `;
 
         card.addEventListener("click", () => {
