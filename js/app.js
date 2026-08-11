@@ -34,9 +34,127 @@ function displayVehicles(vehicles) {
 
     const container = document.getElementById("app");
 
-    container.innerHTML = `
-        <h2>Vehicles</h2>
-    `;
+	container.innerHTML = `
+ 	   <div class="garage-header">
+ 	       <h2>Vehicles</h2>
+	
+	        <div>
+	            <button id="backupButton">Backup</button>
+	            <button id="restoreButton">Restore</button>
+	        </div>
+	    </div>
+	`;
+
+document
+    .getElementById("backupButton")
+    .addEventListener("click", async () => {
+
+        try {
+
+            const garage = await exportDatabase();
+
+            const json = JSON.stringify(
+                garage,
+                null,
+                2
+            );
+
+            const blob = new Blob(
+                [json],
+                { type: "application/json" }
+            );
+
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = getBackupFilename();
+
+            link.click();
+
+            URL.revokeObjectURL(url);
+
+        } catch (error) {
+
+            console.error(
+                "Garage Log backup failed:",
+                error
+            );
+
+            alert("Backup failed.");
+        }
+    });
+    
+    document
+    .getElementById("restoreButton")
+    .addEventListener("click", () => {
+
+        const input = document.createElement("input");
+
+        input.type = "file";
+        input.accept = ".json,application/json";
+
+        input.addEventListener("change", async () => {
+
+            const file = input.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            try {
+
+                const text = await file.text();
+                const garage = JSON.parse(text);
+
+                if (
+                    !garage ||
+                    garage.schemaVersion === undefined ||
+                    !Array.isArray(garage.vehicles) ||
+                    !Array.isArray(garage.logEntries)
+                ) {
+                    throw new Error(
+                        "This is not a valid Garage Log backup."
+                    );
+                }
+
+                const confirmed = confirm(
+                    "Restore this Garage Log backup?\n\n" +
+                    "This will replace all data currently stored " +
+                    "on this device."
+                );
+
+                if (!confirmed) {
+                    return;
+                }
+
+                await importDatabase(garage);
+
+                alert(
+                    "Garage Log restored successfully."
+                );
+
+                const vehicles = await getVehicles();
+
+                displayVehicles(vehicles);
+
+            } catch (error) {
+
+                console.error(
+                    "Garage Log restore failed:",
+                    error
+                );
+
+                alert(
+                    "Restore failed. " +
+                    "The backup file may be invalid."
+                );
+            }
+        });
+
+        input.click();
+    });
 
     vehicles.forEach(vehicle => {
 

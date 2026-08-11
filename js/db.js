@@ -1,5 +1,5 @@
 const DB_NAME = "GarageLog";
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
@@ -12,41 +12,6 @@ function openDatabase() {
             // Vehicles
             if (!db.objectStoreNames.contains("vehicles")) {
                 db.createObjectStore("vehicles", {
-                    keyPath: "id"
-                });
-            }
-
-            // Service records
-            if (!db.objectStoreNames.contains("serviceRecords")) {
-                db.createObjectStore("serviceRecords", {
-                    keyPath: "id"
-                });
-            }
-
-            // Fuel logs
-            if (!db.objectStoreNames.contains("fuelLogs")) {
-                db.createObjectStore("fuelLogs", {
-                    keyPath: "id"
-                });
-            }
-
-            // Parts
-            if (!db.objectStoreNames.contains("parts")) {
-                db.createObjectStore("parts", {
-                    keyPath: "id"
-                });
-            }
-
-            // Modifications
-            if (!db.objectStoreNames.contains("modifications")) {
-                db.createObjectStore("modifications", {
-                    keyPath: "id"
-                });
-            }
-
-            // Projects
-            if (!db.objectStoreNames.contains("projects")) {
-                db.createObjectStore("projects", {
                     keyPath: "id"
                 });
             }
@@ -71,6 +36,21 @@ function openDatabase() {
                     keyPath: "key"
                 });
             }
+            
+            const oldStores = [
+                "serviceRecords",
+                "fuelLogs",
+                "parts",
+                "modifications",
+                "projects"
+            ];
+
+            oldStores.forEach(storeName => {
+                if (db.objectStoreNames.contains(storeName)) {
+                    db.deleteObjectStore(storeName);
+                }
+            });
+            
             // Garage log entries
             if (!db.objectStoreNames.contains("logEntries")) {
                 db.createObjectStore("logEntries", {
@@ -354,4 +334,100 @@ async function deleteLogEntry(id) {
         transaction.oncomplete = () => resolve();
         transaction.onerror = event => reject(event.target.error);
     });
+}
+
+async function exportDatabase() {
+
+    const db = await openDatabase();
+
+    const storeNames = Array.from(db.objectStoreNames);
+
+    const transaction = db.transaction(storeNames, "readonly");
+
+    const garage = {
+        schemaVersion: 1,
+        lastModified: new Date().toISOString()
+    };
+
+    await Promise.all(
+        storeNames.map(storeName => {
+
+            return new Promise((resolve, reject) => {
+
+                const store = transaction.objectStore(storeName);
+                const request = store.getAll();
+
+                request.onsuccess = () => {
+                    garage[storeName] = request.result;
+                    resolve();
+                };
+
+                request.onerror = event => {
+                    reject(event.target.error);
+                };
+            });
+        })
+    );
+
+    return garage;
+}
+
+async function importDatabase(garage) {
+
+    if (
+        !garage ||
+        garage.schemaVersion === undefined ||
+        !Array.isArray(garage.vehicles) ||
+        !Array.isArray(garage.logEntries)
+    ) {
+        throw new Error("Invalid Garage Log backup file.");
+    }
+
+    const db = await openDatabase();
+
+    const storeNames = Array.from(db.objectStoreNames);
+
+    const transaction = db.transaction(
+        storeNames,
+        "readwrite"
+    );
+
+    storeNames.forEach(storeName => {
+
+        const store = transaction.objectStore(storeName);
+
+        store.clear();
+
+        if (Array.isArray(garage[storeName])) {
+
+            garage[storeName].forEach(record => {
+                store.put(record);
+            });
+        }
+    });
+
+    return new Promise((resolve, reject) => {
+
+        transaction.oncomplete = () => resolve();
+
+        transaction.onerror = event => {
+            reject(event.target.error);
+        };
+    });
+}
+
+function getBackupFilename() {
+
+    const now = new Date();
+
+    const pad = number =>
+        String(number).padStart(2, "0");
+
+    const yy = String(now.getFullYear()).slice(-2);
+    const mm = pad(now.getMonth() + 1);
+    const dd = pad(now.getDate());
+    const hh = pad(now.getHours());
+    const min = pad(now.getMinutes());
+
+    return `garagelog-${yy}${mm}${dd}-${hh}${min}.json`;
 }

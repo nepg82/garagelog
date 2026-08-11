@@ -110,3 +110,10 @@ h1 {
 .log-entry button {
     margin-right: 8px;
 }
+
+.garage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
