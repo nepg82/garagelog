@@ -40,8 +40,17 @@ button.danger {
 }
 
 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
     border-bottom: 1px solid #555;
     margin-bottom: 20px;
+}
+
+header img {
+    width: 48px;
+    height: 48px;
 }
 
 h1 {

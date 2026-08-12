@@ -1,4 +1,4 @@
-const CACHE_NAME = "garage-log-v1.0.10";
+const CACHE_NAME = "garage-log-v1.0.11";
 
 const FILES_TO_CACHE = [
     "./",

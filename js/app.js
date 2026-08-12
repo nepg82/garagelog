@@ -23,10 +23,10 @@ async function startApp() {
 
     } catch (error) {
 
-        console.error("Garage Log failed to start:", error);
+        console.error("GarageLog failed to start:", error);
 
         document.getElementById("app").textContent =
-            "Garage Log could not start.";
+            "GarageLog could not start.";
     }
 }
 
@@ -136,7 +136,7 @@ if (!sorting) {
             } catch (error) {
 
                 console.error(
-                    "Garage Log backup failed:",
+                    "GarageLog backup failed:",
                     error
                 );
 
@@ -176,12 +176,12 @@ if (!sorting) {
                         !Array.isArray(garage.logEntries)
                     ) {
                         throw new Error(
-                            "This is not a valid Garage Log backup."
+                            "This is not a valid GarageLog backup."
                         );
                     }
 
                     const confirmed = confirm(
-                        "Restore this Garage Log backup?\n\n" +
+                        "Restore this GarageLog backup?\n\n" +
                         "This will replace all data currently stored " +
                         "on this device."
                     );
@@ -193,7 +193,7 @@ if (!sorting) {
                     await importDatabase(garage);
 
                     alert(
-                        "Garage Log restored successfully."
+                        "GarageLog restored successfully."
                     );
 
                     const vehicles = await getVehicles();
@@ -203,7 +203,7 @@ if (!sorting) {
                 } catch (error) {
 
                     console.error(
-                        "Garage Log restore failed:",
+                        "GarageLog restore failed:",
                         error
                     );
 
@@ -413,7 +413,7 @@ async function displayVehicle(vehicle) {
 			<hr>
 
 			<div class="garage-log-header">
-                <h2>Garage Log</h2>
+                <h2>${vehicle.nickname} Log</h2>
                 <button id="addLogButton" class="primary">+ Add Entry</button>
             </div>
 
@@ -543,7 +543,7 @@ function displayLogEntryEditor(vehicle, entry = null) {
 
     <div class="vehicle-detail">
 
-        <h1>${entry ? "Edit Garage Log Entry" : "New Garage Log Entry"}</h1>
+        <h1>${entry ? "Edit GarageLog Entry" : "New GarageLog Entry"}</h1>
 
         <p>
             <strong>${vehicle.nickname}</strong>
@@ -891,7 +891,7 @@ function displayVehicleEditor(vehicle = null) {
                 const confirmed = confirm(
                     `Delete "${vehicle.nickname}"?\n\n` +
                     `This will permanently delete this vehicle ` +
-                    `and all of its Garage Log entries.\n\n` +
+                    `and all of its GarageLog entries.\n\n` +
                     `This cannot be undone.`
                 );
 
