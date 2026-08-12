@@ -40,27 +40,35 @@ function displayVehicles(vehicles, sorting = false) {
             <h2>Vehicles</h2>
 
             <div>
-                <button id="addVehicleButton">+ Add Vehicle</button>
+    ${
+        sorting
+        ? `
+            <button id="sortButton" class="primary">
+                Save Sort
+            </button>
+        `
+        : `
+            <button id="addVehicleButton" class="primary">
+                + Add Vehicle
+            </button>
 
-                <button id="sortButton">
-                    ${sorting ? "Save Sort" : "Sort"}
-                </button>
+            <button id="sortButton" class="primary">
+                Sort
+            </button>
 
-                <button id="backupButton">Backup</button>
-                <button id="restoreButton">Restore</button>
-            </div>
+            <button id="backupButton" class="primary">
+                Backup
+            </button>
+
+            <button id="restoreButton" class="primary">
+                Restore
+            </button>
+        `
+    }
+</div>
 
         </div>
     `;
-
-    // Add Vehicle
-
-    document
-        .getElementById("addVehicleButton")
-        .addEventListener("click", () => {
-            displayVehicleEditor();
-        });
-
 
     // Sort
 
@@ -82,6 +90,16 @@ function displayVehicles(vehicles, sorting = false) {
 
                 displayVehicles(vehicles, true);
             }
+        });
+
+
+if (!sorting) {
+    // Add Vehicle
+
+    document
+        .getElementById("addVehicleButton")
+        .addEventListener("click", () => {
+            displayVehicleEditor();
         });
 
 
@@ -200,7 +218,7 @@ function displayVehicles(vehicles, sorting = false) {
 
             input.click();
         });
-
+}
 
     // Vehicle list
 
@@ -351,7 +369,7 @@ async function displayVehicle(vehicle) {
 
     container.innerHTML = `
         <button id="backButton">← Vehicles</button>
-        <button id="editButton">Edit Vehicle</button>
+        <button id="editButton" class="primary">Edit Vehicle</button>
 
         <div class="vehicle-detail">
 
@@ -401,7 +419,7 @@ async function displayVehicle(vehicle) {
 
 			<div class="garage-log-header">
                 <h2>Garage Log</h2>
-                <button id="addLogButton">+ Add Entry</button>
+                <button id="addLogButton" class="primary">+ Add Entry</button>
             </div>
 
             <div id="logEntries">
@@ -450,7 +468,7 @@ async function displayVehicle(vehicle) {
             Edit
         </button>
 
-        <button class="delete-log-button" data-id="${entry.id}">
+        <button class="delete-log-button danger" data-id="${entry.id}">
             Delete
         </button>
 
@@ -586,7 +604,7 @@ function displayLogEntryEditor(vehicle, entry = null) {
             <textarea id="logNotes" rows="4">${entry?.notes || ""}</textarea>
         </label>
 
-        <button id="saveLogButton">
+        <button id="saveLogButton" class="primary">
             ${entry ? "Save Changes" : "Save Entry"}
         </button>
 
@@ -774,7 +792,7 @@ function displayVehicleEditor(vehicle = null) {
 
             <br>
 
-            <button id="saveButton">
+            <button id="saveButton" class="primary">
                 ${isNew ? "Add Vehicle" : "Save"}
             </button>
 
@@ -784,7 +802,7 @@ function displayVehicleEditor(vehicle = null) {
                 : `
                     <hr>
 
-                    <button id="deleteButton">
+                    <button id="deleteButton" class="danger">
                         Delete Vehicle
                     </button>
                 `
