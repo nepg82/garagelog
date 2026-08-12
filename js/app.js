@@ -378,9 +378,6 @@ async function displayVehicle(vehicle) {
 			        ${vehicle.year} ${vehicle.make} ${vehicle.model}
 			    </p>
 
-			    <p class="vehicle-type">
-			        Type: ${vehicle.type === "bike" ? "Bike" : "Car"}
-			    </p>
 			</div>
 
 			<hr>
@@ -720,23 +717,6 @@ function displayVehicleEditor(vehicle = null) {
             <br>
 
             <label>
-                Type<br>
-                <select id="type">
-                    <option value="car"
-                        ${vehicle?.type === "car" ? "selected" : ""}>
-                        Car
-                    </option>
-
-                    <option value="bike"
-                        ${vehicle?.type === "bike" ? "selected" : ""}>
-                        Bike
-                    </option>
-                </select>
-            </label>
-
-            <br>
-
-            <label>
                 VIN<br>
                 <input
                     type="text"
@@ -862,9 +842,6 @@ function displayVehicleEditor(vehicle = null) {
                 make,
 
                 model,
-
-                type:
-                    document.getElementById("type").value,
 
                 vin:
                     document.getElementById("vin").value.trim(),
