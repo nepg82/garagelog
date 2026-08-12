@@ -393,9 +393,7 @@ async function displayVehicle(vehicle) {
 
 			    <h3>Notes</h3>
 
-			    <p class="vehicle-notes">
-			        ${vehicle.notes || "No notes yet."}
-			    </p>
+			    <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
 
 			</details>
 
@@ -568,11 +566,7 @@ function displayLogEntryEditor(vehicle, entry = null) {
 
         <label>
             Description<br>
-            <textarea
-                id="logDescription"
-                rows="6"
-                placeholder="Describe the work..."
-            >${entry?.description || ""}</textarea>
+            <textarea id="logDescription" rows="6" placeholder="Describe the work...">${entry?.description || ""}</textarea>
         </label>
 
         <label>
@@ -589,10 +583,7 @@ function displayLogEntryEditor(vehicle, entry = null) {
 
         <label>
             Notes<br>
-            <textarea
-                id="logNotes"
-                rows="4"
-            >${entry?.notes || ""}</textarea>
+            <textarea id="logNotes" rows="4">${entry?.notes || ""}</textarea>
         </label>
 
         <button id="saveLogButton">
