@@ -412,16 +412,27 @@ async function displayVehicle(vehicle) {
                     entries.length === 0
                     ? "<p>No log entries yet.</p>"
                     : entries.map(entry => `
-    <article class="log-entry">
+    <details class="log-entry">
 
-        <h3>${entry.title}</h3>
+    <summary class="log-summary">
 
-        <p class="log-date">
+        <span class="log-title">
+            ${entry.title}
+        </span>
+
+        <span class="log-date">
             ${entry.date}
+        </span>
+
+        <span class="log-mileage">
             ${entry.mileage !== null
-                ? ` · ${entry.mileage.toLocaleString()} miles`
+                ? `${entry.mileage.toLocaleString()} miles`
                 : ""}
-        </p>
+        </span>
+
+    </summary>
+
+    <div class="log-details">
 
         <p class="log-description">${entry.description || ""}</p>
 
@@ -433,8 +444,8 @@ async function displayVehicle(vehicle) {
 
         ${
             entry.notes
-			    ? `<p class="log-notes"><strong>Notes:</strong><br>${entry.notes}</p>`
-			    : ""
+                ? `<p class="log-notes"><strong>Notes:</strong><br>${entry.notes}</p>`
+                : ""
         }
 
         <button class="edit-log-button" data-id="${entry.id}">
@@ -445,7 +456,9 @@ async function displayVehicle(vehicle) {
             Delete
         </button>
 
-    </article>
+    </div>
+
+</details>
 `).join("")
                 }
 
