@@ -37,9 +37,8 @@ function displayVehicles(vehicles, sorting = false) {
     container.innerHTML = `
         <div class="garage-header">
 
-            <h2>Vehicles</h2>
+            <!-- <h2>Vehicles</h2> -->
 
-            <div>
     ${
         sorting
         ? `
@@ -65,7 +64,6 @@ function displayVehicles(vehicles, sorting = false) {
             </button>
         `
     }
-</div>
 
         </div>
     `;
