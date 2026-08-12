@@ -135,10 +135,6 @@ h1 {
     font-size: 1.1em;
 }
 
-.vehicle-type {
-    margin: 0;
-}
-
 .garage-log-header {
     display: flex;
     align-items: center;
