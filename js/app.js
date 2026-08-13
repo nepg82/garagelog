@@ -48,18 +48,18 @@ function displayVehicles(vehicles, sorting = false) {
         `
         : `
             <button id="addVehicleButton" class="primary">
-                + Add Vehicle
+                Add Vehicle
             </button>
 
             <button id="sortButton" class="primary">
-                Sort
+                 Sort
             </button>
 
-            <button id="backupButton" class="primary">
+            <button id="backupButton">
                 Backup
             </button>
 
-            <button id="restoreButton" class="primary">
+            <button id="restoreButton">
                 Restore
             </button>
         `

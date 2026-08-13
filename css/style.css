@@ -19,6 +19,10 @@ textarea {
     --accent-red: #c94a4a;
 }
 
+html {
+    font-size: 15px;
+}
+
 strong {
   text-decoration: underline;
 }
@@ -41,7 +45,7 @@ button {
     padding: 6px 10px;
     cursor: pointer;
     transform: skewX(-8deg);
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 
 button:hover {
@@ -114,10 +118,6 @@ h1 {
     max-width: 600px;
 }
 
-.vehicle-year {
-    font-size: 1.2em;
-}
-
 .vehicle-detail hr {
     margin: 25px 0;
     border: 0;
@@ -162,7 +162,7 @@ h1 {
 
 .vehicle-year {
     margin: 2px 0 0;
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .garage-log-header {
@@ -186,7 +186,7 @@ h1 {
 }
 
 .log-date {
-    font-size: 0.9em;
+    font-size: 0.9rem;
     opacity: 0.7;
 }
 
@@ -243,6 +243,10 @@ h1 {
     padding-right: 12px;
 }
 
+.garage-header button {
+    min-width: 70px;
+}
+
 .vehicle-sort-buttons {
     display: flex;
     flex-direction: column;
@@ -254,7 +258,7 @@ h1 {
 }
 
 .vehicle-information summary {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0.83em 0 0;
     cursor: pointer;
