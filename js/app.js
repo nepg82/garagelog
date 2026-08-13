@@ -398,7 +398,7 @@ async function displayVehicle(vehicle) {
 			        ${vehicle.purchaseDate || "Not recorded"}
 			    </p>
 
-			    <p><strong>Current Mileage:</strong>
+			    <p><strong>Last Mileage:</strong>
 			        ${vehicle.currentMileage !== null
 			            ? vehicle.currentMileage.toLocaleString()
 			            : "Not recorded"}
