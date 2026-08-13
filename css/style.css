@@ -2,7 +2,8 @@
     font-family: "Comfortaa";
     src: url("../fonts/Comfortaa-Light.ttf") format("truetype");
     font-weight: 300;
-    font-style: italic;
+    font-style: oblique;
+    font-synthesis: style;
 }
 
 .vehicle-notes,
