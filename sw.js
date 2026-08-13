@@ -9,7 +9,8 @@ const FILES_TO_CACHE = [
     "./js/db.js",
     "./data/GarageLog.json",
     "./app-icons/app-icon-192.png",
-    "./app-icons/app-icon-512.png"
+    "./app-icons/app-icon-512.png",
+    "./fonts/Comfortaa-Light.ttf"
 ];
 
 self.addEventListener("install", event => {

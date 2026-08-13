@@ -1,3 +1,18 @@
+@font-face {
+    font-family: "Comfortaa";
+    src: url("../fonts/Comfortaa-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+
+.vehicle-notes,
+.log-description,
+.log-notes,
+textarea {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+}
+
 :root {
     --accent-yellow: #b200ed;
     --accent-red: #c94a4a;
@@ -6,8 +21,8 @@
 body {
     margin: 0;
     padding: 0px 20px 20px;
- 	font-family: Arial, sans-serif;
- 	font-style: italic;
+	font-family: "Comfortaa", sans-serif;
+	font-style: normal;
     background: #222;
     color: #eee;
 }
