@@ -364,6 +364,7 @@ async function displayVehicle(vehicle) {
     const container = document.getElementById("app");
 
     const entries = await getLogEntriesForVehicle(vehicle.id);
+	const plans = await getPlansForVehicle(vehicle.id);
 
     container.innerHTML = `
         <button id="backButton">← Vehicles</button>
@@ -409,6 +410,76 @@ async function displayVehicle(vehicle) {
 			    <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
 
 			</details>
+
+			<hr>
+
+			<div class="garage-log-header">
+                <h2>${vehicle.nickname} Plans</h2>
+                <button id="addPlanButton" class="primary">+ Add Plan</button>
+            </div>
+
+            <div id="plans">
+
+                ${
+                    plans.length === 0
+                    ? "<p>No plans yet.</p>"
+                    : plans.map(plan => `
+    <details class="log-entry plan-entry">
+
+    <summary class="log-summary">
+
+        <span class="log-title">
+            ${plan.title}
+        </span>
+
+        <span class="log-date">
+            ${plan.date || ""}
+        </span>
+
+        <span class="log-mileage">
+            ${plan.mileage !== null && plan.mileage !== undefined
+                ? `${plan.mileage.toLocaleString()} miles`
+                : ""}
+        </span>
+
+    </summary>
+
+    <div class="log-details">
+
+        ${
+            plan.description
+                ? `<p class="log-description">${plan.description}</p>`
+                : ""
+        }
+
+        <button
+            class="edit-plan-button"
+            data-id="${plan.id}"
+        >
+            Edit
+        </button>
+
+        <button
+            class="complete-plan-button primary"
+            data-id="${plan.id}"
+        >
+            Complete
+        </button>
+
+        <button
+            class="delete-plan-button danger"
+            data-id="${plan.id}"
+        >
+            Delete
+        </button>
+
+    </div>
+
+</details>
+`).join("")
+                }
+
+            </div>
 
 			<hr>
 
@@ -496,16 +567,60 @@ async function displayVehicle(vehicle) {
         .addEventListener("click", () => {
             displayLogEntryEditor(vehicle);
         });
+       
+    document
+        .getElementById("addPlanButton")
+        .addEventListener("click", () => {
+            displayPlanEditor(vehicle);
+        });
+
+
+    document
+        .querySelectorAll(".edit-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", () => {
+                const plan = plans.find(
+                    plan => plan.id === button.dataset.id
+                );
+                displayPlanEditor(vehicle, plan);
+            });
+        });
+
+    document
+        .querySelectorAll(".delete-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", async () => {
+                const plan = plans.find(
+                    plan => plan.id === button.dataset.id
+                );
+                if (!confirm(
+                    `Delete "${plan.title}"? This cannot be undone.`
+                )) {
+                    return;
+                }
+                await deletePlan(plan.id);
+                displayVehicle(vehicle);
+            });
+        });
+
+    document
+        .querySelectorAll(".complete-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", () => {
+                const plan = plans.find(
+                    plan => plan.id === button.dataset.id
+                );
+                displayPlanCompletion(vehicle, plan);
+            });
+        });
+
     document
     .querySelectorAll(".edit-log-button")
     .forEach(button => {
-
         button.addEventListener("click", () => {
-
             const entry = entries.find(
                 entry => entry.id === button.dataset.id
             );
-
             displayLogEntryEditor(vehicle, entry);
         });
     });
@@ -532,6 +647,236 @@ document
             displayVehicle(vehicle);
         });
     });
+}
+
+function displayPlanEditor(vehicle, plan = null) {
+
+    const container = document.getElementById("app");
+
+    container.innerHTML = `
+    <button id="cancelButton">← Cancel</button>
+
+    <div class="vehicle-detail">
+
+        <h1>${plan ? "Edit Plan" : "New Plan"}</h1>
+
+        <p>
+            <strong>${vehicle.nickname}</strong>
+        </p>
+
+        <label>
+            Title<br>
+            <input
+                type="text"
+                id="planTitle"
+                value="${plan?.title || ""}"
+                placeholder="What do you plan to do?"
+            >
+        </label>
+
+        <label>
+            Planned Date<br>
+            <input
+                type="date"
+                id="planDate"
+                value="${plan?.date || ""}"
+            >
+        </label>
+
+        <label>
+            Planned Mileage<br>
+            <input
+                type="number"
+                id="planMileage"
+                value="${plan?.mileage ?? ""}"
+                placeholder="Optional"
+            >
+        </label>
+
+        <label>
+            Description<br>
+            <textarea
+                id="planDescription"
+                rows="6"
+                placeholder="Optional notes about the plan..."
+            >${plan?.description || ""}</textarea>
+        </label>
+
+        <button id="savePlanButton" class="primary">
+            ${plan ? "Save Changes" : "Save Plan"}
+        </button>
+
+    </div>
+    `;
+
+
+    document
+        .getElementById("cancelButton")
+        .addEventListener("click", () => {
+            displayVehicle(vehicle);
+        });
+
+
+    document
+        .getElementById("savePlanButton")
+        .addEventListener("click", async () => {
+
+            const title =
+                document.getElementById("planTitle").value.trim();
+
+            if (!title) {
+                alert("Please enter a title.");
+                return;
+            }
+
+            const mileage =
+                document.getElementById("planMileage").value;
+
+            const updatedPlan = {
+
+                id: plan?.id || crypto.randomUUID(),
+
+                vehicleId: vehicle.id,
+
+                title,
+
+                date:
+                    document
+                        .getElementById("planDate")
+                        .value,
+
+                mileage:
+                    mileage === ""
+                        ? null
+                        : Number(mileage),
+
+                description:
+                    document
+                        .getElementById("planDescription")
+                        .value
+                        .trim()
+            };
+
+            await savePlan(updatedPlan);
+
+            displayVehicle(vehicle);
+        });
+}
+
+function displayPlanCompletion(vehicle, plan) {
+
+    const container = document.getElementById("app");
+
+    container.innerHTML = `
+    <button id="cancelButton">← Cancel</button>
+
+    <div class="vehicle-detail">
+
+        <h1>Complete Plan</h1>
+
+        <p>
+            <strong>${vehicle.nickname}</strong>
+        </p>
+
+        <p>
+            <strong>${plan.title}</strong>
+        </p>
+
+        ${
+            plan.description
+                ? `<p class="log-description">${plan.description}</p>`
+                : ""
+        }
+
+        <label>
+            Completion Date<br>
+            <input
+                type="date"
+                id="completionDate"
+                value="${new Date().toISOString().slice(0, 10)}"
+            >
+        </label>
+
+        <label>
+            Completion Mileage<br>
+            <input
+                type="number"
+                id="completionMileage"
+                placeholder="Optional"
+            >
+        </label>
+
+        <button id="completeButton" class="primary">
+            Complete Plan
+        </button>
+
+    </div>
+    `;
+
+
+    document
+        .getElementById("cancelButton")
+        .addEventListener("click", () => {
+            displayVehicle(vehicle);
+        });
+
+
+    document
+        .getElementById("completeButton")
+        .addEventListener("click", async () => {
+
+            const date =
+                document.getElementById("completionDate").value;
+
+            const mileage =
+                document.getElementById("completionMileage").value;
+
+            if (!date) {
+                alert("Please enter a completion date.");
+                return;
+            }
+
+            const logEntry = {
+
+                id: crypto.randomUUID(),
+
+                vehicleId: vehicle.id,
+
+                date,
+
+                mileage:
+                    mileage === ""
+                        ? null
+                        : Number(mileage),
+
+                title: plan.title,
+
+                description: plan.description || "",
+
+                cost: 0,
+
+                notes: "",
+
+                photos: []
+            };
+
+            await saveLogEntry(logEntry);
+
+            await deletePlan(plan.id);
+
+            if (
+                logEntry.mileage !== null &&
+                (
+                    vehicle.currentMileage === null ||
+                    logEntry.mileage > vehicle.currentMileage
+                )
+            ) {
+                vehicle.currentMileage = logEntry.mileage;
+                await saveVehicle(vehicle);
+            }
+
+            displayVehicle(vehicle);
+        });
 }
 
 function displayLogEntryEditor(vehicle, entry = null) {

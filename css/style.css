@@ -268,3 +268,7 @@ h1 {
 .vehicle-information summary::-webkit-details-marker {
     display: none;
 }
+
+.plan-entry {
+    border-color: var(--accent-yellow);
+}

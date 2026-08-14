@@ -1,5 +1,5 @@
 const DB_NAME = "GarageLog";
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
@@ -56,7 +56,15 @@ function openDatabase() {
                 db.createObjectStore("logEntries", {
                    keyPath: "id"
                });
-}
+            }
+               
+            // Plans
+            if (!db.objectStoreNames.contains("plans")) {
+                db.createObjectStore("plans", {
+                    keyPath: "id"
+                });
+                }
+
         };
 
         request.onsuccess = event => {
@@ -163,12 +171,13 @@ async function deleteVehicle(id) {
     return new Promise((resolve, reject) => {
 
         const transaction = db.transaction(
-            ["vehicles", "logEntries", "metadata"],
+            ["vehicles", "logEntries", "plans", "metadata"],
             "readwrite"
         );
 
         const vehicleStore = transaction.objectStore("vehicles");
         const logStore = transaction.objectStore("logEntries");
+        const planStore = transaction.objectStore("plans");
         const metadataStore = transaction.objectStore("metadata");
 
         vehicleStore.delete(id);
@@ -183,6 +192,18 @@ async function deleteVehicle(id) {
                 .forEach(entry => {
                     logStore.delete(entry.id);
                 });
+        };
+        
+        // Delete all plans belonging to this vehicle.
+        const planRequest = planStore.getAll();
+
+        planRequest.onsuccess = () => {
+
+           planRequest.result
+              .filter(plan => plan.vehicleId === id)
+              .forEach(plan => {
+                  planStore.delete(plan.id);
+              });
         };
 
         metadataStore.put({
@@ -485,4 +506,135 @@ function getBackupFilename() {
     const min = pad(now.getMinutes());
 
     return `garagelog-${yy}${mm}${dd}-${hh}${min}.json`;
+}
+
+async function savePlan(plan) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["plans", "metadata"],
+            "readwrite"
+        );
+
+        const planStore = transaction.objectStore("plans");
+        const metadataStore = transaction.objectStore("metadata");
+
+        planStore.put(plan);
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function getPlansForVehicle(vehicleId) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            "plans",
+            "readonly"
+        );
+
+        const store = transaction.objectStore("plans");
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+
+            const plans = request.result.filter(
+                plan => plan.vehicleId === vehicleId
+            );
+
+            plans.sort((a, b) => {
+
+                if (!a.date && !b.date) {
+                    return a.title.localeCompare(b.title);
+                }
+
+                if (!a.date) {
+                    return 1;
+                }
+
+                if (!b.date) {
+                    return -1;
+                }
+
+                return new Date(a.date) - new Date(b.date);
+            });
+
+            resolve(plans);
+        };
+
+        request.onerror = event => reject(event.target.error);
+    });
+}
+
+async function deletePlan(id) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["plans", "metadata"],
+            "readwrite"
+        );
+
+        const planStore = transaction.objectStore("plans");
+        const metadataStore = transaction.objectStore("metadata");
+
+        planStore.delete(id);
+
+        metadataStore.put({
+            key: "lastModified",
+            value: new Date().toISOString()
+        });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
+async function deletePlansForVehicle(vehicleId) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction(
+            ["plans", "metadata"],
+            "readwrite"
+        );
+
+        const planStore = transaction.objectStore("plans");
+        const metadataStore = transaction.objectStore("metadata");
+
+        const request = planStore.getAll();
+
+        request.onsuccess = () => {
+
+            request.result
+                .filter(plan => plan.vehicleId === vehicleId)
+                .forEach(plan => {
+                    planStore.delete(plan.id);
+                });
+
+            metadataStore.put({
+                key: "lastModified",
+                value: new Date().toISOString()
+            });
+        };
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
 }
