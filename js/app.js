@@ -372,17 +372,15 @@ async function displayVehicle(vehicle) {
 
         <div class="vehicle-detail">
 
-            <div class="vehicle-header">
-                <h1>${vehicle.nickname}</h1>
-
-                <p class="vehicle-year">${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
-            </div>
-
-            <hr>
-
             <details name="vehicle-sections" class="vehicle-information">
 
-                <summary>Vehicle Information</summary>
+  			  <summary class="vehicle-header">
+
+   			     <h1>${vehicle.nickname}</h1>
+
+   			     <p class="vehicle-year">${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
+
+  			  </summary>
 
                 <p><strong>VIN:</strong>
                     ${vehicle.vin || "Not recorded"}
