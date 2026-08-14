@@ -15,8 +15,9 @@ textarea {
 }
 
 :root {
-    --accent-yellow: #b200ed;
+    --accent-purple: #b200ed;
     --accent-red: #c94a4a;
+    --accent-yellow: #d4a72c;
 }
 
 html {
@@ -24,7 +25,7 @@ html {
 }
 
 strong {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 body {
@@ -40,7 +41,7 @@ button {
     font: inherit;
     color: #eee;
     background: #292929;
-    border: 1px solid #d4a72c;
+    border: 1px solid var(--accent-yellow);
     border-radius: 10px;
     padding: 6px 10px;
     cursor: pointer;
@@ -57,7 +58,7 @@ button:active {
 }
 
 button.primary {
-    border-color: var(--accent-yellow);
+    border-color: var(--accent-purple);
 }
 
 button.danger {
