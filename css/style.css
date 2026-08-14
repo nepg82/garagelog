@@ -150,6 +150,7 @@ h1 {
 
 .vehicle-notes {
     white-space: pre-wrap;
+    text-align: left;
 }
 
 .vehicle-header {
@@ -157,6 +158,11 @@ h1 {
 }
 
 .vehicle-header h1 {
+    margin: 0;
+}
+
+.vehicle-log summary h2,
+.vehicle-plans summary h2 {
     margin: 0;
 }
 
@@ -168,7 +174,7 @@ h1 {
 .garage-log-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 10px;
 }
 
@@ -257,16 +263,29 @@ h1 {
     padding: 0.2rem 0.5rem;
 }
 
+details > summary {
+    list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
 .vehicle-information summary {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0.83em 0 0;
     cursor: pointer;
-	list-style: none;
 }
 
-.vehicle-information summary::-webkit-details-marker {
-    display: none;
+.vehicle-log summary,
+.vehicle-plans summary {
+    cursor: pointer;
+}
+
+.vehicle-log .garage-log-header,
+.vehicle-plans .garage-log-header {
+    margin-bottom: 15px;
 }
 
 .plan-entry {

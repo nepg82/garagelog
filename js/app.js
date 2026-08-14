@@ -364,7 +364,7 @@ async function displayVehicle(vehicle) {
     const container = document.getElementById("app");
 
     const entries = await getLogEntriesForVehicle(vehicle.id);
-	const plans = await getPlansForVehicle(vehicle.id);
+    const plans = await getPlansForVehicle(vehicle.id);
 
     container.innerHTML = `
         <button id="backButton">← Vehicles</button>
@@ -373,178 +373,202 @@ async function displayVehicle(vehicle) {
         <div class="vehicle-detail">
 
             <div class="vehicle-header">
-			    <h1>${vehicle.nickname}</h1>
+                <h1>${vehicle.nickname}</h1>
 
-			    <p class="vehicle-year">
-			        ${vehicle.year} ${vehicle.make} ${vehicle.model}
-			    </p>
-
-			</div>
-
-			<hr>
-
-			<details class="vehicle-information">
-
-			    <summary>Vehicle Information</summary>
-
-			    <p><strong>VIN:</strong>
-			        ${vehicle.vin || "Not recorded"}
-			    </p>
-
-			    <p><strong>License Plate:</strong>
-			        ${vehicle.licensePlate || "Not recorded"}
-			    </p>
-
-			    <p><strong>Purchase Date:</strong>
-			        ${vehicle.purchaseDate || "Not recorded"}
-			    </p>
-
-			    <p><strong>Last Mileage:</strong>
-			        ${vehicle.currentMileage !== null
-			            ? vehicle.currentMileage.toLocaleString()
-			            : "Not recorded"}
-			    </p>
-
-			    <h3>Notes</h3>
-
-			    <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
-
-			</details>
-
-			<hr>
-
-			<div class="garage-log-header">
-                <h2>${vehicle.nickname} Plans</h2>
-                <button id="addPlanButton" class="primary">+ Add Plan</button>
+                <p class="vehicle-year">${vehicle.year} ${vehicle.make} ${vehicle.model}</p>
             </div>
 
-            <div id="plans">
+            <hr>
 
-                ${
-                    plans.length === 0
-                    ? "<p>No plans yet.</p>"
-                    : plans.map(plan => `
-    <details class="log-entry plan-entry">
+            <details name="vehicle-sections" class="vehicle-information">
 
-    <summary class="log-summary">
+                <summary>Vehicle Information</summary>
 
-        <span class="log-title">
-            ${plan.title}
-        </span>
+                <p><strong>VIN:</strong>
+                    ${vehicle.vin || "Not recorded"}
+                </p>
 
-        <span class="log-date">
-            ${plan.date || ""}
-        </span>
+                <p><strong>License Plate:</strong>
+                    ${vehicle.licensePlate || "Not recorded"}
+                </p>
 
-        <span class="log-mileage">
-            ${plan.mileage !== null && plan.mileage !== undefined
-                ? `${plan.mileage.toLocaleString()} miles`
-                : ""}
-        </span>
+                <p><strong>Purchase Date:</strong>
+                    ${vehicle.purchaseDate || "Not recorded"}
+                </p>
 
-    </summary>
+                <p><strong>Last Mileage:</strong>
+                    ${vehicle.currentMileage !== null
+                        ? vehicle.currentMileage.toLocaleString()
+                        : "Not recorded"}
+                </p>
 
-    <div class="log-details">
+                <h3>Notes</h3>
 
-        ${
-            plan.description
-                ? `<p class="log-description">${plan.description}</p>`
-                : ""
-        }
+                <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
 
-        <button
-            class="edit-plan-button"
-            data-id="${plan.id}"
-        >
-            Edit
-        </button>
+            </details>
 
-        <button
-            class="complete-plan-button primary"
-            data-id="${plan.id}"
-        >
-            Complete
-        </button>
+            <hr>
 
-        <button
-            class="delete-plan-button danger"
-            data-id="${plan.id}"
-        >
-            Delete
-        </button>
+            <details name="vehicle-sections" class="vehicle-log">
 
-    </div>
+                <summary>
+                    <h2>Service Log</h2>
+                </summary>
 
-</details>
-`).join("")
-                }
+                <div class="garage-log-header">
+                    <button id="addLogButton" class="primary">
+                        + Add Entry
+                    </button>
+                </div>
 
-            </div>
+                <div id="logEntries">
 
-			<hr>
+                    ${
+                        entries.length === 0
+                        ? "<p>No log entries yet.</p>"
+                        : entries.map(entry => `
+                            <details class="log-entry">
 
-			<div class="garage-log-header">
-                <h2>${vehicle.nickname} Log</h2>
-                <button id="addLogButton" class="primary">+ Add Entry</button>
-            </div>
+                                <summary class="log-summary">
 
-            <div id="logEntries">
+                                    <span class="log-title">
+                                        ${entry.title}
+                                    </span>
 
-                ${
-                    entries.length === 0
-                    ? "<p>No log entries yet.</p>"
-                    : entries.map(entry => `
-    <details class="log-entry">
+                                    <span class="log-date">
+                                        ${entry.date}
+                                    </span>
 
-    <summary class="log-summary">
+                                    <span class="log-mileage">
+                                        ${entry.mileage !== null
+                                            ? `${entry.mileage.toLocaleString()} miles`
+                                            : ""}
+                                    </span>
 
-        <span class="log-title">
-            ${entry.title}
-        </span>
+                                </summary>
 
-        <span class="log-date">
-            ${entry.date}
-        </span>
+                                <div class="log-details">
 
-        <span class="log-mileage">
-            ${entry.mileage !== null
-                ? `${entry.mileage.toLocaleString()} miles`
-                : ""}
-        </span>
+                                    <p class="log-description">${entry.description || ""}</p>
 
-    </summary>
+                                    ${
+                                        entry.cost
+                                            ? `<p><strong>Cost:</strong> $${Number(entry.cost).toFixed(2)}</p>`
+                                            : ""
+                                    }
 
-    <div class="log-details">
+                                    ${
+                                        entry.notes
+                                            ? `<p class="log-notes"><strong>Notes:</strong><br>${entry.notes}</p>`
+                                            : ""
+                                    }
 
-        <p class="log-description">${entry.description || ""}</p>
+                                    <button
+                                        class="edit-log-button"
+                                        data-id="${entry.id}"
+                                    >
+                                        Edit
+                                    </button>
 
-        ${
-            entry.cost
-                ? `<p><strong>Cost:</strong> $${Number(entry.cost).toFixed(2)}</p>`
-                : ""
-        }
+                                    <button
+                                        class="delete-log-button danger"
+                                        data-id="${entry.id}"
+                                    >
+                                        Delete
+                                    </button>
 
-        ${
-            entry.notes
-                ? `<p class="log-notes"><strong>Notes:</strong><br>${entry.notes}</p>`
-                : ""
-        }
+                                </div>
 
-        <button class="edit-log-button" data-id="${entry.id}">
-            Edit
-        </button>
+                            </details>
+                        `).join("")
+                    }
 
-        <button class="delete-log-button danger" data-id="${entry.id}">
-            Delete
-        </button>
+                </div>
 
-    </div>
+            </details>
 
-</details>
-`).join("")
-                }
+            <hr>
 
-            </div>
+            <details name="vehicle-sections" class="vehicle-plans">
+
+                <summary>
+                    <h2>Big Plans</h2>
+                </summary>
+
+                <div class="garage-log-header">
+                    <button id="addPlanButton" class="primary">
+                        + Add Plan
+                    </button>
+                </div>
+
+                <div id="plans">
+
+                    ${
+                        plans.length === 0
+                        ? "<p>No plans yet.</p>"
+                        : plans.map(plan => `
+                            <details class="log-entry plan-entry">
+
+                                <summary class="log-summary">
+
+                                    <span class="log-title">
+                                        ${plan.title}
+                                    </span>
+
+                                    <span class="log-date">
+                                        ${plan.date || ""}
+                                    </span>
+
+                                    <span class="log-mileage">
+                                        ${
+                                            plan.mileage !== null &&
+                                            plan.mileage !== undefined
+                                                ? `${plan.mileage.toLocaleString()} miles`
+                                                : ""
+                                        }
+                                    </span>
+
+                                </summary>
+
+                                <div class="log-details">
+
+                                    ${
+                                        plan.description
+                                            ? `<p class="log-description">${plan.description}</p>`
+                                            : ""
+                                    }
+
+                                    <button
+                                        class="edit-plan-button"
+                                        data-id="${plan.id}"
+                                    >
+                                        Edit
+                                    </button>
+
+                                    <button
+                                        class="complete-plan-button primary"
+                                        data-id="${plan.id}"
+                                    >
+                                        Complete
+                                    </button>
+
+                                    <button
+                                        class="delete-plan-button danger"
+                                        data-id="${plan.id}"
+                                    >
+                                        Delete
+                                    </button>
+
+                                </div>
+
+                            </details>
+                        `).join("")
+                    }
+
+                </div>
+
+            </details>
 
         </div>
     `;
@@ -567,21 +591,22 @@ async function displayVehicle(vehicle) {
         .addEventListener("click", () => {
             displayLogEntryEditor(vehicle);
         });
-       
+
     document
         .getElementById("addPlanButton")
         .addEventListener("click", () => {
             displayPlanEditor(vehicle);
         });
 
-
     document
         .querySelectorAll(".edit-plan-button")
         .forEach(button => {
             button.addEventListener("click", () => {
+
                 const plan = plans.find(
                     plan => plan.id === button.dataset.id
                 );
+
                 displayPlanEditor(vehicle, plan);
             });
         });
@@ -590,15 +615,19 @@ async function displayVehicle(vehicle) {
         .querySelectorAll(".delete-plan-button")
         .forEach(button => {
             button.addEventListener("click", async () => {
+
                 const plan = plans.find(
                     plan => plan.id === button.dataset.id
                 );
+
                 if (!confirm(
                     `Delete "${plan.title}"? This cannot be undone.`
                 )) {
                     return;
                 }
+
                 await deletePlan(plan.id);
+
                 displayVehicle(vehicle);
             });
         });
@@ -607,46 +636,49 @@ async function displayVehicle(vehicle) {
         .querySelectorAll(".complete-plan-button")
         .forEach(button => {
             button.addEventListener("click", () => {
+
                 const plan = plans.find(
                     plan => plan.id === button.dataset.id
                 );
+
                 displayPlanCompletion(vehicle, plan);
             });
         });
 
     document
-    .querySelectorAll(".edit-log-button")
-    .forEach(button => {
-        button.addEventListener("click", () => {
-            const entry = entries.find(
-                entry => entry.id === button.dataset.id
-            );
-            displayLogEntryEditor(vehicle, entry);
+        .querySelectorAll(".edit-log-button")
+        .forEach(button => {
+            button.addEventListener("click", () => {
+
+                const entry = entries.find(
+                    entry => entry.id === button.dataset.id
+                );
+
+                displayLogEntryEditor(vehicle, entry);
+            });
         });
-    });
 
+    document
+        .querySelectorAll(".delete-log-button")
+        .forEach(button => {
 
-document
-    .querySelectorAll(".delete-log-button")
-    .forEach(button => {
+            button.addEventListener("click", async () => {
 
-        button.addEventListener("click", async () => {
+                const entry = entries.find(
+                    entry => entry.id === button.dataset.id
+                );
 
-            const entry = entries.find(
-                entry => entry.id === button.dataset.id
-            );
+                if (!confirm(
+                    `Delete "${entry.title}"? This cannot be undone.`
+                )) {
+                    return;
+                }
 
-            if (!confirm(
-                `Delete "${entry.title}"? This cannot be undone.`
-            )) {
-                return;
-            }
+                await deleteLogEntry(entry.id);
 
-            await deleteLogEntry(entry.id);
-
-            displayVehicle(vehicle);
+                displayVehicle(vehicle);
+            });
         });
-    });
 }
 
 function displayPlanEditor(vehicle, plan = null) {
