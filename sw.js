@@ -1,4 +1,4 @@
-const CACHE_NAME = "garage-log-v1.0.21";
+const CACHE_NAME = "garage-log-v1.1.0";
 
 const FILES_TO_CACHE = [
     "./",
@@ -10,7 +10,9 @@ const FILES_TO_CACHE = [
     "./data/GarageLog.json",
     "./app-icons/app-icon-192.png",
     "./app-icons/app-icon-512.png",
-    "./fonts/Comfortaa-Light.ttf"
+    "./fonts/Comfortaa-Light.ttf",
+    "./js/github-api.js",
+	"./js/github-sync.js"
 ];
 
 self.addEventListener("install", event => {
@@ -33,6 +35,16 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
+
+    const isSameOrigin = event.request.url.startsWith(self.location.origin);
+
+    if (!isSameOrigin) {
+        // Let GitHub API calls (and anything else cross-origin) pass
+        // straight through — don't cache them.
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
     event.respondWith(
         fetch(event.request)
             .then(response => {

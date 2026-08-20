@@ -117,40 +117,42 @@ if (!sorting) {
         .getElementById("backupButton")
         .addEventListener("click", async () => {
 
-            try {
+            const choice = await GitHubSync.chooseStorage("Backup");
 
-                const garage = await exportDatabase();
+            if (choice === "local") {
 
-                const json = JSON.stringify(
-                    garage,
-                    null,
-                    2
-                );
+                try {
 
-                const blob = new Blob(
-                    [json],
-                    { type: "application/json" }
-                );
+                    const garage = await exportDatabase();
 
-                const url = URL.createObjectURL(blob);
+                    const json = JSON.stringify(garage, null, 2);
 
-                const link = document.createElement("a");
+                    const blob = new Blob(
+                        [json],
+                        { type: "application/json" }
+                    );
 
-                link.href = url;
-                link.download = getBackupFilename();
+                    const url = URL.createObjectURL(blob);
 
-                link.click();
+                    const link = document.createElement("a");
 
-                URL.revokeObjectURL(url);
+                    link.href = url;
+                    link.download = getBackupFilename();
 
-            } catch (error) {
+                    link.click();
 
-                console.error(
-                    "GarageLog backup failed:",
-                    error
-                );
+                    URL.revokeObjectURL(url);
 
-                alert("Backup failed.");
+                } catch (error) {
+
+                    console.error("GarageLog backup failed:", error);
+
+                    alert("Backup failed.");
+                }
+
+            } else if (choice === "git") {
+
+                await GitHubSync.pushBackup();
             }
         });
 
@@ -159,72 +161,81 @@ if (!sorting) {
 
     document
         .getElementById("restoreButton")
-        .addEventListener("click", () => {
+        .addEventListener("click", async () => {
 
-            const input = document.createElement("input");
+            const choice = await GitHubSync.chooseStorage("Restore");
 
-            input.type = "file";
-            input.accept = ".json,application/json";
+            if (choice === "local") {
 
-            input.addEventListener("change", async () => {
+                const input = document.createElement("input");
 
-                const file = input.files[0];
+                input.type = "file";
+                input.accept = ".json,application/json";
 
-                if (!file) {
-                    return;
-                }
+                input.addEventListener("change", async () => {
 
-                try {
+                    const file = input.files[0];
 
-                    const text = await file.text();
-                    const garage = JSON.parse(text);
-
-                    if (
-                        !garage ||
-                        garage.schemaVersion === undefined ||
-                        !Array.isArray(garage.vehicles) ||
-                        !Array.isArray(garage.logEntries)
-                    ) {
-                        throw new Error(
-                            "This is not a valid GarageLog backup."
-                        );
-                    }
-
-                    const confirmed = confirm(
-                        "Restore this GarageLog backup?\n\n" +
-                        "This will replace all data currently stored " +
-                        "on this device."
-                    );
-
-                    if (!confirmed) {
+                    if (!file) {
                         return;
                     }
 
-                    await importDatabase(garage);
+                    try {
 
-                    alert(
-                        "GarageLog restored successfully."
-                    );
+                        const text = await file.text();
+                        const garage = JSON.parse(text);
 
-                    const vehicles = await getVehicles();
+                        if (
+                            !garage ||
+                            garage.schemaVersion === undefined ||
+                            !Array.isArray(garage.vehicles) ||
+                            !Array.isArray(garage.logEntries)
+                        ) {
+                            throw new Error(
+                                "This is not a valid GarageLog backup."
+                            );
+                        }
 
-                    displayVehicles(vehicles);
+                        const confirmed = confirm(
+                            "Restore this GarageLog backup?\n\n" +
+                            "This will replace all data currently stored " +
+                            "on this device."
+                        );
 
-                } catch (error) {
+                        if (!confirmed) {
+                            return;
+                        }
 
-                    console.error(
-                        "GarageLog restore failed:",
-                        error
-                    );
+                        await importDatabase(garage);
 
-                    alert(
-                        "Restore failed. " +
-                        "The backup file may be invalid."
-                    );
-                }
-            });
+                        alert(
+                            "GarageLog restored successfully."
+                        );
 
-            input.click();
+                        const vehicles = await getVehicles();
+
+                        displayVehicles(vehicles);
+
+                    } catch (error) {
+
+                        console.error(
+                            "GarageLog restore failed:",
+                            error
+                        );
+
+                        alert(
+                            "Restore failed. " +
+                            "The backup file may be invalid."
+                        );
+                    }
+                });
+
+                input.click();
+
+            } else if (choice === "git") {
+
+                await GitHubSync.pullRestore();
+            }
         });
 }
 
