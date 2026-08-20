@@ -141,7 +141,7 @@ const GitHubSync = (() => {
         choiceDialog.innerHTML = `
             <div class="gh-dialog-inner">
                 <h2 id="gh-choice-title">Backup</h2>
-                <p>Where would you like to save to?</p>
+                <p id="gh-choice-body">Where would you like to save to?</p>
                 <div class="gh-choice-buttons">
                     <button type="button" id="gh-choice-local" class="primary">
                         Local Device
@@ -161,11 +161,16 @@ const GitHubSync = (() => {
         return choiceDialog;
     }
 
-    function chooseStorage(actionLabel) {
+        function chooseStorage(actionLabel) {
 
-        const dialog = ensureChoiceDialog();
+ const dialog = ensureChoiceDialog();
 
         dialog.querySelector("#gh-choice-title").textContent = actionLabel;
+
+        dialog.querySelector("#gh-choice-body").textContent =
+            actionLabel === "Restore"
+                ? "Where would you like to load from?"
+                : "Where would you like to save to?";
 
         return new Promise(resolve => {
 
