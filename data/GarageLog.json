@@ -1,132 +1,386 @@
 {
   "schemaVersion": 1,
-  "lastModified": "2026-08-07T12:00:00Z",
-
+  "lastModified": "2026-08-20T19:27:30.713Z",
+  "logEntries": [
+    {
+      "id": "0ca48929-9403-4496-9219-c22e4021da23",
+      "vehicleId": "red",
+      "date": "2024-06-15",
+      "mileage": 5180,
+      "title": "Tires",
+      "description": "",
+      "cost": 0,
+      "notes": "Michelin Road Classics, installed on wheels by what's-his-name on Robinson Rd in Lockport",
+      "photos": []
+    },
+    {
+      "id": "0f30cd7a-fd9b-4af1-8359-ce11fbd16d49",
+      "vehicleId": "white",
+      "date": "2024-06-15",
+      "mileage": null,
+      "title": "Tires",
+      "description": "",
+      "cost": 0,
+      "notes": "Michelin Road Classics, installed on wheels by what's-his-name on Robinson Rd in Lockport",
+      "photos": []
+    },
+    {
+      "id": "37cafe7b-614e-41d5-94d5-ac871c069cdc",
+      "vehicleId": "phoenix",
+      "date": "2026-08-09",
+      "mileage": null,
+      "title": "Engine back in frame",
+      "description": "",
+      "cost": 0,
+      "notes": "Elle helped greatly, we ended up taking the bike off the lift table and using the engine hoist as well as a milk crate, similar to back in the day but without the musculoskeletal trauma.",
+      "photos": []
+    },
+    {
+      "id": "402a950f-4617-488a-9701-9ab277e19eae",
+      "vehicleId": "juke",
+      "date": "2026-08-12",
+      "mileage": 178857,
+      "title": "Brake shenanigans",
+      "description": "Pads and rotors all four corners, new (reman) front calipers, all from NAPA. Bled new calipers, partial flush of rear lines too.\n\nFront pads: SG7318BX\nFront rotors: 48880864\nFront left caliper: 3008XA\nFront right caliper: 3008XB\nRear pads: SG7784X\nRear rotors: 48880070",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "7dfc1e23-fc24-47ca-9aa6-a82907c11030",
+      "vehicleId": "juke",
+      "date": "2026-08-10",
+      "mileage": 178855,
+      "title": "Tune up",
+      "description": "Plugs, oil change, inspect air filter (good), started brakes",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "7eb5c914-c255-48f3-89fb-82c114af4ccc",
+      "vehicleId": "10427a65-b8eb-427f-a81b-570008f90bea",
+      "date": "2026-07-25",
+      "mileage": null,
+      "title": "Service",
+      "description": "Plugs\nOil change\n(3) New blades",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "8108a0e9-db4a-469b-95e6-4a1ddb602ac5",
+      "vehicleId": "phoenix",
+      "date": "2026-08-15",
+      "mileage": null,
+      "title": "rebuild progress",
+      "description": "Preliminary wiring:\n- mount regulator, rectifier, starter solenoid in original locations\n- temporarily installed key for testing\n- starter turns, having trouble getting spark\n\nMount oil tank, install oil lines\n\nInstall handlebar controls and related cables\n\nInstall and adjust cam chain tensioner",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "bd1f39bf-7b38-4a34-8191-e91196472edf",
+      "vehicleId": "phoenix",
+      "date": "2026-08-16",
+      "mileage": null,
+      "title": "rebuild progress",
+      "description": "- temporarily mounted and wired up old coils\n- adjusted points\n- first startup - nothing exploded!\n- \"rebuilt\" front brakes\n- re-adjusted clutch cable",
+      "cost": 0,
+      "notes": "turns out the turn signals and the horn pretty much just worked on their own. I had to plug in the flasher unit of course, but everything else apparently was already connected.",
+      "photos": []
+    },
+    {
+      "id": "cdd1f520-7132-4957-b12c-bbe42434828e",
+      "vehicleId": "red",
+      "date": "2026-08-16",
+      "mileage": null,
+      "title": "Installed horn brackets",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "dc500301-9ee4-40dc-a935-284418894585",
+      "vehicleId": "phoenix",
+      "date": "2026-08-01",
+      "mileage": null,
+      "title": "Engine reassembly completed",
+      "description": "",
+      "cost": 0,
+      "notes": "After years in pieces and months picking away at reassembly, it's all back together",
+      "photos": []
+    },
+    {
+      "id": "f9e7eef6-4c10-4465-8002-4b4f14b1be17",
+      "vehicleId": "red",
+      "date": "2026-08-13",
+      "mileage": 9262,
+      "title": "Fabricated horn brackets",
+      "description": "Fabricated both horn brackets using 1/4\" angle iron, sloppily painted Rust-Oleum black.",
+      "cost": 0,
+      "notes": "Left side broke a couple years ago, then the replacement I'd made at the time just broke this week. Fabricated and replaced both, will probably disassemble again soon to paint them (they're raw right now and will rust badly if I don't)",
+      "photos": []
+    },
+    {
+      "id": "feacd22b-fb35-4ea2-8c5a-13bee16104a4",
+      "vehicleId": "phoenix",
+      "date": "2026-08-17",
+      "mileage": null,
+      "title": "rebuild progress",
+      "description": "installed header and chain for test ride",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    }
+  ],
+  "metadata": [
+    {
+      "key": "lastModified",
+      "value": "2026-08-20T19:26:59.524Z"
+    },
+    {
+      "key": "schemaVersion",
+      "value": 1
+    }
+  ],
+  "photos": [],
+  "plans": [
+    {
+      "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
+      "vehicleId": "phoenix",
+      "title": "rear fender/tail light mounting",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "2fadf1b2-88a0-46cc-b5f8-388b2e1d1601",
+      "vehicleId": "phoenix",
+      "title": "headlights",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "38d2f1b4-ea6e-4153-8dcc-b6232f14a148",
+      "vehicleId": "phoenix",
+      "title": "install new ignition switch",
+      "date": "",
+      "mileage": null,
+      "description": "Also need to figure out starting switch, since the stock ignition switch doesn't have a start position."
+    },
+    {
+      "id": "5197253d-348f-4bff-ad13-c1680cb8ce71",
+      "vehicleId": "phoenix",
+      "title": "rear cowl/seat",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "70a07ce4-6ac7-4b39-97ce-7ae855ce527c",
+      "vehicleId": "phoenix",
+      "title": "rear shocks",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "92a58c12-072f-4dc5-b271-6b7a80ce6fd0",
+      "vehicleId": "phoenix",
+      "title": "install new coils",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "a95d1003-b44d-4060-84c7-9b96754450ed",
+      "vehicleId": "phoenix",
+      "title": "new turn signals",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "ea968dbb-6435-4096-9be7-dd96f18ddf9a",
+      "vehicleId": "frontier",
+      "title": "Tailgate Latches",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "ed8dc54a-81d5-422d-a10e-713864f78670",
+      "vehicleId": "juke",
+      "title": "Clean MAF Sensor",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "ff4adcfb-ecd6-4564-98cc-e2c130b0052f",
+      "vehicleId": "phoenix",
+      "title": "new points & condensers",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    }
+  ],
+  "reminders": [],
   "vehicles": [
     {
-      "id": "juke",
-      "year": 2015,
-      "make": "Nissan",
-      "model": "Juke SV",
-      "nickname": "The Juke",
+      "id": "10427a65-b8eb-427f-a81b-570008f90bea",
+      "sortOrder": 5,
+      "nickname": "Riding Mower",
+      "year": 2016,
+      "make": "Cub Cadet",
+      "model": "XT1",
+      "type": "bike",
+      "vin": "",
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": "NAPA 1056, 2 qts 10w40 conventional\nNGK BKR5E\nBlades: 942-05052A\nDeck Belt: 954-04077A\nDrive Belt: 954-05027A\nTires:\n- Front: 15x6-6\n- Rear: 20x8-8"
+    },
+    {
+      "id": "afff3aca-a36a-4f38-b28c-81c7491e2e29",
+      "sortOrder": 10,
+      "nickname": "The Bug",
+      "year": 1966,
+      "make": "VW",
+      "model": "Bugatti",
       "type": "car",
       "vin": "",
-	  "licensePlate": "CLY7659",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": ""
     },
     {
       "id": "frontier",
+      "sortOrder": 1,
+      "nickname": "Frontier",
       "year": 2014,
       "make": "Nissan",
       "model": "Frontier SV",
-      "nickname": "Frontier",
       "type": "car",
-      "vin": "",
-	  "licensePlate": "CLL3753",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "vin": "1N6AD0CW4EN735161",
+      "licensePlate": "CLL3753",
+      "purchaseDate": "2019-04-01",
+      "currentMileage": null,
+      "notes": "Oil: NAPA 7356, 5.5 qts 5w30 (75521)\nCopper washers: 7041215\nAir: NAPA 6213\nLug torque: 98 ft-lbs\nWipers: 22\"/18\"\nTires: 265/70-16\nTire rotation: fronts straight back, rears diagonally forward"
+    },
+    {
+      "id": "juke",
+      "sortOrder": 0,
+      "nickname": "The Juke",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "Juke SV",
+      "vin": "JN8AF5MV0FT558044",
+      "licensePlate": "CLY7659",
+      "purchaseDate": "",
+      "currentMileage": 178857,
+      "notes": "Lug torque: 83lb-ft\nOil: NAPA 1358, 4.5 qts 0w20\nAir: 6044\nSpark plugs: NGK 95003\nWipers: 24\"/14\"/12\"\nTires: 215/55-17\nRear tires straight to the front, front tires cross to the rear"
     },
     {
       "id": "phoenix",
+      "sortOrder": 2,
+      "nickname": "Phoenix",
       "year": 1976,
       "make": "Honda",
       "model": "CB750F Supersport",
-      "nickname": "The Phoenix",
-      "type": "bike",
-      "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
-    },
-    {
-      "id": "white",
-      "year": 2019,
-      "make": "Royal Enfield",
-      "model": "Continental GT 650",
-      "nickname": "The White",
-      "type": "bike",
-      "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
-    },
-    {
-      "id": "red",
-      "year": 2014,
-      "make": "Royal Enfield",
-      "model": "Continental GT",
-      "nickname": "The Red",
-      "type": "bike",
-      "vin": "",
-	  "licensePlate": "55FG91",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
-    },
-    {
-      "id": "rd250",
-      "year": 1973,
-      "make": "Yamaha",
-      "model": "RD250B",
-      "nickname": "The RD",
-      "type": "bike",
-      "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "vin": "CB750F-2014831",
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": "Oil filter: FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335"
     },
     {
       "id": "pickup",
+      "sortOrder": 9,
+      "nickname": "Dad's Pickup",
       "year": 1991,
       "make": "Toyota",
       "model": "Pickup",
-      "nickname": "Toyota Pickup",
       "type": "car",
       "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": ""
+    },
+    {
+      "id": "rd250",
+      "sortOrder": 7,
+      "nickname": "The RD",
+      "year": 1973,
+      "make": "Yamaha",
+      "model": "RD250B",
+      "type": "bike",
+      "vin": "",
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": ""
+    },
+    {
+      "id": "red",
+      "sortOrder": 3,
+      "nickname": "Red",
+      "year": 2014,
+      "make": "Royal Enfield",
+      "model": "Continental GT",
+      "type": "bike",
+      "vin": "ME3FSV299EK600985",
+      "licensePlate": "55FG91",
+      "purchaseDate": "",
+      "currentMileage": 9262,
+      "notes": "Oil filter: 888414\n2.5 qts 15W50 (JASO MA)\nChain: 530x100\n\nPirelli Sport Demon\nFront Tire: 100/90-18\nRear Tire: 130/70-18"
     },
     {
       "id": "sportsman",
+      "sortOrder": 6,
+      "nickname": "Sportsman",
       "year": 2007,
       "make": "Polaris",
       "model": "Sportsman 500",
-      "nickname": "Sportsman",
       "type": "bike",
       "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": "NAPA 1358, 2 qts 0w40 Synthetic\nTires: 26x9-12 / 26x10-12\nTires SHOULD be: 26x8x12 / 26X11X12\nSpark plug: BKR6E / XP3923\n\n\n-- Diagnostics Mode (Set Clock) --\n1. Key off\n2. Lock parking brake\n3. Neutral\n4. Hold override button, turn key on, release button\n5. Hold override button to enter time setting mode\n6. Wait after adjusting hour, it will advance to minutes\n7. Repeat \n8. Key off\n\n\n\n-- DIAGNOSTIC CODES --\n\nTurn the key off for 30 seconds. Do the following within 5 seconds: Key ON, OFF, ON, OFF, ON (don't start the engine). Keep your eye on the CEL. The display will either say \"Wait\" and then the CEL will start blinking; or the CEL will start blinking right away. In either case, count the number of blinks between each long pause (b P bb P bbbb P b P bbbbbb P b). The codes are in two-digit numbers so the previous sequence would be 12, 41, 61. 12 = start and 61 = end. 12 may or may not happen.\n\nThis is a general list of codes. Different models and years may have slight variations.\n\n---- 12 Beginning of Diagnostic Check ----\n21 Loss of Synchronization\n22 TPS Circuit: Open or Short to Ground\n22 TPS Circuit: Short to Battery\n23 RAM Error: Defective ECU\n41 Air Temp Sensor: Open or Short Circuit to Sensor Voltage (ECU)\n41 Air Temp Sensor: Short Circuit to Ground\n42 Engine Temperature Sensor Circuit: Short to Ground\n42 Engine Temperature Sensor Circuit: Open or Short to Battery\n45 Barometric Pressure Sensor: Circuit Low Input\n46 Barometric Pressure Sensor: Circuit High Input\n51 Injector 1: Open Load\n51 Injector 1: Short Circuit to Ground\n51 Injector 1: Short Circuit to battery\n52 Injector 2: Open Load\n52 Injector 2: Short Circuit to Ground\n52 Injector 2: Short Circuit to Battery Yes\n54 Engine Temperature Lamp: Open Load\n54 Engine Temperature Lamp: Short Circuit to Ground\n54 Engine Temperature Lamp: Short Circuit to Battery\n55 Diagnostic Lamp: Open Load\n55 Diagnostic Lamp: Short Circuit to Ground\n55 Diagnostic Lamp: Short Circuit to Battery\n56 Pump Relay Open Load\n56 Pump Relay Short Circuit to Ground\n56 Pump Relay Short Circuit to Battery\n58 Cooling Fan: Open Load\n58 Cooling Fan: Short Circuit to Ground\n58 Cooling Fan: Short Circuit to Battery\n---- 61 End of Diagnostic Check ----\n\nTo erase a code, remove the negative battery cable for 30 seconds. If they are still there after you hook the cable up and check again, that means they came right back."
     },
     {
       "id": "ty175",
+      "sortOrder": 8,
+      "nickname": "The Trialer",
       "year": 1975,
       "make": "Yamaha",
       "model": "TY175",
-      "nickname": "TY175",
       "type": "bike",
       "vin": "",
-	  "licensePlate": "",
-	  "purchaseDate": "",
-	  "currentMileage": null,
-	  "notes": ""
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": ""
+    },
+    {
+      "id": "white",
+      "sortOrder": 4,
+      "nickname": "White",
+      "year": 2019,
+      "make": "Royal Enfield",
+      "model": "Continental GT 650",
+      "type": "bike",
+      "vin": "ME3FPN475KK705662",
+      "licensePlate": "",
+      "purchaseDate": "",
+      "currentMileage": null,
+      "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
-  ],
-
-  "serviceRecords": [],
-  "fuelLogs": [],
-  "parts": [],
-  "modifications": [],
-  "projects": [],
-  "photos": [],
-  "reminders": []
+  ]
 }
