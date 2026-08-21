@@ -307,15 +307,27 @@ async function initializeMetadata() {
         const transaction = db.transaction("metadata", "readwrite");
         const store = transaction.objectStore("metadata");
 
-        store.put({
-            key: "schemaVersion",
-            value: 1
-        });
+        const schemaRequest = store.get("schemaVersion");
 
-        store.put({
-            key: "lastModified",
-            value: new Date().toISOString()
-        });
+        schemaRequest.onsuccess = () => {
+            if (schemaRequest.result === undefined) {
+                store.put({
+                    key: "schemaVersion",
+                    value: 1
+                });
+            }
+        };
+
+        const modifiedRequest = store.get("lastModified");
+
+        modifiedRequest.onsuccess = () => {
+            if (modifiedRequest.result === undefined) {
+                store.put({
+                    key: "lastModified",
+                    value: new Date().toISOString()
+                });
+            }
+        };
 
         transaction.oncomplete = () => resolve();
         transaction.onerror = event => reject(event.target.error);
