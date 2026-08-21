@@ -8,6 +8,22 @@ function getLocalDate() {
     return `${year}-${month}-${day}`;
 }
 
+function formatDataVersion(isoString) {
+
+    const date = new Date(isoString);
+
+    const pad = number =>
+        String(number).padStart(2, "0");
+
+    const yy = String(date.getFullYear()).slice(-2);
+    const mm = pad(date.getMonth() + 1);
+    const dd = pad(date.getDate());
+    const hh = pad(date.getHours());
+    const min = pad(date.getMinutes());
+
+    return `v.${yy}${mm}${dd}-${hh}${min}`;
+}
+
 async function startApp() {
 
     try {
@@ -29,7 +45,18 @@ async function startApp() {
             vehicles = await getVehicles();
         }
 
-        displayVehicles(vehicles);
+                displayVehicles(vehicles);
+
+        const lastModified = await getMetadataValue("lastModified");
+
+        if (lastModified) {
+
+            const versionElement = document.getElementById("dataVersion");
+
+            if (versionElement) {
+                versionElement.textContent = formatDataVersion(lastModified);
+            }
+        }
 
     } catch (error) {
 
