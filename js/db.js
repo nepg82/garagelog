@@ -260,6 +260,25 @@ async function updateVehicleSchema() {
     }
 }
 
+async function getMetadataValue(key) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("metadata", "readonly");
+        const store = transaction.objectStore("metadata");
+
+        const request = store.get(key);
+
+        request.onsuccess = () => {
+            resolve(request.result ? request.result.value : null);
+        };
+
+        request.onerror = event => reject(event.target.error);
+    });
+}
+
 async function importNewVehicles() {
 
     const response = await fetch("data/GarageLog.json");
