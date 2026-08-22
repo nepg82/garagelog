@@ -45,7 +45,7 @@ async function startApp() {
             vehicles = await getVehicles();
         }
 
-                displayVehicles(vehicles);
+                        displayVehicles(vehicles);
 
         const lastModified = await getMetadataValue("lastModified");
 
@@ -54,10 +54,23 @@ async function startApp() {
             const versionElement = document.getElementById("dataVersion");
 
             if (versionElement) {
-                versionElement.textContent = formatDataVersion(lastModified);
-            }
-        }
 
+                versionElement.textContent = formatDataVersion(lastModified);
+
+                const lastPushed = await getMetadataValue("lastPushedTimestamp");
+
+                if (lastPushed !== lastModified) {
+                    versionElement.classList.add("data-version-dirty");
+                } else {
+                    versionElement.classList.remove("data-version-dirty");
+                }
+            }
+
+            // Background, dismissable check against GitHub — never
+            // blocks app launch or editing.
+            GitHubSync.runLaunchCheck(lastModified);
+        }
+        
     } catch (error) {
 
         console.error("GarageLog failed to start:", error);

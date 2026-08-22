@@ -1,6 +1,7 @@
 // GarageLog ↔ GitHub backup/restore.
 // Adds a "Local Device or GitHub?" popup to the existing Backup/Restore
-// buttons, plus a connect popup for owner/repo/branch/token when needed.
+// buttons, a connect popup for owner/repo/branch/token, a dismissable
+// launch-time check against GitHub, and a push-time conflict guard.
 // Requires js/github-api.js to be loaded first.
 
 const GitHubSync = (() => {
@@ -75,6 +76,28 @@ const GitHubSync = (() => {
                 flex-direction: column;
                 gap: 10px;
                 margin-top: 16px;
+            }
+            .gh-snackbar {
+                position: fixed;
+                bottom: 16px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: #292929;
+                border: 1px solid var(--accent-purple);
+                border-radius: 10px;
+                padding: 10px 16px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                z-index: 1000;
+                max-width: 90vw;
+                font-size: 0.85rem;
+            }
+            .gh-snackbar-actions {
+                display: flex;
+                gap: 8px;
+                flex-shrink: 0;
             }
         `;
 
@@ -161,9 +184,9 @@ const GitHubSync = (() => {
         return choiceDialog;
     }
 
-        function chooseStorage(actionLabel) {
+    function chooseStorage(actionLabel) {
 
- const dialog = ensureChoiceDialog();
+        const dialog = ensureChoiceDialog();
 
         dialog.querySelector("#gh-choice-title").textContent = actionLabel;
 
@@ -337,6 +360,150 @@ const GitHubSync = (() => {
     }
 
 
+    // ---- Remote status check ----
+
+    // Compares the local lastModified against the one embedded in the
+    // GitHub copy. Returns "current", "behind" (GitHub is newer — you
+    // should restore), "ahead" (local is newer — you should back up),
+    // or null if there's no saved connection or the check fails.
+    async function checkRemoteStatus(localLastModified) {
+
+        const saved = loadSaved();
+
+        if (!saved.owner || !saved.repo || !saved.token) {
+            return null;
+        }
+
+        try {
+
+            const existing = await GitHubAPI.getJsonFile({
+                owner: saved.owner,
+                repo: saved.repo,
+                branch: saved.branch,
+                token: saved.token,
+                path: DATA_PATH
+            });
+
+            if (!existing || !existing.json || !existing.json.lastModified) {
+                return null;
+            }
+
+            const remoteTime = new Date(existing.json.lastModified).getTime();
+            const localTime = new Date(localLastModified).getTime();
+
+            if (remoteTime > localTime) return "behind";
+            if (localTime > remoteTime) return "ahead";
+
+            return "current";
+
+        } catch (error) {
+
+            console.error(
+                "GarageLog GitHub status check failed:",
+                error
+            );
+
+            return null;
+        }
+    }
+
+
+    // ---- Launch-time snackbar/banner ----
+
+    let snackbar = null;
+
+    function ensureSnackbar() {
+
+        if (snackbar) return snackbar;
+
+        injectStyles();
+
+        snackbar = document.createElement("div");
+        snackbar.className = "gh-snackbar";
+        snackbar.style.display = "none";
+
+        snackbar.innerHTML = `
+            <span id="gh-snackbar-text">Checking GitHub…</span>
+            <div class="gh-snackbar-actions">
+                <button type="button" id="gh-snackbar-primary" class="primary" style="display:none;"></button>
+                <button type="button" id="gh-snackbar-secondary">Dismiss</button>
+            </div>
+        `;
+
+        document.body.appendChild(snackbar);
+
+        return snackbar;
+    }
+
+    function hideSnackbar() {
+        if (snackbar) {
+            snackbar.style.display = "none";
+        }
+    }
+
+    // Kicks off a background check against GitHub at launch. Shows a
+    // dismissable "Checking..." snackbar. If GitHub turns out to have a
+    // newer version, it becomes a persistent banner requiring a choice.
+    // Dismissing early just abandons the check — it never blocks editing.
+    async function runLaunchCheck(localLastModified) {
+
+        const saved = loadSaved();
+
+        if (!saved.owner || !saved.repo || !saved.token) {
+            return;
+        }
+
+        const bar = ensureSnackbar();
+        const text = bar.querySelector("#gh-snackbar-text");
+        const primaryBtn = bar.querySelector("#gh-snackbar-primary");
+        const secondaryBtn = bar.querySelector("#gh-snackbar-secondary");
+
+        let dismissed = false;
+
+        text.textContent = "Checking GitHub…";
+        primaryBtn.style.display = "none";
+        secondaryBtn.textContent = "Dismiss";
+        bar.style.display = "flex";
+
+        secondaryBtn.onclick = () => {
+            dismissed = true;
+            hideSnackbar();
+        };
+
+        const status = await checkRemoteStatus(localLastModified);
+
+        if (dismissed) {
+            return;
+        }
+
+        if (status === "behind") {
+
+            text.textContent =
+                "A newer version exists on GitHub — probably from " +
+                "another device.";
+
+            primaryBtn.textContent = "Restore Now";
+            primaryBtn.style.display = "inline-block";
+            secondaryBtn.textContent = "Continue Anyway";
+
+            primaryBtn.onclick = async () => {
+                hideSnackbar();
+                await pullRestore();
+            };
+
+            secondaryBtn.onclick = () => {
+                hideSnackbar();
+            };
+
+            // Left open — this one waits for a deliberate choice.
+
+        } else {
+
+            hideSnackbar();
+        }
+    }
+
+
     // ---- Backup / Restore actions ----
 
     async function pushBackup() {
@@ -357,6 +524,31 @@ const GitHubSync = (() => {
                 path: DATA_PATH
             });
 
+            if (existing && existing.json && existing.json.lastModified) {
+
+                const remoteTime =
+                    new Date(existing.json.lastModified).getTime();
+
+                const localTime =
+                    new Date(garage.lastModified).getTime();
+
+                if (remoteTime > localTime) {
+
+                    const overwrite = confirm(
+                        "GitHub has a newer version than what you're " +
+                        "about to upload — probably from another " +
+                        "device.\n\n" +
+                        "Overwrite it with this device's data anyway? " +
+                        "This will discard whatever changes are on " +
+                        "GitHub."
+                    );
+
+                    if (!overwrite) {
+                        return;
+                    }
+                }
+            }
+
             await GitHubAPI.putJsonFile({
                 owner: creds.owner,
                 repo: creds.repo,
@@ -367,6 +559,14 @@ const GitHubSync = (() => {
                 sha: existing ? existing.sha : undefined,
                 message: `GarageLog backup — ${getLocalDate()}`
             });
+
+            await setMetadataValue("lastPushedTimestamp", garage.lastModified);
+
+            const versionElement = document.getElementById("dataVersion");
+
+            if (versionElement) {
+                versionElement.classList.remove("data-version-dirty");
+            }
 
             alert("Backup pushed to GitHub.");
 
@@ -432,11 +632,20 @@ const GitHubSync = (() => {
 
             await importDatabase(garage);
 
+            await setMetadataValue("lastPushedTimestamp", garage.lastModified);
+
             alert("GarageLog restored from GitHub.");
 
             const vehicles = await getVehicles();
 
             displayVehicles(vehicles);
+
+            const versionElement = document.getElementById("dataVersion");
+
+            if (versionElement) {
+                versionElement.textContent = formatDataVersion(garage.lastModified);
+                versionElement.classList.remove("data-version-dirty");
+            }
 
         } catch (error) {
 
@@ -455,5 +664,11 @@ const GitHubSync = (() => {
         }
     }
 
-    return { chooseStorage, pushBackup, pullRestore };
+    return {
+        chooseStorage,
+        pushBackup,
+        pullRestore,
+        checkRemoteStatus,
+        runLaunchCheck
+    };
 })();

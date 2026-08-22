@@ -279,6 +279,22 @@ async function getMetadataValue(key) {
     });
 }
 
+async function setMetadataValue(key, value) {
+
+    const db = await openDatabase();
+
+    return new Promise((resolve, reject) => {
+
+        const transaction = db.transaction("metadata", "readwrite");
+        const store = transaction.objectStore("metadata");
+
+        store.put({ key, value });
+
+        transaction.oncomplete = () => resolve();
+        transaction.onerror = event => reject(event.target.error);
+    });
+}
+
 async function importNewVehicles() {
 
     const response = await fetch("data/GarageLog.json");

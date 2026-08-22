@@ -99,6 +99,11 @@ h1 {
     opacity: 0.6;
 }
 
+.data-version-dirty {
+    color: var(--accent-yellow);
+    opacity: 1;
+}
+
 .vehicle {
     display: flex;
     align-items: center;
