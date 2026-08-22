@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastModified": "2026-08-20T19:27:30.713Z",
+  "lastModified": "2026-08-22T10:11:16.629Z",
   "logEntries": [
     {
       "id": "0ca48929-9403-4496-9219-c22e4021da23",
@@ -138,7 +138,7 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-20T19:26:59.524Z"
+      "value": "2026-08-22T10:10:37.237Z"
     },
     {
       "key": "schemaVersion",
@@ -151,6 +151,14 @@
       "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
       "vehicleId": "phoenix",
       "title": "rear fender/tail light mounting",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "2cce6ab4-c233-4a55-8b56-400f03000794",
+      "vehicleId": "frontier",
+      "title": "Oil change",
       "date": "",
       "mileage": null,
       "description": ""
@@ -172,6 +180,14 @@
       "description": "Also need to figure out starting switch, since the stock ignition switch doesn't have a start position."
     },
     {
+      "id": "40a18482-9c8c-4c52-8176-52bf21babde7",
+      "vehicleId": "phoenix",
+      "title": "Gas tank latch",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
       "id": "5197253d-348f-4bff-ad13-c1680cb8ce71",
       "vehicleId": "phoenix",
       "title": "rear cowl/seat",
@@ -180,9 +196,33 @@
       "description": ""
     },
     {
+      "id": "565dbd0b-dc42-44ac-bf48-53190efdde68",
+      "vehicleId": "red",
+      "title": "Oil change",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "6b0dc243-f87f-4cf8-a0e4-5cb292e914ea",
+      "vehicleId": "phoenix",
+      "title": "Wiring",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
       "id": "70a07ce4-6ac7-4b39-97ce-7ae855ce527c",
       "vehicleId": "phoenix",
       "title": "rear shocks",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "8938a0a2-c23b-458c-ac90-5146a7f60284",
+      "vehicleId": "white",
+      "title": "Starter solenoid",
       "date": "",
       "mileage": null,
       "description": ""
