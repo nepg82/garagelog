@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastModified": "2026-08-22T10:11:16.629Z",
+  "lastModified": "2026-08-22T16:29:59.788Z",
   "logEntries": [
     {
       "id": "0ca48929-9403-4496-9219-c22e4021da23",
@@ -138,7 +138,7 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-22T10:10:37.237Z"
+      "value": "2026-08-22T16:24:49.405Z"
     },
     {
       "key": "schemaVersion",
@@ -166,7 +166,7 @@
     {
       "id": "2fadf1b2-88a0-46cc-b5f8-388b2e1d1601",
       "vehicleId": "phoenix",
-      "title": "headlights",
+      "title": "z.headlights?",
       "date": "",
       "mileage": null,
       "description": ""
@@ -190,7 +190,7 @@
     {
       "id": "5197253d-348f-4bff-ad13-c1680cb8ce71",
       "vehicleId": "phoenix",
-      "title": "rear cowl/seat",
+      "title": "z.rear cowl/seat?",
       "date": "",
       "mileage": null,
       "description": ""
@@ -214,7 +214,7 @@
     {
       "id": "70a07ce4-6ac7-4b39-97ce-7ae855ce527c",
       "vehicleId": "phoenix",
-      "title": "rear shocks",
+      "title": "z.rear shocks?",
       "date": "",
       "mileage": null,
       "description": ""
@@ -246,7 +246,7 @@
     {
       "id": "ea968dbb-6435-4096-9be7-dd96f18ddf9a",
       "vehicleId": "frontier",
-      "title": "Tailgate Latches",
+      "title": "Tailgate Strikers",
       "date": "",
       "mileage": null,
       "description": ""
@@ -300,7 +300,7 @@
     },
     {
       "id": "frontier",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "nickname": "Frontier",
       "year": 2014,
       "make": "Nissan",
@@ -314,7 +314,7 @@
     },
     {
       "id": "juke",
-      "sortOrder": 0,
+      "sortOrder": 1,
       "nickname": "The Juke",
       "year": 2015,
       "make": "Nissan",
@@ -327,7 +327,7 @@
     },
     {
       "id": "phoenix",
-      "sortOrder": 2,
+      "sortOrder": 0,
       "nickname": "Phoenix",
       "year": 1976,
       "make": "Honda",
