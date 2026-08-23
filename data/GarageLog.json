@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-  "lastModified": "2026-08-22T16:29:59.788Z",
   "logEntries": [
     {
       "id": "0ca48929-9403-4496-9219-c22e4021da23",
@@ -139,6 +138,10 @@
     {
       "key": "lastModified",
       "value": "2026-08-22T16:24:49.405Z"
+    },
+    {
+      "key": "lastPushedTimestamp",
+      "value": "2026-08-22T16:29:59.788Z"
     },
     {
       "key": "schemaVersion",
@@ -422,5 +425,6 @@
       "currentMileage": null,
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
-  ]
+  ],
+  "lastModified": "2026-08-22T16:24:49.405Z"
 }
