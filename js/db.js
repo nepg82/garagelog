@@ -468,8 +468,7 @@ async function exportDatabase() {
     const transaction = db.transaction(storeNames, "readonly");
 
     const garage = {
-        schemaVersion: 1,
-        lastModified: new Date().toISOString()
+        schemaVersion: 1
     };
 
     await Promise.all(
@@ -491,6 +490,13 @@ async function exportDatabase() {
             });
         })
     );
+
+    const lastModifiedEntry = garage.metadata?.find(
+        entry => entry.key === "lastModified"
+    );
+
+    garage.lastModified =
+        lastModifiedEntry?.value || new Date().toISOString();
 
     return garage;
 }
