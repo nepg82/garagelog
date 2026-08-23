@@ -137,7 +137,7 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-23T17:52:23.552Z"
+      "value": "2026-08-23T18:16:00.255Z"
     },
     {
       "key": "lastPushedTimestamp",
@@ -339,7 +339,7 @@
       "licensePlate": "",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": "Oil filter: FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335"
+      "notes": "Oil filter: NAPA FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335"
     },
     {
       "id": "pickup",
@@ -426,5 +426,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-23T17:52:23.552Z"
+  "lastModified": "2026-08-23T18:16:00.255Z"
 }
