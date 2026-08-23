@@ -137,11 +137,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-22T16:24:49.405Z"
+      "value": "2026-08-23T17:52:23.552Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-22T16:29:59.788Z"
+      "value": "2026-08-22T16:24:49.405Z"
     },
     {
       "key": "schemaVersion",
@@ -185,7 +185,7 @@
     {
       "id": "40a18482-9c8c-4c52-8176-52bf21babde7",
       "vehicleId": "phoenix",
-      "title": "Gas tank latch",
+      "title": "Fabricate and install gas tank latch",
       "date": "",
       "mileage": null,
       "description": ""
@@ -426,5 +426,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-22T16:24:49.405Z"
+  "lastModified": "2026-08-23T17:52:23.552Z"
 }
