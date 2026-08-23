@@ -562,11 +562,7 @@ const GitHubSync = (() => {
 
             await setMetadataValue("lastPushedTimestamp", garage.lastModified);
 
-            const versionElement = document.getElementById("dataVersion");
-
-            if (versionElement) {
-                versionElement.classList.remove("data-version-dirty");
-            }
+            await refreshDataVersion();
 
             alert("Backup pushed to GitHub.");
 
@@ -640,12 +636,7 @@ const GitHubSync = (() => {
 
             displayVehicles(vehicles);
 
-            const versionElement = document.getElementById("dataVersion");
-
-            if (versionElement) {
-                versionElement.textContent = formatDataVersion(garage.lastModified);
-                versionElement.classList.remove("data-version-dirty");
-            }
+            await refreshDataVersion();
 
         } catch (error) {
 

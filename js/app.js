@@ -24,6 +24,31 @@ function formatDataVersion(isoString) {
     return `v.${yy}${mm}${dd}-${hh}${min}`;
 }
 
+async function refreshDataVersion() {
+
+    const versionElement = document.getElementById("dataVersion");
+
+    if (!versionElement) {
+        return;
+    }
+
+    const lastModified = await getMetadataValue("lastModified");
+
+    if (!lastModified) {
+        return;
+    }
+
+    versionElement.textContent = formatDataVersion(lastModified);
+
+    const lastPushed = await getMetadataValue("lastPushedTimestamp");
+
+    if (lastPushed !== lastModified) {
+        versionElement.classList.add("data-version-dirty");
+    } else {
+        versionElement.classList.remove("data-version-dirty");
+    }
+}
+
 async function startApp() {
 
     try {
@@ -45,29 +70,13 @@ async function startApp() {
             vehicles = await getVehicles();
         }
 
-                        displayVehicles(vehicles);
+        displayVehicles(vehicles);
+
+        await refreshDataVersion();
 
         const lastModified = await getMetadataValue("lastModified");
 
         if (lastModified) {
-
-            const versionElement = document.getElementById("dataVersion");
-
-            if (versionElement) {
-
-                versionElement.textContent = formatDataVersion(lastModified);
-
-                const lastPushed = await getMetadataValue("lastPushedTimestamp");
-
-                if (lastPushed !== lastModified) {
-                    versionElement.classList.add("data-version-dirty");
-                } else {
-                    versionElement.classList.remove("data-version-dirty");
-                }
-            }
-
-            // Background, dismissable check against GitHub — never
-            // blocks app launch or editing.
             GitHubSync.runLaunchCheck(lastModified);
         }
         
@@ -83,6 +92,8 @@ async function startApp() {
 function displayVehicles(vehicles, sorting = false) {
 
     const container = document.getElementById("app");
+
+    refreshDataVersion();
 
     container.innerHTML = `
         <div class="garage-header">
@@ -423,6 +434,8 @@ if (!sorting) {
 async function displayVehicle(vehicle) {
 
     const container = document.getElementById("app");
+
+    refreshDataVersion();
 
     const entries = await getLogEntriesForVehicle(vehicle.id);
     const plans = await getPlansForVehicle(vehicle.id);
