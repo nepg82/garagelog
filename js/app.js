@@ -33,16 +33,22 @@ async function refreshDataVersion() {
     }
 
     const lastModified = await getMetadataValue("lastModified");
+    const lastPushed = await getMetadataValue("lastPushedTimestamp");
 
-    if (!lastModified) {
+    // Show the last synced (pushed/restored) time — not the last edit
+    // time. Falls back to lastModified only if nothing has ever been
+    // pushed or restored yet.
+    const displayTimestamp = lastPushed || lastModified;
+
+    if (!displayTimestamp) {
         return;
     }
 
-    versionElement.textContent = formatDataVersion(lastModified);
+    versionElement.textContent = formatDataVersion(displayTimestamp);
 
-    const lastPushed = await getMetadataValue("lastPushedTimestamp");
-
-    if (lastPushed !== lastModified) {
+    // Dirty (needs backup) whenever local edits exist that haven't
+    // been pushed — regardless of what the displayed date says.
+    if (lastModified && lastPushed !== lastModified) {
         versionElement.classList.add("data-version-dirty");
     } else {
         versionElement.classList.remove("data-version-dirty");
@@ -1369,6 +1375,5 @@ function displayVehicleEditor(vehicle = null) {
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js");
 }
-
 
 startApp();
