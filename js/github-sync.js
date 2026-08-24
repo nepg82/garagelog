@@ -77,27 +77,30 @@ const GitHubSync = (() => {
                 gap: 10px;
                 margin-top: 16px;
             }
-            .gh-snackbar {
+           .gh-snackbar {
                 position: fixed;
                 bottom: 16px;
                 left: 50%;
                 transform: translateX(-50%);
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                gap: 12px;
+                gap: 10px;
                 background: #292929;
                 border: 1px solid var(--accent-purple);
                 border-radius: 10px;
-                padding: 10px 16px;
+                padding: 14px 18px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
                 z-index: 1000;
-                max-width: 90vw;
+                width: min(360px, 90vw);
                 font-size: 0.85rem;
+                text-align: center;
             }
             .gh-snackbar-actions {
                 display: flex;
                 gap: 8px;
-                flex-shrink: 0;
+                justify-content: center;
+                flex-wrap: wrap;
             }
         `;
 
