@@ -481,9 +481,9 @@ const GitHubSync = (() => {
 
         if (status === "behind") {
 
-            text.textContent =
-                "A newer version exists on GitHub — probably from " +
-                "another device.";
+            text.innerHTML =
+                "A newer version exists on GitHub —<br>" +
+                "probably from another device.";
 
             primaryBtn.textContent = "Restore Now";
             primaryBtn.style.display = "inline-block";
