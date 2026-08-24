@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "logEntries": [
     {
+      "id": "081b06fe-ec5f-41c4-b56d-8c274e1c2515",
+      "vehicleId": "juke",
+      "date": "2022-04-07",
+      "mileage": 152579,
+      "title": "summer tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "08c046cc-d761-4416-b282-66d30043353e",
       "vehicleId": "phoenix",
       "date": "2026-08-23",
@@ -29,6 +40,17 @@
       "date": "2026-08-23",
       "mileage": null,
       "title": "Tailgate Strikers",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "0d121cea-aec0-4486-ad4e-a223fcbdde17",
+      "vehicleId": "juke",
+      "date": "2016-04-23",
+      "mileage": 11208,
+      "title": "summer tires installed",
       "description": "",
       "cost": 0,
       "notes": "",
@@ -79,6 +101,17 @@
       "photos": []
     },
     {
+      "id": "3487575a-29dd-44fa-bc0e-62fd5437f114",
+      "vehicleId": "juke",
+      "date": "2018-05-12",
+      "mileage": 68051,
+      "title": "summer tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "37cafe7b-614e-41d5-94d5-ac871c069cdc",
       "vehicleId": "phoenix",
       "date": "2026-08-09",
@@ -96,6 +129,28 @@
       "mileage": 178857,
       "title": "Brake shenanigans",
       "description": "Pads and rotors all four corners, new (reman) front calipers, all from NAPA. Bled new calipers, partial flush of rear lines too.\n\nFront pads: SG7318BX\nFront rotors: 48880864\nFront left caliper: 3008XA\nFront right caliper: 3008XB\nRear pads: SG7784X\nRear rotors: 48880070",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "4396d14d-eedd-461d-82fe-4a58cb3f9cbb",
+      "vehicleId": "juke",
+      "date": "2017-04-29",
+      "mileage": 34800,
+      "title": "summer tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "4f71d5ff-b251-46c5-837d-5c2b83a5c4e0",
+      "vehicleId": "juke",
+      "date": "2016-12-14",
+      "mileage": 23331,
+      "title": "snow tires installed",
+      "description": "",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -123,6 +178,28 @@
       "photos": []
     },
     {
+      "id": "5522ccfe-b797-4d9e-80df-ff3513369bd1",
+      "vehicleId": "juke",
+      "date": "2020-11-21",
+      "mileage": 118111,
+      "title": "snow tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "585bf1e6-d85c-460a-a777-8cd1f453052b",
+      "vehicleId": "juke",
+      "date": "2019-04-20",
+      "mileage": 91845,
+      "title": "summer tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "6429b0a1-f5bc-4dad-9ac9-89c6d7c837a5",
       "vehicleId": "phoenix",
       "date": "2026-05-31",
@@ -139,6 +216,17 @@
       "date": "2024-02-17",
       "mileage": 4499.9,
       "title": "Oil change",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "6af38b7c-8547-4fbf-affd-deeae971a49d",
+      "vehicleId": "juke",
+      "date": "2021-04-09",
+      "mileage": 125924,
+      "title": "summer tires installed",
       "description": "",
       "cost": 0,
       "notes": "",
@@ -178,6 +266,39 @@
       "photos": []
     },
     {
+      "id": "88a1ae7f-123c-4dc0-b8c9-0812b3b17c84",
+      "vehicleId": "juke",
+      "date": "2020-04-04",
+      "mileage": 109540,
+      "title": "summer tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "91caaa60-f25c-443f-9154-fc9a7c881260",
+      "vehicleId": "juke",
+      "date": "2021-11-29",
+      "mileage": 135000,
+      "title": "snow tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "a0b0feb5-518e-4505-b68e-12eac6d832b3",
+      "vehicleId": "juke",
+      "date": "2019-11-09",
+      "mileage": 102000,
+      "title": "snow tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "a55b5285-bb02-4eb6-ab30-37020f125bb2",
       "vehicleId": "phoenix",
       "date": "2026-05-23",
@@ -206,6 +327,17 @@
       "mileage": 39228,
       "title": "Engine assembly progress",
       "description": "91318-300-013 - sealing rubber\n12209-300-003 - valve stem seal",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "c69937a8-1d48-4dd5-9503-5e94df2da4b7",
+      "vehicleId": "juke",
+      "date": "2018-11-17",
+      "mileage": 81478,
+      "title": "snow tires installed",
+      "description": "",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -288,12 +420,34 @@
       "photos": []
     },
     {
+      "id": "e6a9d17b-e809-4dfa-8c52-baff1af20902",
+      "vehicleId": "juke",
+      "date": "2024-12-01",
+      "mileage": 170694,
+      "title": "snow tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "eaa68046-c13b-4e9e-9c42-d213594c6061",
       "vehicleId": "phoenix",
       "date": "2026-08-23",
       "mileage": 39228,
       "title": "Mount new coils",
       "description": "Mounted to frame, not wired",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "f722ebb0-effc-491f-9a81-b052fde56c58",
+      "vehicleId": "juke",
+      "date": "2017-11-04",
+      "mileage": 51425,
+      "title": "snow tires installed",
+      "description": "",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -335,11 +489,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-24T11:20:52.942Z"
+      "value": "2026-08-24T13:52:45.065Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-24T02:06:49.107Z"
+      "value": "2026-08-24T11:20:52.942Z"
     },
     {
       "key": "schemaVersion",
@@ -352,6 +506,14 @@
       "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
       "vehicleId": "phoenix",
       "title": "rear fender/tail light mounting",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "1c02a958-39b6-4247-b3df-cce66d8fa79a",
+      "vehicleId": "juke",
+      "title": "snow tires installed",
       "date": "",
       "mileage": null,
       "description": ""
@@ -590,5 +752,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-24T11:20:52.942Z"
+  "lastModified": "2026-08-24T13:52:45.065Z"
 }
