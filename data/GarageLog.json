@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "logEntries": [
     {
+      "id": "08c046cc-d761-4416-b282-66d30043353e",
+      "vehicleId": "phoenix",
+      "date": "2026-08-23",
+      "mileage": 39228,
+      "title": "Mount new ignition switch",
+      "description": "Mounted, not wired.\n\nAlso need to figure out starting switch, since the stock ignition switch doesn't have a start position.",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "0ca48929-9403-4496-9219-c22e4021da23",
       "vehicleId": "red",
       "date": "2024-06-15",
@@ -24,10 +35,32 @@
       "photos": []
     },
     {
+      "id": "17c18377-519a-40c2-bd89-ea5e3725e666",
+      "vehicleId": "phoenix",
+      "date": "2026-08-23",
+      "mileage": 39228,
+      "title": "Gas tank lid latch",
+      "description": "Fabricated a part to hold the stud for the push-button release (from Amazon)",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "2ce2ef30-81af-45ea-a60e-6586a2fee86c",
+      "vehicleId": "phoenix",
+      "date": "2026-06-28",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "91305-323-000 - 4x oil control orifice O-ring (1.9 x 5.8)\n12115-300-000 - 8x cylinder stud gasket\n91310-300-000 - 2x cylinder oil passage O-ring (2.5 x 11)",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "37cafe7b-614e-41d5-94d5-ac871c069cdc",
       "vehicleId": "phoenix",
       "date": "2026-08-09",
-      "mileage": null,
+      "mileage": 39228,
       "title": "Engine back in frame",
       "description": "",
       "cost": 0,
@@ -41,6 +74,28 @@
       "mileage": 178857,
       "title": "Brake shenanigans",
       "description": "Pads and rotors all four corners, new (reman) front calipers, all from NAPA. Bled new calipers, partial flush of rear lines too.\n\nFront pads: SG7318BX\nFront rotors: 48880864\nFront left caliper: 3008XA\nFront right caliper: 3008XB\nRear pads: SG7784X\nRear rotors: 48880070",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "530188e8-33d8-4eb1-a541-03f47942c28d",
+      "vehicleId": "phoenix",
+      "date": "2026-05-30",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "11395-300-040 - transmission cover gasket\n91206-286-005 - gearshift seal (14 x 28 x 7)\n91304-028-000 - 3x oil pump passage collar O-ring (2.5 x 14)\n91301-283-005 - countershaft bearing holder O-ring (2.4 x 5)",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "6429b0a1-f5bc-4dad-9ac9-89c6d7c837a5",
+      "vehicleId": "phoenix",
+      "date": "2026-05-31",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "11396-300-303 - clutch cover gasket\n91202-216-003 - clutch lifter seal (14 x 24 x 5)\n91204-286-003 - kick starter seal (18 x 29 x 7)",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -71,9 +126,20 @@
       "id": "8108a0e9-db4a-469b-95e6-4a1ddb602ac5",
       "vehicleId": "phoenix",
       "date": "2026-08-15",
-      "mileage": null,
+      "mileage": 39228,
       "title": "rebuild progress",
       "description": "Preliminary wiring:\n- mount regulator, rectifier, starter solenoid in original locations\n- temporarily installed key for testing\n- starter turns, having trouble getting spark\n\nMount oil tank, install oil lines\n\nInstall handlebar controls and related cables\n\nInstall and adjust cam chain tensioner",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "a55b5285-bb02-4eb6-ab30-37020f125bb2",
+      "vehicleId": "phoenix",
+      "date": "2026-05-23",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "91302-300-003 - crankshaft seal (30 x 4 x 8)\n91205-300-005 - front sprocket countershaft seal (25 x 62 x 7)",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -82,11 +148,44 @@
       "id": "bd1f39bf-7b38-4a34-8191-e91196472edf",
       "vehicleId": "phoenix",
       "date": "2026-08-16",
-      "mileage": null,
+      "mileage": 39228,
       "title": "rebuild progress",
       "description": "- temporarily mounted and wired up old coils\n- adjusted points\n- first startup - nothing exploded!\n- \"rebuilt\" front brakes\n- re-adjusted clutch cable",
       "cost": 0,
       "notes": "turns out the turn signals and the horn pretty much just worked on their own. I had to plug in the flasher unit of course, but everything else apparently was already connected.",
+      "photos": []
+    },
+    {
+      "id": "bf5779e3-4983-4aef-afca-30ec78bc6935",
+      "vehicleId": "phoenix",
+      "date": "2026-07-25",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "91318-300-013 - sealing rubber\n12209-300-003 - valve stem seal",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "c767921f-5bb8-4383-b1ca-859078c67c01",
+      "vehicleId": "phoenix",
+      "date": "2026-06-20",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "12191-300-030 - cylinder base gasket\n91304-286-000 - 4x cylinder sleeve base O-ring (2 x 61.8)\n91311-044-000 - oil passage collar O-ring (3 x 18)",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "c7a0d192-f1a1-4fbb-a045-80854356e1e5",
+      "vehicleId": "phoenix",
+      "date": "2026-05-25",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "11397-300-303 - alternator cover gasket\n11398-300-303 - oil pan gasket",
+      "cost": 0,
+      "notes": "",
       "photos": []
     },
     {
@@ -101,14 +200,36 @@
       "photos": []
     },
     {
+      "id": "d2baf95a-384b-4050-8990-83945f74eb46",
+      "vehicleId": "phoenix",
+      "date": "2026-06-20",
+      "mileage": 39228,
+      "title": "Engine assembly progress",
+      "description": "12191-300-030 - cylinder base gasket\n91304-286-000 - 4x cylinder sleeve base O-ring (2 x 61.8)\n91311-044-000 - oil passage collar O-ring (3 x 18)",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "dc500301-9ee4-40dc-a935-284418894585",
       "vehicleId": "phoenix",
       "date": "2026-08-01",
-      "mileage": null,
-      "title": "Engine reassembly completed",
-      "description": "",
+      "mileage": 39228,
+      "title": "Engine assembly completed",
+      "description": "12329-300-020 - breather cover gasket\n12391-300-040 - cylinder head cover gasket \n91211-286-003 - tachometer seal (4.8 x 14.5 x 4)\n91302-001-020 - tappet cover O-ring (3.2 x 30.8)\n12251-300-004 - cylinder head gasket\n14592-300-000 - cam chain tensioner gasket \n31282-300-020 - starter motor cover gasket",
       "cost": 0,
-      "notes": "After years in pieces and months picking away at reassembly, it's all back together",
+      "notes": "After years in pieces and months picking away at reassembly, it's all back together.",
+      "photos": []
+    },
+    {
+      "id": "eaa68046-c13b-4e9e-9c42-d213594c6061",
+      "vehicleId": "phoenix",
+      "date": "2026-08-23",
+      "mileage": 39228,
+      "title": "Mount new coils",
+      "description": "Mounted to frame, not wired",
+      "cost": 0,
+      "notes": "",
       "photos": []
     },
     {
@@ -126,7 +247,7 @@
       "id": "feacd22b-fb35-4ea2-8c5a-13bee16104a4",
       "vehicleId": "phoenix",
       "date": "2026-08-17",
-      "mileage": null,
+      "mileage": 39228,
       "title": "rebuild progress",
       "description": "installed header and chain for test ride",
       "cost": 0,
@@ -137,11 +258,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-23T18:16:00.255Z"
+      "value": "2026-08-24T00:51:03.422Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-23T17:52:23.552Z"
+      "value": "2026-08-23T18:16:00.255Z"
     },
     {
       "key": "schemaVersion",
@@ -170,22 +291,6 @@
       "id": "2fadf1b2-88a0-46cc-b5f8-388b2e1d1601",
       "vehicleId": "phoenix",
       "title": "z.headlights?",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "38d2f1b4-ea6e-4153-8dcc-b6232f14a148",
-      "vehicleId": "phoenix",
-      "title": "install new ignition switch",
-      "date": "",
-      "mileage": null,
-      "description": "Also need to figure out starting switch, since the stock ignition switch doesn't have a start position."
-    },
-    {
-      "id": "40a18482-9c8c-4c52-8176-52bf21babde7",
-      "vehicleId": "phoenix",
-      "title": "Fabricate and install gas tank latch",
       "date": "",
       "mileage": null,
       "description": ""
@@ -226,14 +331,6 @@
       "id": "8938a0a2-c23b-458c-ac90-5146a7f60284",
       "vehicleId": "white",
       "title": "Starter solenoid",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "92a58c12-072f-4dc5-b271-6b7a80ce6fd0",
-      "vehicleId": "phoenix",
-      "title": "install new coils",
       "date": "",
       "mileage": null,
       "description": ""
@@ -338,7 +435,7 @@
       "vin": "CB750F-2014831",
       "licensePlate": "",
       "purchaseDate": "",
-      "currentMileage": null,
+      "currentMileage": 39228,
       "notes": "Oil filter: NAPA FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335"
     },
     {
@@ -426,5 +523,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-23T18:16:00.255Z"
+  "lastModified": "2026-08-24T00:51:03.422Z"
 }
