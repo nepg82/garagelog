@@ -114,11 +114,15 @@ function displayVehicles(vehicles, sorting = false) {
             </button>
         `
         : `
+            <button id="allPlansButton">
+			    Plans
+			</button>
+
             <button id="addVehicleButton" class="primary">
-                Add Vehicle
+                Add
             </button>
 
-            <button id="sortButton" class="primary">
+			<button id="sortButton" class="primary">
                  Sort
             </button>
 
@@ -167,6 +171,11 @@ if (!sorting) {
             displayVehicleEditor();
         });
 
+	document
+    	.getElementById("allPlansButton")
+	    .addEventListener("click", () => {
+    	    displayAllPlans();
+	    });
 
     // Backup
 
@@ -435,6 +444,181 @@ if (!sorting) {
                 });
             });
     }
+}
+
+async function displayAllPlans() {
+
+    const container = document.getElementById("app");
+
+    refreshDataVersion();
+
+    const vehicles = await getVehicles();
+
+    const vehiclePlans = [];
+
+    for (const vehicle of vehicles) {
+
+        const plans = await getPlansForVehicle(vehicle.id);
+
+        if (plans.length > 0) {
+            vehiclePlans.push({ vehicle, plans });
+        }
+    }
+
+    container.innerHTML = `
+        <button id="backButton">← Vehicles</button>
+
+        <div class="vehicle-detail">
+
+            <h1>All Plans</h1>
+
+            ${
+                vehiclePlans.length === 0
+                ? "<p>No plans yet on any vehicle.</p>"
+                : vehiclePlans.map(({ vehicle, plans }) => `
+                    <details name="all-plans-sections" class="vehicle-plans" open>
+
+                        <summary>
+                            <h2>
+                                ${vehicle.nickname}
+                                <span class="plan-count">(${plans.length})</span>
+                            </h2>
+                        </summary>
+
+                        <div class="plans-list">
+
+                            ${plans.map(plan => `
+                                <details class="log-entry plan-entry">
+
+                                    <summary class="log-summary">
+
+                                        <span class="log-title">
+                                            ${plan.title}
+                                        </span>
+
+                                        <span class="log-date">
+                                            ${plan.date || ""}
+                                        </span>
+
+                                        <span class="log-mileage">
+                                            ${
+                                                plan.mileage !== null &&
+                                                plan.mileage !== undefined
+                                                    ? `${plan.mileage.toLocaleString()} miles`
+                                                    : ""
+                                            }
+                                        </span>
+
+                                    </summary>
+
+                                    <div class="log-details">
+
+                                        ${
+                                            plan.description
+                                                ? `<p class="log-description">${plan.description}</p>`
+                                                : ""
+                                        }
+
+                                        <button
+                                            class="edit-plan-button"
+                                            data-vehicle-id="${vehicle.id}"
+                                            data-id="${plan.id}"
+                                        >
+                                            Edit
+                                        </button>
+
+                                        <button
+                                            class="complete-plan-button primary"
+                                            data-vehicle-id="${vehicle.id}"
+                                            data-id="${plan.id}"
+                                        >
+                                            Complete
+                                        </button>
+
+                                        <button
+                                            class="delete-plan-button danger"
+                                            data-vehicle-id="${vehicle.id}"
+                                            data-id="${plan.id}"
+                                        >
+                                            Delete
+                                        </button>
+
+                                    </div>
+
+                                </details>
+                            `).join("")}
+
+                        </div>
+
+                    </details>
+                `).join("")
+            }
+
+        </div>
+    `;
+
+    document
+        .getElementById("backButton")
+        .addEventListener("click", async () => {
+            const vehicles = await getVehicles();
+            displayVehicles(vehicles);
+        });
+
+    const findVehiclePlan = (vehicleId, planId) => {
+        const entry = vehiclePlans.find(vp => vp.vehicle.id === vehicleId);
+        const plan = entry.plans.find(p => p.id === planId);
+        return { vehicle: entry.vehicle, plan };
+    };
+
+    document
+        .querySelectorAll(".edit-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", () => {
+
+                const { vehicle, plan } = findVehiclePlan(
+                    button.dataset.vehicleId,
+                    button.dataset.id
+                );
+
+                displayPlanEditor(vehicle, plan, () => displayAllPlans());
+            });
+        });
+
+    document
+        .querySelectorAll(".complete-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", () => {
+
+                const { vehicle, plan } = findVehiclePlan(
+                    button.dataset.vehicleId,
+                    button.dataset.id
+                );
+
+                displayPlanCompletion(vehicle, plan, () => displayAllPlans());
+            });
+        });
+
+    document
+        .querySelectorAll(".delete-plan-button")
+        .forEach(button => {
+            button.addEventListener("click", async () => {
+
+                const { vehicle, plan } = findVehiclePlan(
+                    button.dataset.vehicleId,
+                    button.dataset.id
+                );
+
+                if (!confirm(
+                    `Delete "${plan.title}"? This cannot be undone.`
+                )) {
+                    return;
+                }
+
+                await deletePlan(plan.id);
+
+                displayAllPlans();
+            });
+        });
 }
 
 async function displayVehicle(vehicle) {
@@ -759,7 +943,7 @@ async function displayVehicle(vehicle) {
         });
 }
 
-function displayPlanEditor(vehicle, plan = null) {
+function displayPlanEditor(vehicle, plan = null, onDone = () => displayVehicle(vehicle)) {
 
     const container = document.getElementById("app");
 
@@ -823,7 +1007,7 @@ function displayPlanEditor(vehicle, plan = null) {
     document
         .getElementById("cancelButton")
         .addEventListener("click", () => {
-            displayVehicle(vehicle);
+    	    onDone();
         });
 
 
@@ -869,11 +1053,11 @@ function displayPlanEditor(vehicle, plan = null) {
 
             await savePlan(updatedPlan);
 
-            displayVehicle(vehicle);
+	        onDone();
         });
 }
 
-function displayPlanCompletion(vehicle, plan) {
+function displayPlanCompletion(vehicle, plan, onDone = () => displayVehicle(vehicle)) {
 
     const container = document.getElementById("app");
 
@@ -927,7 +1111,7 @@ function displayPlanCompletion(vehicle, plan) {
     document
         .getElementById("cancelButton")
         .addEventListener("click", () => {
-            displayVehicle(vehicle);
+			onDone();
         });
 
 
@@ -985,7 +1169,7 @@ function displayPlanCompletion(vehicle, plan) {
                 await saveVehicle(vehicle);
             }
 
-            displayVehicle(vehicle);
+				 onDone();
         });
 }
 

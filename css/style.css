@@ -272,7 +272,7 @@ h1 {
 }
 
 .garage-header button {
-    min-width: 70px;
+    min-width: 60px;
 }
 
 .vehicle-sort-buttons {
@@ -309,4 +309,14 @@ details > summary::-webkit-details-marker {
 
 .plan-entry {
     border-color: var(--accent-yellow);
+}
+
+.plan-count {
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #888;
+}
+
+.plans-list {
+    padding-left: 0.5rem;
 }
