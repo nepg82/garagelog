@@ -476,7 +476,7 @@ async function displayAllPlans() {
                 vehiclePlans.length === 0
                 ? "<p>No plans yet on any vehicle.</p>"
                 : vehiclePlans.map(({ vehicle, plans }) => `
-                    <details name="all-plans-sections" class="vehicle-plans" open>
+                    <details name="all-plans-sections" class="vehicle-plans">
 
                         <summary>
                             <h2>
