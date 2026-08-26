@@ -224,13 +224,16 @@ async function updateVehicleSchema() {
 
         let changed = false;
 
-        if (!("vin" in vehicle)) {
-            vehicle.vin = "";
+        // VIN and license plate are no longer collected or displayed.
+        // Strip them from any records that still carry them (e.g. from
+        // before this change, or reimported from an old backup).
+        if ("vin" in vehicle) {
+            delete vehicle.vin;
             changed = true;
         }
 
-        if (!("licensePlate" in vehicle)) {
-            vehicle.licensePlate = "";
+        if ("licensePlate" in vehicle) {
+            delete vehicle.licensePlate;
             changed = true;
         }
 

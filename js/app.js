@@ -646,14 +646,6 @@ async function displayVehicle(vehicle) {
 
   			  </summary>
 
-                <p><strong>VIN:</strong>
-                    ${vehicle.vin || "Not recorded"}
-                </p>
-
-                <p><strong>License Plate:</strong>
-                    ${vehicle.licensePlate || "Not recorded"}
-                </p>
-
                 <p><strong>Purchase Date:</strong>
                     ${vehicle.purchaseDate || "Not recorded"}
                 </p>
@@ -1356,28 +1348,6 @@ function displayVehicleEditor(vehicle = null) {
             <br>
 
             <label>
-                VIN<br>
-                <input
-                    type="text"
-                    id="vin"
-                    value="${vehicle?.vin || ""}"
-                >
-            </label>
-
-            <br>
-
-            <label>
-                License Plate<br>
-                <input
-                    type="text"
-                    id="licensePlate"
-                    value="${vehicle?.licensePlate || ""}"
-                >
-            </label>
-
-            <br>
-
-            <label>
                 Purchase Date<br>
                 <input
                     type="date"
@@ -1481,15 +1451,6 @@ function displayVehicleEditor(vehicle = null) {
                 make,
 
                 model,
-
-                vin:
-                    document.getElementById("vin").value.trim(),
-
-                licensePlate:
-                    document
-                        .getElementById("licensePlate")
-                        .value
-                        .trim(),
 
                 purchaseDate:
                     document
