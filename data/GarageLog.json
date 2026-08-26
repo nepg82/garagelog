@@ -489,11 +489,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-25T19:44:37.707Z"
+      "value": "2026-08-26T13:37:22.476Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-24T18:17:11.650Z"
+      "value": "2026-08-25T19:44:37.707Z"
     },
     {
       "key": "schemaVersion",
@@ -506,6 +506,14 @@
       "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
       "vehicleId": "phoenix",
       "title": "rear fender/tail light mounting",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "0a4d0bf2-6ad5-4ef7-9ff6-981e2a16670f",
+      "vehicleId": "phoenix",
+      "title": "Wiring 2 - charging/start/headlight",
       "date": "",
       "mileage": null,
       "description": ""
@@ -553,7 +561,7 @@
     {
       "id": "6b0dc243-f87f-4cf8-a0e4-5cb292e914ea",
       "vehicleId": "phoenix",
-      "title": "Wiring",
+      "title": "Wiring 1 - ignition/battery",
       "date": "",
       "mileage": null,
       "description": ""
@@ -567,9 +575,25 @@
       "description": ""
     },
     {
+      "id": "7f52e669-d454-45a0-a84e-37765cd29716",
+      "vehicleId": "phoenix",
+      "title": "Wiring 3 - brake/horn",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
       "id": "8938a0a2-c23b-458c-ac90-5146a7f60284",
       "vehicleId": "white",
       "title": "Starter solenoid",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "9fb23b9d-e1dc-42fe-9807-c5726cf53741",
+      "vehicleId": "phoenix",
+      "title": "Wiring 0 - install all components",
       "date": "",
       "mileage": null,
       "description": ""
@@ -586,6 +610,14 @@
       "id": "ccf2fb60-b402-4506-baad-9dad532573b8",
       "vehicleId": "phoenix",
       "title": "Fork seals",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "e6efef14-1b44-4d85-973b-d3ff0d362676",
+      "vehicleId": "phoenix",
+      "title": "Wiring 4 - turn signals",
       "date": "",
       "mileage": null,
       "description": ""
@@ -760,5 +792,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-25T19:44:37.707Z"
+  "lastModified": "2026-08-26T13:37:22.476Z"
 }
