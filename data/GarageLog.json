@@ -489,11 +489,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-26T13:37:22.476Z"
+      "value": "2026-08-26T20:54:43.164Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-25T19:44:37.707Z"
+      "value": "2026-08-26T13:37:22.476Z"
     },
     {
       "key": "schemaVersion",
@@ -543,6 +543,14 @@
       "description": ""
     },
     {
+      "id": "4e309a59-5204-44e7-9412-65b2b035e399",
+      "vehicleId": "frontier",
+      "title": "Battery",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
       "id": "5197253d-348f-4bff-ad13-c1680cb8ce71",
       "vehicleId": "phoenix",
       "title": "z.rear cowl/seat?",
@@ -554,6 +562,14 @@
       "id": "565dbd0b-dc42-44ac-bf48-53190efdde68",
       "vehicleId": "red",
       "title": "Oil change",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "65ae884e-39c3-4fae-a75b-ffc43f43f7d1",
+      "vehicleId": "frontier",
+      "title": "Window Switch",
       "date": "",
       "mileage": null,
       "description": ""
@@ -792,5 +808,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-26T13:37:22.476Z"
+  "lastModified": "2026-08-26T20:54:43.164Z"
 }
