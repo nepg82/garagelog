@@ -151,7 +151,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-.vehicle-detail input,
+.vehicle-detail input:not([type="checkbox"]),
 .vehicle-detail textarea,
 .vehicle-detail select {
     box-sizing: border-box;
@@ -319,4 +319,27 @@ details > summary::-webkit-details-marker {
 
 .plans-list {
     padding-left: 0.5rem;
+}
+
+.vehicle-detail .plan-checklist {
+    white-space: normal;
+}
+
+.vehicle-detail .plan-checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 4px 0;
+    cursor: pointer;
+    white-space: normal;
+}
+
+.vehicle-detail .plan-checklist-item input[type="checkbox"] {
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.vehicle-detail .plan-checklist-item span {
+    white-space: pre-wrap;
+    text-align: left;
 }

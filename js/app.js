@@ -446,6 +446,76 @@ if (!sorting) {
     }
 }
 
+// Renders a plan's description as plain text, or — if it contains
+// checklist lines like "[ ] task" / "[x] task" — as a mix of plain
+// paragraphs and real checkboxes. Checkbox state lives entirely in the
+// description text, so no schema/DB changes are needed.
+function renderPlanDescription(plan, vehicleId = null) {
+
+    if (!plan.description) return "";
+
+    const lines = plan.description.split("\n");
+
+    const hasChecklist = lines.some(line =>
+        /^\s*\[[ xX]\]/.test(line)
+    );
+
+    if (!hasChecklist) {
+        return `<p class="log-description">${plan.description}</p>`;
+    }
+
+    return `
+        <div
+            class="log-description plan-checklist"
+            data-plan-id="${plan.id}"
+            ${vehicleId ? `data-vehicle-id="${vehicleId}"` : ""}
+        >
+            ${lines.map((line, index) => {
+
+                const match = line.match(/^\s*\[([ xX])\]\s?(.*)$/);
+
+                if (match) {
+                    const checked = match[1].toLowerCase() === "x";
+                    const text = match[2];
+
+                    return `
+                        <label class="plan-checklist-item">
+                            <input
+                                type="checkbox"
+                                class="plan-checklist-checkbox"
+                                data-line-index="${index}"
+                                ${checked ? "checked" : ""}
+                            >
+                            <span>${text}</span>
+                        </label>
+                    `;
+                }
+
+                return line.trim()
+                    ? `<p class="log-description">${line}</p>`
+                    : "";
+            }).join("")}
+        </div>
+    `;
+}
+
+// Flips a single "[ ]" / "[x]" line within a plan description string
+// and returns the updated description.
+function toggleChecklistLine(description, lineIndex) {
+
+    const lines = description.split("\n");
+    const match = lines[lineIndex].match(/^(\s*)\[([ xX])\](.*)$/);
+
+    if (!match) return description;
+
+    const [, indent, mark, rest] = match;
+    const newMark = mark.toLowerCase() === "x" ? " " : "x";
+
+    lines[lineIndex] = `${indent}[${newMark}]${rest}`;
+
+    return lines.join("\n");
+}
+
 async function displayAllPlans() {
 
     const container = document.getElementById("app");
@@ -513,11 +583,7 @@ async function displayAllPlans() {
 
                                     <div class="log-details">
 
-                                        ${
-                                            plan.description
-                                                ? `<p class="log-description">${plan.description}</p>`
-                                                : ""
-                                        }
+                                        ${renderPlanDescription(plan, vehicle.id)}
 
                                         <button
                                             class="edit-plan-button"
@@ -617,6 +683,28 @@ async function displayAllPlans() {
                 await deletePlan(plan.id);
 
                 displayAllPlans();
+            });
+        });
+
+    document
+        .querySelectorAll(".plan-checklist-checkbox")
+        .forEach(checkbox => {
+            checkbox.addEventListener("change", async () => {
+
+                const container = checkbox.closest(".plan-checklist");
+                const lineIndex = Number(checkbox.dataset.lineIndex);
+
+                const { plan } = findVehiclePlan(
+                    container.dataset.vehicleId,
+                    container.dataset.planId
+                );
+
+                plan.description = toggleChecklistLine(
+                    plan.description,
+                    lineIndex
+                );
+
+                await savePlan(plan);
             });
         });
 }
@@ -787,11 +875,7 @@ async function displayVehicle(vehicle) {
 
                                 <div class="log-details">
 
-                                    ${
-                                        plan.description
-                                            ? `<p class="log-description">${plan.description}</p>`
-                                            : ""
-                                    }
+                                    ${renderPlanDescription(plan)}
 
                                     <button
                                         class="edit-plan-button"
@@ -933,6 +1017,27 @@ async function displayVehicle(vehicle) {
                 displayVehicle(vehicle);
             });
         });
+
+    document
+        .querySelectorAll(".plan-checklist-checkbox")
+        .forEach(checkbox => {
+            checkbox.addEventListener("change", async () => {
+
+                const container = checkbox.closest(".plan-checklist");
+                const lineIndex = Number(checkbox.dataset.lineIndex);
+
+                const plan = plans.find(
+                    plan => plan.id === container.dataset.planId
+                );
+
+                plan.description = toggleChecklistLine(
+                    plan.description,
+                    lineIndex
+                );
+
+                await savePlan(plan);
+            });
+        });
 }
 
 function displayPlanEditor(vehicle, plan = null, onDone = () => displayVehicle(vehicle)) {
@@ -1000,6 +1105,27 @@ function displayPlanEditor(vehicle, plan = null, onDone = () => displayVehicle(v
         .getElementById("cancelButton")
         .addEventListener("click", () => {
     	    onDone();
+        });
+
+    document
+        .getElementById("planDescription")
+        .addEventListener("input", event => {
+
+            const textarea = event.target;
+            const pos = textarea.selectionStart;
+            const value = textarea.value;
+
+            // Typing "[]" anywhere expands it into a checkbox marker.
+            if (value.slice(pos - 2, pos) === "[]") {
+
+                const newValue =
+                    value.slice(0, pos - 2) + "[ ] " + value.slice(pos);
+
+                textarea.value = newValue;
+
+                const newPos = pos - 2 + 4;
+                textarea.setSelectionRange(newPos, newPos);
+            }
         });
 
 
