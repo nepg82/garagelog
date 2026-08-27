@@ -489,11 +489,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-27T19:21:11.626Z"
+      "value": "2026-08-27T19:21:26.141Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-27T16:51:07.398Z"
+      "value": "2026-08-27T19:21:11.626Z"
     },
     {
       "key": "schemaVersion",
@@ -612,7 +612,7 @@
       "title": "Wiring 0 - install all components",
       "date": "",
       "mileage": null,
-      "description": "[ ] coils\n[x] starter button\n[ ] horns\n[ ] fuse block\n[ ] relays\n[ ] turn signals\n[ ] brake light?"
+      "description": "[ ] coils\n[ ] starter button\n[ ] horns\n[ ] fuse block\n[ ] relays\n[ ] turn signals\n[ ] brake light?"
     },
     {
       "id": "ccf2fb60-b402-4506-baad-9dad532573b8",
@@ -778,5 +778,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-27T19:21:11.626Z"
+  "lastModified": "2026-08-27T19:21:26.141Z"
 }
