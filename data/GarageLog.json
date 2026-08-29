@@ -500,11 +500,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-29T20:11:39.640Z"
+      "value": "2026-08-29T21:05:20.767Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-29T19:46:06.375Z"
+      "value": "2026-08-29T20:11:39.640Z"
     },
     {
       "key": "schemaVersion",
@@ -517,6 +517,14 @@
       "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
       "vehicleId": "phoenix",
       "title": "rear fender/tail light mounting",
+      "date": "",
+      "mileage": null,
+      "description": ""
+    },
+    {
+      "id": "06fd14a0-dbf5-49a6-8bf8-8b292a73dd06",
+      "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
+      "title": "Water reclamation tank",
       "date": "",
       "mileage": null,
       "description": ""
@@ -548,7 +556,7 @@
     {
       "id": "26120e30-7d1d-4fa9-ac68-13dff0bb46bc",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
-      "title": "Ditches",
+      "title": "Ditches - drainage pipes and fill",
       "date": "",
       "mileage": null,
       "description": ""
@@ -631,7 +639,7 @@
       "title": "Back porch",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "[ ] new stud\n[ ] repair rail"
     },
     {
       "id": "70a07ce4-6ac7-4b39-97ce-7ae855ce527c",
@@ -647,7 +655,7 @@
       "title": "Master bathroom",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "[ ] floor\n[ ] rebuild shower"
     },
     {
       "id": "7f52e669-d454-45a0-a84e-37765cd29716",
@@ -660,10 +668,10 @@
     {
       "id": "8880363f-909d-413e-8309-fe11404fcc45",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
-      "title": "Ceilings- patch & paint",
+      "title": "Ceilings - patch & paint",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "[ ] living room\n[ ] first floor bathroom \n[ ] kitchen?"
     },
     {
       "id": "8938a0a2-c23b-458c-ac90-5146a7f60284",
@@ -676,10 +684,10 @@
     {
       "id": "96b3e2ae-75e8-4bc2-8f96-8e922348b5a3",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
-      "title": "Garage doors",
+      "title": "Garage doors (move)",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "Move to west side after driveway and parking area"
     },
     {
       "id": "9fb23b9d-e1dc-42fe-9807-c5726cf53741",
@@ -703,7 +711,7 @@
       "title": "Guest bathroom",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "[ ] walk in shower"
     },
     {
       "id": "b8fab4d2-4551-40fa-b532-779142049143",
@@ -711,7 +719,7 @@
       "title": "Front porch",
       "date": "",
       "mileage": null,
-      "description": ""
+      "description": "[ ] stairs\n[ ] lights?"
     },
     {
       "id": "ccf2fb60-b402-4506-baad-9dad532573b8",
@@ -748,7 +756,7 @@
     {
       "id": "f3a44f09-de48-4c8c-b040-ff3bcaab9721",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
-      "title": "Driveway",
+      "title": "Driveway - wrap around",
       "date": "",
       "mileage": null,
       "description": ""
@@ -904,5 +912,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-29T20:11:39.640Z"
+  "lastModified": "2026-08-29T21:05:20.767Z"
 }
