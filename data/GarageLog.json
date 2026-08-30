@@ -500,11 +500,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-29T21:06:58.476Z"
+      "value": "2026-08-30T12:26:53.875Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-29T21:05:20.767Z"
+      "value": "2026-08-29T21:06:58.476Z"
     },
     {
       "key": "schemaVersion",
@@ -696,6 +696,14 @@
       "date": "",
       "mileage": null,
       "description": ""
+    },
+    {
+      "id": "911a4695-40d3-458e-9a94-0547a9a798f1",
+      "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
+      "title": "Skylight",
+      "date": "",
+      "mileage": null,
+      "description": "[ ] seal window\n[ ] repair & paint drywall"
     },
     {
       "id": "96b3e2ae-75e8-4bc2-8f96-8e922348b5a3",
@@ -936,5 +944,5 @@
       "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
     }
   ],
-  "lastModified": "2026-08-29T21:06:58.476Z"
+  "lastModified": "2026-08-30T12:26:53.875Z"
 }
