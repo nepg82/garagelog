@@ -77,6 +77,9 @@ const GitHubSync = (() => {
                 gap: 10px;
                 margin-top: 16px;
             }
+            .gh-choice-buttons button {
+ 			   padding: 18px 10px;
+			}
            .gh-snackbar {
                 position: fixed;
                 bottom: 16px;
