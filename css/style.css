@@ -109,7 +109,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1rem 1.25rem;
+    padding: .7rem 1.25rem .7rem;
     cursor: pointer;
     margin-bottom: 0.75rem;
     background: #333;
@@ -117,6 +117,18 @@ h1 {
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.vehicle-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.vehicle-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .vehicle h2 {
@@ -130,6 +142,31 @@ h1 {
 
 .vehicle:hover {
     background: #555;
+}
+
+.vehicle.due-soon {
+    background: color-mix(in srgb, var(--accent-yellow) 20%, #333);
+}
+
+.vehicle.due-soon:hover {
+    background: color-mix(in srgb, var(--accent-yellow) 30%, #555);
+}
+
+.vehicle.overdue {
+    background: color-mix(in srgb, var(--accent-red) 25%, #333);
+}
+
+.vehicle.overdue:hover {
+    background: color-mix(in srgb, var(--accent-red) 35%, #555);
+}
+
+.vehicle .vehicle-reminder-badge {
+    margin: -2px 0 -5px;
+    font-family: Courier, monospace, sans-serif;
+    font-size: 0.7rem;
+    opacity: 0.75;
+    text-align: left;
+    font-style: oblique;
 }
 
 #backButton {

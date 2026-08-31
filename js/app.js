@@ -55,6 +55,76 @@ async function refreshDataVersion() {
     }
 }
 
+function getDueStatus(dateStr) {
+// Returns null if no date, otherwise { days, state } where state is
+// "overdue" | "soon" | "ok" based on a 30-day warning window.
+
+    if (!dateStr) return null;
+
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const due = new Date(y, m - 1, d);
+    const today = new Date();
+
+    due.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    const days = Math.round((due - today) / 86400000);
+
+    return {
+        days,
+        state: days < 0 ? "overdue" : days <= 30 ? "soon" : "ok"
+    };
+}
+
+function addOneYear(dateStr) {
+// Adds one year to a "YYYY-MM-DD" date string, returning a new
+// "YYYY-MM-DD" string. Used by the "Renew" buttons.
+
+    const [y, m, d] = dateStr.split("-").map(Number);
+    const next = new Date(y + 1, m - 1, d);
+
+    const pad = n => String(n).padStart(2, "0");
+
+    return `${next.getFullYear()}-${pad(next.getMonth() + 1)}-${pad(next.getDate())}`;
+}
+
+function getVehicleReminderSummary(vehicle) {
+// Picks whichever of a vehicle's due dates is most urgent.
+// Returns null if neither registrationDue nor inspectionDue is set.
+
+    const candidates = [
+        { label: "Registration", dateStr: vehicle.registrationDue },
+        { label: "Inspection", dateStr: vehicle.inspectionDue }
+    ].filter(r => r.dateStr);
+
+    if (candidates.length === 0) return null;
+
+    const withStatus = candidates
+        .map(r => ({ ...r, ...getDueStatus(r.dateStr) }))
+        .sort((a, b) => a.days - b.days);
+
+    return withStatus[0];
+}
+
+function formatDueLine(dateStr) {
+// Human-readable line for the vehicle detail page, e.g.
+// "Mar 15, 2027 (12 days)" or "Mar 15, 2026 (overdue by 4 days)"
+
+    const status = getDueStatus(dateStr);
+
+    const dateLabel = new Date(`${dateStr}T00:00:00`)
+        .toLocaleDateString(undefined, {
+            year: "numeric", month: "short", day: "numeric"
+        });
+
+    if (status.state === "overdue") {
+        const overdueBy = Math.abs(status.days);
+        return `${dateLabel} (overdue by ${overdueBy} day${overdueBy === 1 ? "" : "s"})`;
+    }
+
+    return `${dateLabel} (${status.days} day${status.days === 1 ? "" : "s"})`;
+}
+
 async function startApp() {
 
     try {
@@ -311,8 +381,12 @@ if (!sorting) {
 
         const card = document.createElement("div");
 
-        card.className = "vehicle";
+        const reminder = getVehicleReminderSummary(vehicle);
 
+        card.className = "vehicle" +
+            (reminder?.state === "overdue" ? " overdue" :
+             reminder?.state === "soon" ? " due-soon" : "");
+             
         card.innerHTML = `
             ${
                 sorting
@@ -340,11 +414,30 @@ if (!sorting) {
                 : ""
             }
 
-            <h2>${vehicle.nickname}</h2>
+            <div class="vehicle-content">
 
-            <p>
-                ${vehicle.year} ${vehicle.make} ${vehicle.model}
-            </p>
+                <div class="vehicle-main">
+
+                    <h2>${vehicle.nickname}</h2>
+
+                    <p>
+                        ${vehicle.year} ${vehicle.make} ${vehicle.model}
+                    </p>
+
+                </div>
+
+                ${
+                    reminder && reminder.state !== "ok"
+                    ? `
+                        <p class="vehicle-reminder-badge">
+                            ${reminder.label}
+                            ${reminder.state === "overdue" ? "overdue" : `due in ${reminder.days}d`}
+                        </p>
+                    `
+                    : ""
+                }
+
+            </div>
         `;
 
         if (!sorting) {
@@ -446,11 +539,11 @@ if (!sorting) {
     }
 }
 
+function renderPlanDescription(plan, vehicleId = null) {
 // Renders a plan's description as plain text, or — if it contains
 // checklist lines like "[ ] task" / "[x] task" — as a mix of plain
 // paragraphs and real checkboxes. Checkbox state lives entirely in the
 // description text, so no schema/DB changes are needed.
-function renderPlanDescription(plan, vehicleId = null) {
 
     if (!plan.description) return "";
 
@@ -499,9 +592,9 @@ function renderPlanDescription(plan, vehicleId = null) {
     `;
 }
 
+function toggleChecklistLine(description, lineIndex) {
 // Flips a single "[ ]" / "[x]" line within a plan description string
 // and returns the updated description.
-function toggleChecklistLine(description, lineIndex) {
 
     const lines = description.split("\n");
     const match = lines[lineIndex].match(/^(\s*)\[([ xX])\](.*)$/);
@@ -744,6 +837,26 @@ async function displayVehicle(vehicle) {
                         : "Not recorded"}
                 </p>
 
+                <p><strong>Registration Due:</strong>
+                    ${vehicle.registrationDue
+                        ? formatDueLine(vehicle.registrationDue)
+                        : "Not set"}
+                    ${vehicle.registrationDue &&
+                      getDueStatus(vehicle.registrationDue).state !== "ok"
+                        ? `<button id="renewRegistrationButton">Renew +1yr</button>`
+                        : ""}
+                </p>
+
+                <p><strong>Inspection Due:</strong>
+                    ${vehicle.inspectionDue
+                        ? formatDueLine(vehicle.inspectionDue)
+                        : "Not set"}
+                    ${vehicle.inspectionDue &&
+                      getDueStatus(vehicle.inspectionDue).state !== "ok"
+                        ? `<button id="renewInspectionButton">Renew +1yr</button>`
+                        : ""}
+                </p>
+
                 <h3>Notes</h3>
 
                 <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
@@ -910,6 +1023,36 @@ async function displayVehicle(vehicle) {
 
         </div>
     `;
+
+        if (vehicle.registrationDue &&
+        getDueStatus(vehicle.registrationDue).state !== "ok") {
+
+        document
+            .getElementById("renewRegistrationButton")
+            .addEventListener("click", async () => {
+
+                vehicle.registrationDue = addOneYear(vehicle.registrationDue);
+
+                await saveVehicle(vehicle);
+
+                displayVehicle(vehicle);
+            });
+    }
+
+    if (vehicle.inspectionDue &&
+        getDueStatus(vehicle.inspectionDue).state !== "ok") {
+
+        document
+            .getElementById("renewInspectionButton")
+            .addEventListener("click", async () => {
+
+                vehicle.inspectionDue = addOneYear(vehicle.inspectionDue);
+
+                await saveVehicle(vehicle);
+
+                displayVehicle(vehicle);
+            });
+    }
 
     document
         .getElementById("backButton")
@@ -1496,6 +1639,28 @@ function displayVehicleEditor(vehicle = null) {
             <br>
 
             <label>
+                Registration Due<br>
+                <input
+                    type="date"
+                    id="registrationDue"
+                    value="${vehicle?.registrationDue || ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
+                Inspection Due<br>
+                <input
+                    type="date"
+                    id="inspectionDue"
+                    value="${vehicle?.inspectionDue || ""}"
+                >
+            </label>
+
+            <br>
+
+            <label>
                 Notes<br>
                 <textarea
                     id="notes"
@@ -1587,6 +1752,16 @@ function displayVehicleEditor(vehicle = null) {
                     mileage === ""
                         ? null
                         : Number(mileage),
+
+				registrationDue:
+                    document
+                        .getElementById("registrationDue")
+                        .value,
+
+                inspectionDue:
+                    document
+                        .getElementById("inspectionDue")
+                        .value,
 
                 notes:
                     document
