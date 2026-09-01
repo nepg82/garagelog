@@ -79,6 +79,17 @@
       "photos": []
     },
     {
+      "id": "2092c451-a9c3-4fbe-85af-f70640d3df75",
+      "vehicleId": "phoenix",
+      "date": "2026-08-31",
+      "mileage": null,
+      "title": "a. Turn signal studs",
+      "description": "M10-1.25 w/ M8-1.25 hole through it",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "2ce2ef30-81af-45ea-a60e-6586a2fee86c",
       "vehicleId": "phoenix",
       "date": "2026-06-28",
@@ -442,6 +453,17 @@
       "photos": []
     },
     {
+      "id": "dd4c8ab4-e91a-4771-b5ab-84eec40bce38",
+      "vehicleId": "phoenix",
+      "date": "2026-08-31",
+      "mileage": 39228,
+      "title": "Wiring?",
+      "description": "Front markers installed, left side 2/3 wired.",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "e1840eba-1d62-4d7a-a7b2-9cec5dd57010",
       "vehicleId": "red",
       "date": "2023-12-05",
@@ -522,11 +544,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-08-30T23:32:10.894Z"
+      "value": "2026-09-01T11:31:26.535Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-08-30T12:26:53.875Z"
+      "value": "2026-09-01T01:33:25.078Z"
     },
     {
       "key": "schemaVersion",
@@ -828,7 +850,8 @@
       "type": "bike",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": "NAPA 1056, 2 qts 10w40 conventional\nNGK BKR5E\nBlades: 942-05052A\nDeck Belt: 954-04077A\nDrive Belt: 954-05027A\nTires:\n- Front: 15x6-6\n- Rear: 20x8-8"
+      "notes": "NAPA 1056, 2 qts 10w40 conventional\nNGK BKR5E\nBlades: 942-05052A\nDeck Belt: 954-04077A\nDrive Belt: 954-05027A\nTires:\n- Front: 15x6-6\n- Rear: 20x8-8",
+      "active": true
     },
     {
       "id": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
@@ -839,7 +862,8 @@
       "model": "House",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": ""
+      "notes": "",
+      "active": true
     },
     {
       "id": "afff3aca-a36a-4f38-b28c-81c7491e2e29",
@@ -851,7 +875,8 @@
       "type": "car",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": ""
+      "notes": "",
+      "active": false
     },
     {
       "id": "frontier",
@@ -863,7 +888,8 @@
       "type": "car",
       "purchaseDate": "2019-04-01",
       "currentMileage": 175320,
-      "notes": "Oil: NAPA 7356, 5.5 qts 5w30 (75521)\nCopper washers: 7041215\nAir: NAPA 6213\nLug torque: 98 ft-lbs\nWipers: 22\"/18\"\nTires: 265/70-16\nTire rotation: fronts straight back, rears diagonally forward"
+      "notes": "Oil: NAPA 7356, 5.5 qts 5w30 (75521)\nCopper washers: 7041215\nAir: NAPA 6213\nLug torque: 98 ft-lbs\nWipers: 22\"/18\"\nTires: 265/70-16\nTire rotation: fronts straight back, rears diagonally forward",
+      "active": true
     },
     {
       "id": "juke",
@@ -874,7 +900,8 @@
       "model": "Juke SV",
       "purchaseDate": "",
       "currentMileage": 178857,
-      "notes": "Lug torque: 83lb-ft\nOil: NAPA 1358, 4.5 qts 0w20\nAir: 6044\nSpark plugs: NGK 95003\nWipers: 24\"/14\"/12\"\nTires: 215/55-17\nRear tires straight to the front, front tires cross to the rear"
+      "notes": "Lug torque: 83lb-ft\nOil: NAPA 1358, 4.5 qts 0w20\nAir: 6044\nSpark plugs: NGK 95003\nWipers: 24\"/14\"/12\"\nTires: 215/55-17\nRear tires straight to the front, front tires cross to the rear",
+      "active": true
     },
     {
       "id": "phoenix",
@@ -885,7 +912,8 @@
       "model": "CB750F Supersport",
       "purchaseDate": "",
       "currentMileage": 39228,
-      "notes": "Oil filter: NAPA FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335"
+      "notes": "Oil filter: NAPA FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335",
+      "active": true
     },
     {
       "id": "pickup",
@@ -897,7 +925,8 @@
       "type": "car",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": ""
+      "notes": "",
+      "active": false
     },
     {
       "id": "rd250",
@@ -909,7 +938,8 @@
       "type": "bike",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": ""
+      "notes": "",
+      "active": false
     },
     {
       "id": "red",
@@ -920,7 +950,8 @@
       "model": "Continental GT",
       "purchaseDate": "2023-09-04",
       "currentMileage": 9262,
-      "notes": "Oil filter: 888414\n2.5 qts 15W50 (JASO MA)\nChain: 530x100\n\nPirelli Sport Demon\nFront Tire: 100/90-18\nRear Tire: 130/70-18"
+      "notes": "Oil filter: 888414\n2.5 qts 15W50 (JASO MA)\nChain: 530x100\n\nPirelli Sport Demon\nFront Tire: 100/90-18\nRear Tire: 130/70-18",
+      "active": true
     },
     {
       "id": "sportsman",
@@ -928,11 +959,13 @@
       "nickname": "Sportsman",
       "year": 2007,
       "make": "Polaris",
-      "model": "Sportsman 500",
-      "type": "bike",
+      "model": "Sportsman",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": "NAPA 1358, 2 qts 0w40 Synthetic\nTires: 26x9-12 / 26x10-12\nTires SHOULD be: 26x8x12 / 26X11X12\nSpark plug: BKR6E / XP3923\n\n\n-- Diagnostics Mode (Set Clock) --\n1. Key off\n2. Lock parking brake\n3. Neutral\n4. Hold override button, turn key on, release button\n5. Hold override button to enter time setting mode\n6. Wait after adjusting hour, it will advance to minutes\n7. Repeat \n8. Key off\n\n\n\n-- DIAGNOSTIC CODES --\n\nTurn the key off for 30 seconds. Do the following within 5 seconds: Key ON, OFF, ON, OFF, ON (don't start the engine). Keep your eye on the CEL. The display will either say \"Wait\" and then the CEL will start blinking; or the CEL will start blinking right away. In either case, count the number of blinks between each long pause (b P bb P bbbb P b P bbbbbb P b). The codes are in two-digit numbers so the previous sequence would be 12, 41, 61. 12 = start and 61 = end. 12 may or may not happen.\n\nThis is a general list of codes. Different models and years may have slight variations.\n\n---- 12 Beginning of Diagnostic Check ----\n21 Loss of Synchronization\n22 TPS Circuit: Open or Short to Ground\n22 TPS Circuit: Short to Battery\n23 RAM Error: Defective ECU\n41 Air Temp Sensor: Open or Short Circuit to Sensor Voltage (ECU)\n41 Air Temp Sensor: Short Circuit to Ground\n42 Engine Temperature Sensor Circuit: Short to Ground\n42 Engine Temperature Sensor Circuit: Open or Short to Battery\n45 Barometric Pressure Sensor: Circuit Low Input\n46 Barometric Pressure Sensor: Circuit High Input\n51 Injector 1: Open Load\n51 Injector 1: Short Circuit to Ground\n51 Injector 1: Short Circuit to battery\n52 Injector 2: Open Load\n52 Injector 2: Short Circuit to Ground\n52 Injector 2: Short Circuit to Battery Yes\n54 Engine Temperature Lamp: Open Load\n54 Engine Temperature Lamp: Short Circuit to Ground\n54 Engine Temperature Lamp: Short Circuit to Battery\n55 Diagnostic Lamp: Open Load\n55 Diagnostic Lamp: Short Circuit to Ground\n55 Diagnostic Lamp: Short Circuit to Battery\n56 Pump Relay Open Load\n56 Pump Relay Short Circuit to Ground\n56 Pump Relay Short Circuit to Battery\n58 Cooling Fan: Open Load\n58 Cooling Fan: Short Circuit to Ground\n58 Cooling Fan: Short Circuit to Battery\n---- 61 End of Diagnostic Check ----\n\nTo erase a code, remove the negative battery cable for 30 seconds. If they are still there after you hook the cable up and check again, that means they came right back."
+      "registrationDue": "",
+      "inspectionDue": "",
+      "notes": "NAPA 1358, 2 qts 0w40 Synthetic\nTires: 26x9-12 / 26x10-12\nTires SHOULD be: 26x8x12 / 26X11X12\nSpark plug: BKR6E / XP3923\n\n\n-- Diagnostics Mode (Set Clock) --\n1. Key off\n2. Lock parking brake\n3. Neutral\n4. Hold override button, turn key on, release button\n5. Hold override button to enter time setting mode\n6. Wait after adjusting hour, it will advance to minutes\n7. Repeat \n8. Key off\n\n\n\n-- DIAGNOSTIC CODES --\n\nTurn the key off for 30 seconds. Do the following within 5 seconds: Key ON, OFF, ON, OFF, ON (don't start the engine). Keep your eye on the CEL. The display will either say \"Wait\" and then the CEL will start blinking; or the CEL will start blinking right away. In either case, count the number of blinks between each long pause (b P bb P bbbb P b P bbbbbb P b). The codes are in two-digit numbers so the previous sequence would be 12, 41, 61. 12 = start and 61 = end. 12 may or may not happen.\n\nThis is a general list of codes. Different models and years may have slight variations.\n\n---- 12 Beginning of Diagnostic Check ----\n21 Loss of Synchronization\n22 TPS Circuit: Open or Short to Ground\n22 TPS Circuit: Short to Battery\n23 RAM Error: Defective ECU\n41 Air Temp Sensor: Open or Short Circuit to Sensor Voltage (ECU)\n41 Air Temp Sensor: Short Circuit to Ground\n42 Engine Temperature Sensor Circuit: Short to Ground\n42 Engine Temperature Sensor Circuit: Open or Short to Battery\n45 Barometric Pressure Sensor: Circuit Low Input\n46 Barometric Pressure Sensor: Circuit High Input\n51 Injector 1: Open Load\n51 Injector 1: Short Circuit to Ground\n51 Injector 1: Short Circuit to battery\n52 Injector 2: Open Load\n52 Injector 2: Short Circuit to Ground\n52 Injector 2: Short Circuit to Battery Yes\n54 Engine Temperature Lamp: Open Load\n54 Engine Temperature Lamp: Short Circuit to Ground\n54 Engine Temperature Lamp: Short Circuit to Battery\n55 Diagnostic Lamp: Open Load\n55 Diagnostic Lamp: Short Circuit to Ground\n55 Diagnostic Lamp: Short Circuit to Battery\n56 Pump Relay Open Load\n56 Pump Relay Short Circuit to Ground\n56 Pump Relay Short Circuit to Battery\n58 Cooling Fan: Open Load\n58 Cooling Fan: Short Circuit to Ground\n58 Cooling Fan: Short Circuit to Battery\n---- 61 End of Diagnostic Check ----\n\nTo erase a code, remove the negative battery cable for 30 seconds. If they are still there after you hook the cable up and check again, that means they came right back.",
+      "active": true
     },
     {
       "id": "ty175",
@@ -944,7 +977,8 @@
       "type": "bike",
       "purchaseDate": "",
       "currentMileage": null,
-      "notes": ""
+      "notes": "",
+      "active": false
     },
     {
       "id": "white",
@@ -952,11 +986,14 @@
       "nickname": "White",
       "year": 2019,
       "make": "Royal Enfield",
-      "model": "Continental GT 650",
+      "model": "Continental GT",
       "purchaseDate": "2023-09-04",
       "currentMileage": 9937.6,
-      "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm"
+      "registrationDue": "",
+      "inspectionDue": "",
+      "notes": "Stop/tail: 7528 (21/5w)\n\nPirelli Phantom Sports Comp\nFront Tire: 100/90-18\nRear Tire: 130/70-18\nSpark Plug: CR7HSA\nChain Size: 525\nChain Links: 100\n\nValves:\n.003 intake\n.007 exhaust\n\nPlug gap\n.7mm - .8mm",
+      "active": false
     }
   ],
-  "lastModified": "2026-08-30T23:32:10.894Z"
+  "lastModified": "2026-09-01T11:31:26.535Z"
 }
