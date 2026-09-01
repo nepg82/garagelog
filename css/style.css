@@ -160,6 +160,28 @@ h1 {
     background: color-mix(in srgb, var(--accent-red) 35%, #555);
 }
 
+.vehicle.inactive {
+    opacity: 0.6;
+}
+
+.inactive-vehicles {
+    width: 85%;
+    margin: 1.5rem auto 0;
+}
+
+.inactive-vehicles summary h2 {
+    display: inline-block;
+    font-size: 1rem;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.inactive-vehicles .vehicle {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .vehicle .vehicle-reminder-badge {
     margin: -2px 0 -5px;
     font-family: Courier, monospace, sans-serif;

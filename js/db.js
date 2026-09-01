@@ -257,6 +257,11 @@ async function updateVehicleSchema() {
             changed = true;
         }
 
+        if (!("active" in vehicle)) {
+            vehicle.active = true;
+            changed = true;
+        }
+
         if (changed) {
             await updateVehicle(vehicle);
         }

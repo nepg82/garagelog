@@ -165,11 +165,91 @@ async function startApp() {
     }
 }
 
+function buildVehicleCard(vehicle, { sorting = false, index = 0, total = 0 } = {}) {
+
+    const card = document.createElement("div");
+
+    const reminder = getVehicleReminderSummary(vehicle);
+
+    card.className = "vehicle" +
+        (reminder?.state === "overdue" ? " overdue" :
+         reminder?.state === "soon" ? " due-soon" : "") +
+        (vehicle.active === false ? " inactive" : "");
+
+    card.innerHTML = `
+        ${
+            sorting
+            ? `
+                <div class="vehicle-sort-buttons">
+
+                    <button
+                        class="move-up-button"
+                        data-index="${index}"
+                        ${index === 0 ? "disabled" : ""}
+                    >
+                        ↑
+                    </button>
+
+                    <button
+                        class="move-down-button"
+                        data-index="${index}"
+                        ${index === total - 1 ? "disabled" : ""}
+                    >
+                        ↓
+                    </button>
+
+                </div>
+            `
+            : ""
+        }
+
+        <div class="vehicle-content">
+
+            <div class="vehicle-main">
+
+                <h2>${vehicle.nickname}</h2>
+
+                <p>
+                    ${vehicle.year} ${vehicle.make} ${vehicle.model}
+                </p>
+
+            </div>
+
+            ${
+                reminder && reminder.state !== "ok"
+                ? `
+                    <p class="vehicle-reminder-badge">
+                        ${reminder.label}
+                        ${reminder.state === "overdue" ? "overdue" : `due in ${reminder.days}d`}
+                    </p>
+                `
+                : ""
+            }
+
+        </div>
+    `;
+
+    return card;
+}
+
 function displayVehicles(vehicles, sorting = false) {
 
     const container = document.getElementById("app");
 
     refreshDataVersion();
+
+    // In sorting mode, `vehicles` is already the active-only, sortable
+    // list handed in by the Sort button below — inactive vehicles are
+    // quarantined out of the main list and aren't sortable. In normal
+    // mode `vehicles` is the full list, so split it into active and
+    // inactive groups for display.
+    const activeVehicles = sorting
+        ? vehicles
+        : vehicles.filter(vehicle => vehicle.active !== false);
+
+    const inactiveVehicles = sorting
+        ? []
+        : vehicles.filter(vehicle => vehicle.active === false);
 
     container.innerHTML = `
         <div class="garage-header">
@@ -227,7 +307,7 @@ function displayVehicles(vehicles, sorting = false) {
 
             } else {
 
-                displayVehicles(vehicles, true);
+                displayVehicles(activeVehicles, true);
             }
         });
 
@@ -377,68 +457,13 @@ if (!sorting) {
 
     // Vehicle list
 
-    vehicles.forEach((vehicle, index) => {
+    activeVehicles.forEach((vehicle, index) => {
 
-        const card = document.createElement("div");
-
-        const reminder = getVehicleReminderSummary(vehicle);
-
-        card.className = "vehicle" +
-            (reminder?.state === "overdue" ? " overdue" :
-             reminder?.state === "soon" ? " due-soon" : "");
-             
-        card.innerHTML = `
-            ${
-                sorting
-                ? `
-                    <div class="vehicle-sort-buttons">
-
-                        <button
-                            class="move-up-button"
-                            data-index="${index}"
-                            ${index === 0 ? "disabled" : ""}
-                        >
-                            ↑
-                        </button>
-
-                        <button
-                            class="move-down-button"
-                            data-index="${index}"
-                            ${index === vehicles.length - 1 ? "disabled" : ""}
-                        >
-                            ↓
-                        </button>
-
-                    </div>
-                `
-                : ""
-            }
-
-            <div class="vehicle-content">
-
-                <div class="vehicle-main">
-
-                    <h2>${vehicle.nickname}</h2>
-
-                    <p>
-                        ${vehicle.year} ${vehicle.make} ${vehicle.model}
-                    </p>
-
-                </div>
-
-                ${
-                    reminder && reminder.state !== "ok"
-                    ? `
-                        <p class="vehicle-reminder-badge">
-                            ${reminder.label}
-                            ${reminder.state === "overdue" ? "overdue" : `due in ${reminder.days}d`}
-                        </p>
-                    `
-                    : ""
-                }
-
-            </div>
-        `;
+        const card = buildVehicleCard(vehicle, {
+            sorting,
+            index,
+            total: activeVehicles.length
+        });
 
         if (!sorting) {
 
@@ -450,6 +475,37 @@ if (!sorting) {
 
         container.appendChild(card);
     });
+
+    // Inactive (quarantined) vehicles — collapsed out of the way,
+    // still one tap from the main screen.
+
+    if (!sorting && inactiveVehicles.length > 0) {
+
+        const section = document.createElement("details");
+        section.className = "inactive-vehicles";
+
+        section.innerHTML = `
+            <summary>
+                <h2>
+                    Inactive Vehicles
+                    <span class="plan-count">(${inactiveVehicles.length})</span>
+                </h2>
+            </summary>
+        `;
+
+        inactiveVehicles.forEach(vehicle => {
+
+            const card = buildVehicleCard(vehicle);
+
+            card.addEventListener("click", () => {
+                displayVehicle(vehicle);
+            });
+
+            section.appendChild(card);
+        });
+
+        container.appendChild(section);
+    }
 
 
     // Sorting controls
@@ -861,6 +917,10 @@ async function displayVehicle(vehicle) {
 
                 <p class="vehicle-notes">${vehicle.notes || "No notes yet."}</p>
 
+                <button id="toggleActiveButton">
+                    ${vehicle.active === false ? "Reactivate" : "Mark Inactive"}
+                </button>
+
             </details>
 
             <hr>
@@ -1065,6 +1125,17 @@ async function displayVehicle(vehicle) {
         .getElementById("editButton")
         .addEventListener("click", () => {
             displayVehicleEditor(vehicle);
+        });
+
+    document
+        .getElementById("toggleActiveButton")
+        .addEventListener("click", async () => {
+
+            vehicle.active = vehicle.active === false;
+
+            await saveVehicle(vehicle);
+
+            displayVehicle(vehicle);
         });
 
     document
@@ -1670,6 +1741,17 @@ function displayVehicleEditor(vehicle = null) {
 
             <br>
 
+            <label>
+                <input
+                    type="checkbox"
+                    id="active"
+                    ${vehicle?.active === false ? "" : "checked"}
+                >
+                Active (uncheck to quarantine in Inactive Vehicles)
+            </label>
+
+            <br>
+
             <button id="saveButton" class="primary">
                 ${isNew ? "Add Vehicle" : "Save"}
             </button>
@@ -1767,7 +1849,12 @@ function displayVehicleEditor(vehicle = null) {
                     document
                         .getElementById("notes")
                         .value
-                        .trim()
+                        .trim(),
+
+                active:
+                    document
+                        .getElementById("active")
+                        .checked
             };
 
             await saveVehicle(updatedVehicle);
