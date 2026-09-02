@@ -442,6 +442,17 @@
       "photos": []
     },
     {
+      "id": "d86552da-1969-4e6b-9daf-c9a82d040e21",
+      "vehicleId": "phoenix",
+      "date": "2026-09-01",
+      "mileage": 39228,
+      "title": "Wiring",
+      "description": "Finished front marker light install",
+      "cost": 0,
+      "notes": "Manged to break the stud off of one of the brand new lights, so I had to break the other one to match. Removed stock nuts on the inside of the headlight bucket that the adapter bolts thread into, switched to nuts and washers, allowing marker lights to be clocked properly. Also made the first of what will be several 2-into-1 bullet connectors to get everything plugged into the harness at once - max stock connectors hold 4 bullets, ground circuit for front lighting needs to accommodate at least 5.\n\nStill need to wire signals.",
+      "photos": []
+    },
+    {
       "id": "dc500301-9ee4-40dc-a935-284418894585",
       "vehicleId": "phoenix",
       "date": "2026-08-01",
@@ -544,11 +555,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-01T11:31:26.535Z"
+      "value": "2026-09-02T13:36:50.158Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-01T01:33:25.078Z"
+      "value": "2026-09-01T11:31:26.535Z"
     },
     {
       "key": "schemaVersion",
@@ -995,5 +1006,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-01T11:31:26.535Z"
+  "lastModified": "2026-09-02T13:36:50.158Z"
 }
