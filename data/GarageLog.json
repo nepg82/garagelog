@@ -255,6 +255,17 @@
       "photos": []
     },
     {
+      "id": "7a7085c4-b9b9-49bd-ae26-4106f9e69394",
+      "vehicleId": "phoenix",
+      "date": "2026-09-02",
+      "mileage": 39228,
+      "title": "Wiring?",
+      "description": "Mount horns, add bullets to wires",
+      "cost": 0,
+      "notes": "Tested turn signal button. Might explore circuitry to turn off running light when turn signal is on - the running lights kind of wash out the turns.",
+      "photos": []
+    },
+    {
       "id": "7dfc1e23-fc24-47ca-9aa6-a82907c11030",
       "vehicleId": "juke",
       "date": "2026-08-10",
@@ -555,7 +566,7 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-02T13:36:50.158Z"
+      "value": "2026-09-03T02:07:55.154Z"
     },
     {
       "key": "lastPushedTimestamp",
@@ -1006,5 +1017,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-02T13:36:50.158Z"
+  "lastModified": "2026-09-03T02:07:55.154Z"
 }
