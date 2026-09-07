@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "logEntries": [
     {
+      "id": "0706e846-c849-4d81-8838-eb84c55cbc35",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": 39228,
+      "title": "Diagnose arc",
+      "description": "Battery tray arcing to frame.\nAlso reorganized wire harness coming out of alternator - starter wire and alternator loom were reversed",
+      "cost": 0,
+      "notes": "I tried several things to fix the arc, nothing worked. Arc stops if rectifier is removed from battery box mount, or its ground is unplugged, or if +12v wire is removed from regulator. All of these need to be connected though.",
+      "photos": []
+    },
+    {
       "id": "081b06fe-ec5f-41c4-b56d-8c274e1c2515",
       "vehicleId": "juke",
       "date": "2022-04-07",
@@ -82,11 +93,22 @@
       "id": "2092c451-a9c3-4fbe-85af-f70640d3df75",
       "vehicleId": "phoenix",
       "date": "2026-08-31",
-      "mileage": null,
-      "title": "a. Turn signal studs",
+      "mileage": 39228,
+      "title": "Turn signal studs",
       "description": "M10-1.25 w/ M8-1.25 hole through it",
       "cost": 0,
       "notes": "",
+      "photos": []
+    },
+    {
+      "id": "210652a3-4e06-4e3e-ae1c-8f6d82139ab1",
+      "vehicleId": "phoenix",
+      "date": "2026-09-06",
+      "mileage": 39228,
+      "title": "Diagnose arc",
+      "description": "",
+      "cost": 0,
+      "notes": "Dug further. Bench test of rectifier shows it to be good. Bench test of regulator shows it to be functioning correctly. Fully isolated and removed new fuse block - no issues with it. Also found that removing the white wire from the regulator cures the arc. Chased this down to a possible issue I the alternator wiring harness. Removed alternator and shifter side cover (again) and found a couple worn out wires in the bunch. Next step is to repair those weaknesses and test",
       "photos": []
     },
     {
@@ -566,11 +588,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-03T02:07:55.154Z"
+      "value": "2026-09-07T01:34:44.916Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-02T13:36:50.158Z"
+      "value": "2026-09-03T02:07:55.154Z"
     },
     {
       "key": "schemaVersion",
@@ -1017,5 +1039,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-03T02:07:55.154Z"
+  "lastModified": "2026-09-07T01:34:44.916Z"
 }
