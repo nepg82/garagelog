@@ -321,12 +321,34 @@
       "photos": []
     },
     {
+      "id": "82252322-99d3-4b3a-879c-710e916cd764",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": null,
+      "title": "Wiring 4 - turn signals",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "88a1ae7f-123c-4dc0-b8c9-0812b3b17c84",
       "vehicleId": "juke",
       "date": "2020-04-04",
       "mileage": 109540,
       "title": "summer tires installed",
       "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "8deb9890-1f15-4f4d-9373-5e8399852a60",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": 39228,
+      "title": "Wiring 0 - install all components",
+      "description": "[x] coils\n[x] starter button\n[x] horns\n[x] fuse block\n[x] relays\n[x] turn signals\n[x] brake light?",
       "cost": 0,
       "notes": "",
       "photos": []
@@ -343,6 +365,17 @@
       "photos": []
     },
     {
+      "id": "9f6efbcc-e8d2-413a-bef1-632099d3ecca",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": null,
+      "title": "Wiring 2 - charging/start/headlight",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "a0b0feb5-518e-4505-b68e-12eac6d832b3",
       "vehicleId": "juke",
       "date": "2019-11-09",
@@ -351,6 +384,17 @@
       "description": "",
       "cost": 0,
       "notes": "",
+      "photos": []
+    },
+    {
+      "id": "a4b7a0be-dc15-4230-89b1-27fd0db9a3e4",
+      "vehicleId": "phoenix",
+      "date": "2026-09-07",
+      "mileage": 39228,
+      "title": "Wiring complete",
+      "description": "Arc fixed, all components wired and working",
+      "cost": 0,
+      "notes": "Arc was happening because I thought the alternator's ground wire was meant to provide ground for the rectifier, when in reality each component needs to be grounded.\n\nWiring is complete but not finished - everything is working, but I need to make it \"pretty\", then start designing v2 of the wiring harness where I'll get appropriately colored wires of appropriate gauge and try to be more intentional about connectors (need to use shrouded blades, etc), and also find a way to utilize the running and stop/tail lights - they're not hooked up now because they wash out the signals badly, so I need to design the wiring to turn off the stop/tail or running lights when the signals are on. Might be a challenge, but not insurmountable.",
       "photos": []
     },
     {
@@ -403,6 +447,17 @@
       "date": "2018-11-17",
       "mileage": 81478,
       "title": "snow tires installed",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
+      "id": "c6fc4cd5-7a8f-424e-b7d8-5eee9151a617",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": null,
+      "title": "Wiring 3 - brake/horn",
       "description": "",
       "cost": 0,
       "notes": "",
@@ -588,11 +643,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-07T01:34:44.916Z"
+      "value": "2026-09-08T02:18:18.196Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-03T02:07:55.154Z"
+      "value": "2026-09-07T01:34:44.916Z"
     },
     {
       "key": "schemaVersion",
@@ -613,14 +668,6 @@
       "id": "06fd14a0-dbf5-49a6-8bf8-8b292a73dd06",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
       "title": "Water reclamation tank",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "0a4d0bf2-6ad5-4ef7-9ff6-981e2a16670f",
-      "vehicleId": "phoenix",
-      "title": "Wiring 2 - charging/start/headlight",
       "date": "",
       "mileage": null,
       "description": ""
@@ -754,14 +801,6 @@
       "description": "[ ] floor\n[ ] rebuild shower"
     },
     {
-      "id": "7f52e669-d454-45a0-a84e-37765cd29716",
-      "vehicleId": "phoenix",
-      "title": "Wiring 3 - brake/horn",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
       "id": "8880363f-909d-413e-8309-fe11404fcc45",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
       "title": "Ceilings - patch & paint",
@@ -778,6 +817,14 @@
       "description": ""
     },
     {
+      "id": "8ddc8494-876b-4c35-b7a6-c480098e95ad",
+      "vehicleId": "phoenix",
+      "title": "Wiring v.2",
+      "date": "",
+      "mileage": null,
+      "description": "[ ] color coded wires\n[ ] appropriate gauge wire\n[ ] turn signal/running light interrupter circuit"
+    },
+    {
       "id": "911a4695-40d3-458e-9a94-0547a9a798f1",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
       "title": "Skylight",
@@ -792,14 +839,6 @@
       "date": "",
       "mileage": null,
       "description": "Move to west side after driveway and parking area"
-    },
-    {
-      "id": "9fb23b9d-e1dc-42fe-9807-c5726cf53741",
-      "vehicleId": "phoenix",
-      "title": "Wiring 0 - install all components",
-      "date": "",
-      "mileage": null,
-      "description": "[ ] coils\n[x] starter button\n[ ] horns\n[x] fuse block\n[ ] relays\n[ ] turn signals\n[ ] brake light?"
     },
     {
       "id": "b05ddffd-c645-4ab0-8e55-30309916f2d1",
@@ -837,14 +876,6 @@
       "id": "d5919b52-a8e7-4139-9db1-a532bcfe6148",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
       "title": "Pool",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "e6efef14-1b44-4d85-973b-d3ff0d362676",
-      "vehicleId": "phoenix",
-      "title": "Wiring 4 - turn signals",
       "date": "",
       "mileage": null,
       "description": ""
@@ -1039,5 +1070,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-07T01:34:44.916Z"
+  "lastModified": "2026-09-08T02:18:18.196Z"
 }
