@@ -266,6 +266,17 @@
       "photos": []
     },
     {
+      "id": "6842f793-63bd-4b1a-8cb5-84e4d7e3d198",
+      "vehicleId": "phoenix",
+      "date": "2026-09-08",
+      "mileage": 39228,
+      "title": "side cover mount",
+      "description": "Finished fabrication and installation of left side cover mounting stud.",
+      "cost": 0,
+      "notes": "Since I went back to the original mounting arrangement for the ignition components I had to redesign the mounting for the side cover. I still don't remember what that side cover is off of, but it fits reasonably well in the area where the plastic cover would have gone. The previous coil mounting bracket that I had in that area had a bent length of threaded rod for the mounting post; for the stock bracket I got an M6-1.0 coupling nut to secure the bracket to the battery box, and then fabricated a mounting stud out of a broken 1/4\" ratchet extension, threaded one end M6-1.0 to thread into the coupling nut, 1/4-20 on the other end to hold the side cover on with the wing nut I've been using for years. Not that anyone but me will notice, but it looks exactly the same from the outside as it has for years and years.\n\nAlso looked at possible mounting positions for the two relays (horn and headlight cutoff). I have a couple candidates, but haven't decided or fabricated anything yet. The only decision I've made is that I'm not going to be drilling any holes in the bike to mount the relays. Best idea so far is to fabricate a bracket that mounts in place of the old tray next to the battery (long ago removed and lost) that I can then mount the relays to. Possibly also the signal flasher if there's room.",
+      "photos": []
+    },
+    {
       "id": "6af38b7c-8547-4fbf-affd-deeae971a49d",
       "vehicleId": "juke",
       "date": "2021-04-09",
@@ -643,11 +654,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-08T02:18:18.196Z"
+      "value": "2026-09-09T11:17:06.527Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-07T01:34:44.916Z"
+      "value": "2026-09-08T02:18:18.196Z"
     },
     {
       "key": "schemaVersion",
@@ -1070,5 +1081,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-08T02:18:18.196Z"
+  "lastModified": "2026-09-09T11:17:06.527Z"
 }
