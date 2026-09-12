@@ -376,6 +376,17 @@
       "photos": []
     },
     {
+      "id": "9502daa6-43a0-45f5-bd61-774ec41b8f39",
+      "vehicleId": "phoenix",
+      "date": "2026-09-12",
+      "mileage": 39229,
+      "title": "Fab relay tray",
+      "description": "Bent thin gauge metal for tray to hold relays (headlight cutout, horn, and eventual running light cutout)",
+      "cost": 0,
+      "notes": "Need to explore shaping to allow wires to pass by without risk of vibration rubbing tray edge through insulation. Need to fabricate thick rubber mounts. Maybe Oomph??",
+      "photos": []
+    },
+    {
       "id": "9f6efbcc-e8d2-413a-bef1-632099d3ecca",
       "vehicleId": "phoenix",
       "date": "2026-09-05",
@@ -665,11 +676,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-12T17:46:20.046Z"
+      "value": "2026-09-12T18:25:42.964Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-09T11:17:06.527Z"
+      "value": "2026-09-12T17:46:20.046Z"
     },
     {
       "key": "schemaVersion",
@@ -1008,7 +1019,7 @@
       "make": "Honda",
       "model": "CB750F Supersport",
       "purchaseDate": "",
-      "currentMileage": 39228,
+      "currentMileage": 39229,
       "notes": "Oil filter: NAPA FIL 4940\n3 quarts oil\n\nTires:\nRear: 4.00-18 = 110/90-18\nFront: 3.25-19 = 100/90-19\n\n37 tooth rear (K22-3596)\n17 tooth front (K22-2519)\n530 chain (49 link)\n\nEngine number: CB750E-2533335",
       "active": true
     },
@@ -1092,5 +1103,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-12T17:46:20.046Z"
+  "lastModified": "2026-09-12T18:25:42.964Z"
 }
