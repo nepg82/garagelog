@@ -420,6 +420,17 @@
       "photos": []
     },
     {
+      "id": "a9b02fcb-7e6a-4e94-96d0-577da767d417",
+      "vehicleId": "red",
+      "date": "2026-09-12",
+      "mileage": 9630,
+      "title": "Adjust chain",
+      "description": "",
+      "cost": 0,
+      "notes": "Chain was rubbing the frame (smh)",
+      "photos": []
+    },
+    {
       "id": "aa28a530-67fc-4b8c-a986-453f4d70eaa7",
       "vehicleId": "phoenix",
       "date": "2026-08-30",
@@ -654,11 +665,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-09T11:17:06.527Z"
+      "value": "2026-09-12T17:46:20.046Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-08T02:18:18.196Z"
+      "value": "2026-09-09T11:17:06.527Z"
     },
     {
       "key": "schemaVersion",
@@ -1035,7 +1046,7 @@
       "make": "Royal Enfield",
       "model": "Continental GT",
       "purchaseDate": "2023-09-04",
-      "currentMileage": 9262,
+      "currentMileage": 9630,
       "notes": "Oil filter: 888414\n2.5 qts 15W50 (JASO MA)\nChain: 530x100\n\nPirelli Sport Demon\nFront Tire: 100/90-18\nRear Tire: 130/70-18",
       "active": true
     },
@@ -1081,5 +1092,5 @@
       "active": false
     }
   ],
-  "lastModified": "2026-09-09T11:17:06.527Z"
+  "lastModified": "2026-09-12T17:46:20.046Z"
 }
