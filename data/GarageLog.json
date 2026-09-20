@@ -167,6 +167,17 @@
       "photos": []
     },
     {
+      "id": "39787ffa-21cb-4a5d-9dea-be3b01358c38",
+      "vehicleId": "phoenix",
+      "date": "2026-09-05",
+      "mileage": 39228,
+      "title": "rear fender/tail light mounting",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "402a950f-4617-488a-9701-9ab277e19eae",
       "vehicleId": "juke",
       "date": "2026-08-12",
@@ -354,6 +365,17 @@
       "photos": []
     },
     {
+      "id": "84275e36-6605-4743-9d04-25ccd2cc13cd",
+      "vehicleId": "phoenix",
+      "date": "2026-09-19",
+      "mileage": 39229,
+      "title": "Fabrication (seat)",
+      "description": "Mounting setup",
+      "cost": 0,
+      "notes": "Screwed mounting elements to seat, added bumpers to frame to stabilize seat",
+      "photos": []
+    },
+    {
       "id": "88a1ae7f-123c-4dc0-b8c9-0812b3b17c84",
       "vehicleId": "juke",
       "date": "2020-04-04",
@@ -461,6 +483,17 @@
       "description": "Fuse block mounted to battery tray facing carburetors. Regulator circuitry complete. Ignition coil circuit complete. Rear brake light switch connections made (connection is in the same bundle as the coil wire connections; not functional yet). Confirmed all wiring between alternator and rectifier is connected correctly. Headlight / starter cutout circuit complete.",
       "cost": 0,
       "notes": "Wiring for these circuits is complete, but still needs to be cleaned up. I have the vague routing set up, but everything is still a ball of spaghetti.  \n\nI also still have to figure out where to mount the relays and how to mount the new signal lights, but everything is functioning as planned (headlight cuts off with starter button press, starter relay only engages in neutral).",
+      "photos": []
+    },
+    {
+      "id": "b79a0a1b-7ee3-499e-a0f8-73021a592eda",
+      "vehicleId": "phoenix",
+      "date": "2026-09-18",
+      "mileage": 39229,
+      "title": "Fabrication (seat)",
+      "description": "Welded mounting pieces to old seat plate (thanks Darrin)",
+      "cost": 0,
+      "notes": "",
       "photos": []
     },
     {
@@ -576,7 +609,7 @@
     {
       "id": "d858751a-9054-4d0a-8107-71235927bb81",
       "vehicleId": "phoenix",
-      "date": "2026-09-18",
+      "date": "2026-09-17",
       "mileage": 39229,
       "title": "Fabrication (seat)",
       "description": "Cut wood and foam, glued together. Started planning mounting.",
@@ -698,11 +731,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-18T09:47:45.355Z"
+      "value": "2026-09-20T11:41:58.558Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-13T20:19:06.249Z"
+      "value": "2026-09-18T09:47:45.355Z"
     },
     {
       "key": "schemaVersion",
@@ -711,14 +744,6 @@
   ],
   "photos": [],
   "plans": [
-    {
-      "id": "03c812e7-cdc1-4682-837e-0822dac8ea09",
-      "vehicleId": "phoenix",
-      "title": "rear fender/tail light mounting",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
     {
       "id": "06fd14a0-dbf5-49a6-8bf8-8b292a73dd06",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
@@ -787,14 +812,6 @@
       "id": "46206cc1-6e7a-4082-9ab0-a4c8820c6c47",
       "vehicleId": "phoenix",
       "title": "Tires",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "4e309a59-5204-44e7-9412-65b2b035e399",
-      "vehicleId": "frontier",
-      "title": "Battery",
       "date": "",
       "mileage": null,
       "description": ""
@@ -1125,5 +1142,5 @@
       "active": true
     }
   ],
-  "lastModified": "2026-09-18T09:47:45.355Z"
+  "lastModified": "2026-09-20T11:41:58.558Z"
 }
