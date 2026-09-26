@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "logEntries": [
     {
+      "id": "05b0faf6-cb5b-4df0-9f3a-922928713d15",
+      "vehicleId": "phoenix",
+      "date": "2026-09-26",
+      "mileage": 39229,
+      "title": "Fix front brake leak",
+      "description": "Needed new crush washers",
+      "cost": 0,
+      "notes": "NAPA BRC227",
+      "photos": []
+    },
+    {
       "id": "0706e846-c849-4d81-8838-eb84c55cbc35",
       "vehicleId": "phoenix",
       "date": "2026-09-05",
@@ -731,11 +742,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-20T11:41:58.558Z"
+      "value": "2026-09-26T14:22:54.017Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-18T09:47:45.355Z"
+      "value": "2026-09-20T11:41:58.558Z"
     },
     {
       "key": "schemaVersion",
@@ -1142,5 +1153,5 @@
       "active": true
     }
   ],
-  "lastModified": "2026-09-20T11:41:58.558Z"
+  "lastModified": "2026-09-26T14:22:54.017Z"
 }
