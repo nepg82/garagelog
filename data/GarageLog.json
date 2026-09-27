@@ -717,6 +717,17 @@
       "photos": []
     },
     {
+      "id": "f6d6d1bc-0b78-4768-8cba-819ab12ecb0e",
+      "vehicleId": "white",
+      "date": "2026-09-27",
+      "mileage": 13709,
+      "title": "Brakes",
+      "description": "Pads and rotors front and rear.\n\nFront rotor (RAB00076) - 195.89\nFront pads (DP623) - 46.95\nRear rotor (587395) - 79.99\nRear pads (RAB00083) - 78.99",
+      "cost": 401.82,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "f722ebb0-effc-491f-9a81-b052fde56c58",
       "vehicleId": "juke",
       "date": "2017-11-04",
@@ -764,11 +775,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-27T19:58:52.786Z"
+      "value": "2026-09-27T20:06:54.684Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-26T14:22:54.017Z"
+      "value": "2026-09-27T19:58:52.786Z"
     },
     {
       "key": "schemaVersion",
@@ -944,6 +955,14 @@
       "date": "",
       "mileage": null,
       "description": "[ ] walk in shower"
+    },
+    {
+      "id": "b13d9cc5-e378-4826-9a94-95dd13c83e94",
+      "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
+      "title": "Fence",
+      "date": "",
+      "mileage": null,
+      "description": ""
     },
     {
       "id": "b8fab4d2-4551-40fa-b532-779142049143",
@@ -1159,5 +1178,5 @@
       "active": true
     }
   ],
-  "lastModified": "2026-09-27T19:58:52.786Z"
+  "lastModified": "2026-09-27T20:06:54.684Z"
 }
