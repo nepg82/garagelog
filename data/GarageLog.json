@@ -134,6 +134,17 @@
       "photos": []
     },
     {
+      "id": "29a1202b-7f64-4414-93a1-636e281a5744",
+      "vehicleId": "red",
+      "date": "2023-09-04",
+      "mileage": 3963.3,
+      "title": "Acquired",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "2ce2ef30-81af-45ea-a60e-6586a2fee86c",
       "vehicleId": "phoenix",
       "date": "2026-06-28",
@@ -662,6 +673,17 @@
       "photos": []
     },
     {
+      "id": "da862cfb-018a-4150-b0bd-20f7b6f4f536",
+      "vehicleId": "white",
+      "date": "2023-09-04",
+      "mileage": 786.8,
+      "title": "Acquired",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "dc500301-9ee4-40dc-a935-284418894585",
       "vehicleId": "phoenix",
       "date": "2026-08-01",
@@ -687,7 +709,7 @@
       "id": "e1840eba-1d62-4d7a-a7b2-9cec5dd57010",
       "vehicleId": "red",
       "date": "2023-12-05",
-      "mileage": 3963.3,
+      "mileage": null,
       "title": "New Hagon shocks",
       "description": "from Hitchcock's",
       "cost": 236,
@@ -775,11 +797,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-27T20:06:54.684Z"
+      "value": "2026-09-28T13:47:17.378Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-27T19:58:52.786Z"
+      "value": "2026-09-27T20:06:54.684Z"
     },
     {
       "key": "schemaVersion",
@@ -1178,5 +1200,5 @@
       "active": true
     }
   ],
-  "lastModified": "2026-09-27T20:06:54.684Z"
+  "lastModified": "2026-09-28T13:47:17.378Z"
 }
