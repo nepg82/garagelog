@@ -112,6 +112,17 @@
       "photos": []
     },
     {
+      "id": "1cd9fb10-5fc5-4a11-afbd-ac667db7b8a4",
+      "vehicleId": "frontier",
+      "date": "2026-10-17",
+      "mileage": 176500,
+      "title": "Oil change",
+      "description": "",
+      "cost": 0,
+      "notes": "",
+      "photos": []
+    },
+    {
       "id": "2092c451-a9c3-4fbe-85af-f70640d3df75",
       "vehicleId": "phoenix",
       "date": "2026-08-31",
@@ -797,11 +808,11 @@
   "metadata": [
     {
       "key": "lastModified",
-      "value": "2026-09-28T13:47:17.378Z"
+      "value": "2026-10-17T16:12:58.223Z"
     },
     {
       "key": "lastPushedTimestamp",
-      "value": "2026-09-27T20:06:54.684Z"
+      "value": "2026-09-28T13:47:17.378Z"
     },
     {
       "key": "schemaVersion",
@@ -838,14 +849,6 @@
       "id": "26120e30-7d1d-4fa9-ac68-13dff0bb46bc",
       "vehicleId": "acc0bd10-ffca-43d5-bf7b-0bf0b1e8442c",
       "title": "Ditches - drainage pipes and fill",
-      "date": "",
-      "mileage": null,
-      "description": ""
-    },
-    {
-      "id": "2cce6ab4-c233-4a55-8b56-400f03000794",
-      "vehicleId": "frontier",
-      "title": "Oil change",
       "date": "",
       "mileage": null,
       "description": ""
@@ -1092,7 +1095,7 @@
       "model": "Frontier SV",
       "type": "car",
       "purchaseDate": "2019-04-01",
-      "currentMileage": 175320,
+      "currentMileage": 176500,
       "notes": "Oil: NAPA 7356, 5.5 qts 5w30 (75521)\nCopper washers: 7041215\nAir: NAPA 6213\nLug torque: 98 ft-lbs\nWipers: 22\"/18\"\nTires: 265/70-16\nTire rotation: fronts straight back, rears diagonally forward",
       "active": true
     },
@@ -1200,5 +1203,5 @@
       "active": true
     }
   ],
-  "lastModified": "2026-09-28T13:47:17.378Z"
+  "lastModified": "2026-10-17T16:12:58.223Z"
 }
